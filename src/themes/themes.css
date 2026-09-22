@@ -1,0 +1,123 @@
+/* DevinExplained themes — Devin/Cognition paper-and-ink system.
+   Tokens extracted from cognition.com / devin.ai (docs/brand-tokens.json). */
+
+:root,
+[data-theme='devin'] {
+  --bg: #f7f6f5;
+  --ink: #191919;
+  --muted: rgba(25, 25, 25, 0.56);
+  --accent: #2200ff;
+  --accent-soft: rgba(34, 0, 255, 0.08);
+  --surface: #ffffff;
+  --line: rgba(0, 0, 0, 0.06);
+  --line-strong: rgba(0, 0, 0, 0.1);
+  --ok: #00a558;
+  --bad: #f53b3a;
+  --tag-green: #21c19a;
+
+  --font-display: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-body: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-serif: 'STK Bureau Serif', 'Source Serif 4 Variable', Georgia, serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', monospace;
+
+  --radius: 2px;
+  --radius-frame: 12px;
+
+  --shadow-1: 0px 1px 2px 0px rgb(0 0 0 / 0.05);
+  --shadow-2: 0px 1px 3px 0px rgb(0 0 0 / 0.06), 0px 1px 2px 0px #0000000f;
+  --shadow-3: 0px 10px 15px -3px rgb(0 0 0 / 0.1), 0px 4px 6px -2px #0000000d;
+  --shadow-4: 0px 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  color-scheme: light;
+}
+
+[data-theme='cognition'] {
+  --bg: #f7f6f5;
+  --ink: #000000;
+  --muted: rgba(0, 0, 0, 0.56);
+  --accent: #2200ff;
+  --accent-soft: rgba(34, 0, 255, 0.07);
+  --surface: #ffffff;
+  --line: rgba(0, 0, 0, 0.06);
+  --line-strong: rgba(0, 0, 0, 0.1);
+  --ok: #00a558;
+  --bad: #f53b3a;
+  --tag-green: #21c19a;
+
+  --font-display: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-body: 'STK Bureau Serif', 'Source Serif 4 Variable', Georgia, serif;
+  --font-serif: 'STK Bureau Serif', 'Source Serif 4 Variable', Georgia, serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', monospace;
+
+  --radius: 0px;
+  --radius-frame: 0px;
+
+  --shadow-1: 0px 1px 2px 0px rgb(0 0 0 / 0.05);
+  --shadow-2: 0px 1px 3px 0px rgb(0 0 0 / 0.06), 0px 1px 2px 0px #0000000f;
+  --shadow-3: 0px 10px 15px -3px rgb(0 0 0 / 0.1), 0px 4px 6px -2px #0000000d;
+  --shadow-4: 0px 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg: #191919;
+  --ink: #e7e7e7;
+  --muted: rgba(231, 231, 231, 0.6);
+  --accent: #317cff;
+  --accent-soft: rgba(49, 124, 255, 0.16);
+  --surface: #1f1f1f;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --ok: #21c19a;
+  --bad: #fa5050;
+  --tag-green: #21c19a;
+
+  --font-display: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-body: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-serif: 'STK Bureau Serif', 'Source Serif 4 Variable', Georgia, serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', monospace;
+
+  --radius: 2px;
+  --radius-frame: 16px;
+
+  --shadow-1: 0px 1px 2px 0px rgb(0 0 0 / 0.3);
+  --shadow-2: 0px 1px 3px 0px rgb(0 0 0 / 0.4);
+  --shadow-3: 0px 10px 15px -3px rgb(0 0 0 / 0.5);
+  --shadow-4: 0px 25px 50px -12px rgb(0 0 0 / 0.6);
+
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  color-scheme: dark;
+}
+
+[data-theme='product'] {
+  --bg: #fcfcfc;
+  --ink: #191919;
+  --muted: rgba(25, 25, 25, 0.56);
+  --accent: #317cff;
+  --accent-soft: rgba(49, 124, 255, 0.1);
+  --surface: #ffffff;
+  --line: rgba(0, 0, 0, 0.06);
+  --line-strong: rgba(0, 0, 0, 0.1);
+  --ok: #00a558;
+  --bad: #f53b3a;
+  --tag-green: #21c19a;
+
+  --font-display: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-body: 'NB International Pro', 'Geist Variable', 'Helvetica Neue', sans-serif;
+  --font-serif: 'STK Bureau Serif', 'Source Serif 4 Variable', Georgia, serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', monospace;
+
+  --radius: 6px;
+  --radius-frame: 12px;
+
+  --shadow-1: 0px 1px 2px 0px rgb(0 0 0 / 0.05);
+  --shadow-2: 0px 1px 3px 0px rgb(0 0 0 / 0.06), 0px 1px 2px 0px #0000000f;
+  --shadow-3: 0px 10px 15px -3px rgb(0 0 0 / 0.1), 0px 4px 6px -2px #0000000d;
+  --shadow-4: 0px 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  color-scheme: light;
+}

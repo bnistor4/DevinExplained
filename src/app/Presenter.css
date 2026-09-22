@@ -1,0 +1,204 @@
+.presenter {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.presenter.chrome-off {
+  cursor: none;
+}
+
+.stage-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: center;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-4);
+}
+
+.stage-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.empty-present {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* fun aside: Ink + serif italic speech bubble, bottom-right of the slide */
+.fun-aside {
+  position: absolute;
+  right: 48px;
+  bottom: 44px;
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.fun-bubble {
+  background: #f7f6f5;
+  color: #191919;
+  border: 1px solid #191919;
+  border-radius: 2px;
+  padding: 20px 26px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1.35;
+  max-width: 520px;
+  margin: 0 -8px 26px 0;
+  box-shadow: var(--shadow-3);
+  position: relative;
+}
+
+.fun-bubble::after {
+  content: '';
+  position: absolute;
+  right: -9px;
+  bottom: 14px;
+  width: 16px;
+  height: 16px;
+  background: #f7f6f5;
+  border-right: 1px solid #191919;
+  border-bottom: 1px solid #191919;
+  transform: rotate(-45deg);
+}
+
+/* speaker notes bottom sheet */
+.notes-drawer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 56px;
+  width: min(1100px, 88vw);
+  max-height: 260px;
+  overflow: auto;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-top: 2px solid var(--ink);
+  padding: 16px 22px 18px;
+  box-shadow: var(--shadow-4);
+  z-index: 20;
+}
+
+.notes-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  color: var(--muted);
+}
+
+.notes-drawer p {
+  margin: 8px 0 0;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* bottom chrome */
+.chrome {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  transition: opacity 0.25s var(--ease);
+}
+
+.chrome.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.progress {
+  height: 2px;
+  background: var(--line);
+}
+
+.progress > div {
+  height: 100%;
+  background: var(--ink);
+  transition: width 0.25s var(--ease);
+}
+
+[data-theme='dark'] .progress > div {
+  background: var(--accent);
+}
+
+.chrome-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 16px 10px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+}
+
+.chip {
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  font-size: 12px;
+  max-width: 40vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.counter {
+  font-variant-numeric: tabular-nums;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.chrome-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+.chrome-btn:hover {
+  border-color: var(--ink);
+}
+
+.chrome-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.clock {
+  font-variant-numeric: tabular-nums;
+}

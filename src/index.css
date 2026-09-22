@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.app-root {
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Emphasized word inside headlines — the devin.ai "highlight a word" pattern */
+.hi {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* Staggered reveal used inside slides: fade + 24px rise, expo ease */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: reveal-in 0.25s var(--ease, cubic-bezier(0.19, 1, 0.22, 1)) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 100ms);
+}
+
+@keyframes reveal-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Print deck: one slide per landscape page */
+.print-deck {
+  display: none;
+}
+
+@media print {
+  .app-root {
+    display: none !important;
+  }
+
+  .print-deck {
+    display: block;
+  }
+
+  .print-page {
+    width: 1123px;
+    height: 794px;
+    overflow: hidden;
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+    background: #f7f6f5;
+  }
+
+  .print-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .print-stage {
+    width: 1920px;
+    height: 1080px;
+    transform: scale(0.5849);
+    transform-origin: top left;
+  }
+
+  .print-deck .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@page {
+  size: landscape;
+  margin: 0;
+}

@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "extractedAt": "2026-09-22",
+    "sources": [
+      { "name": "Cognition marketing site", "url": "https://cognition.com/", "role": "Company / research / editorial surface" },
+      { "name": "Devin marketing site", "url": "https://devin.ai/", "role": "Product marketing surface" },
+      { "name": "Official brand assets", "url": "https://cognition.ai/brand", "role": "Published lockups and Devin color chips" }
+    ],
+    "relationship": "Cognition is the applied AI lab. Devin is its AI software-engineer product. Both sites share one type stack, paper field, electric-indigo accent, four-dot mark, and ink button system. Cognition.com is an editorial column layout. Devin.ai is a product-marketing site with fluid type, a sticky top nav, product chrome screenshots, and dark feature bands."
+  },
+  "shared": {
+    "identity": {
+      "mark": {
+        "name": "Four-dot cluster / tetramino",
+        "description": "Four filled rounded-square cells arranged as a compact cluster. Black on paper, white on dark. TRADEMARK: do not reproduce; use only as inspiration for spacing/rhythm.",
+        "lockups": ["mark only", "mark + Cognition", "mark + Devin"]
+      },
+      "mood": ["editorial", "technical", "restrained", "high-contrast ink on paper", "research-lab rather than consumer-SaaS"],
+      "principles": [
+        "Paper field instead of pure white",
+        "Electric indigo as the only loud accent",
+        "Near-zero radius on marketing chrome",
+        "Headings in a multiplex neo-grotesque; body in a book serif on the company site",
+        "Product UI may introduce Inter, IBM Plex Mono, and Devin Blue #317CFF"
+      ]
+    },
+    "color": {
+      "paper": "#F7F6F5",
+      "ink": "#191919",
+      "trueBlack": "#000000",
+      "white": "#FFFFFF",
+      "wash": "#FCFCFC",
+      "surfaceAlt": "#F2F5FA",
+      "accentIndigo": "#2200FF",
+      "productBlue": "#317CFF",
+      "productBlueHover": "#337DF4",
+      "textSecondary": "rgba(25,25,25,0.56)",
+      "textDisabled": "rgba(25,25,25,0.40)",
+      "textOnDark": "#E7E7E7",
+      "borderSubtle": "rgba(0,0,0,0.06)",
+      "border": "rgba(0,0,0,0.10)",
+      "darkBand": "#191919",
+      "darkCard": "#1F1F1F",
+      "officialPurple": "#3969CA",
+      "officialGreen": "#21C19A",
+      "officialBlue": "#0294DE",
+      "semanticGreen": "#00A558",
+      "semanticOrange": "#F58E3A",
+      "semanticPurple": "#956CDE",
+      "semanticRed": "#F53B3A",
+      "error": "#FA5050",
+      "tints": { "faint": "rgb(0 0 0 / 0.02)", "tint": "rgb(0 0 0 / 0.04)", "soft": "rgb(0 0 0 / 0.06)", "strong": "rgb(0 0 0 / 0.08)", "scrim": "rgb(0 0 0 / 0.12)" }
+    },
+    "typography": {
+      "heading": { "name": "NB International Pro", "weights": [300, 400, 500, 700], "notes": "Commercial. Cognition uses 400 for H1; Devin uses 500 for display, -0.04em tracking." },
+      "bodySerif": { "name": "STK Bureau Serif", "weights": [300, 400, 600], "role": "Cognition body copy, article cards, 10px captions" },
+      "mono": { "name": "Geist Mono", "role": "Code, tokens, technical asides" },
+      "productSans": { "name": "Inter", "role": "Devin product UI" },
+      "productMono": { "name": "IBM Plex Mono", "role": "Devin product code surfaces" },
+      "devinDisplay": { "formula": "calc(clamp(2.25rem, 1.5825rem + 2.8479vw, 4rem) * 1.2)", "weight": 500, "lineHeight": "1.0-1.1", "letterSpacing": "-0.04em" },
+      "dtScale": {
+        "caption": "0.875rem / 1.4 / 400",
+        "label": "0.75rem / 1.4 / 400 / +0.36px tracking",
+        "body": "1rem / 1.4 / 400",
+        "subtitle": "1.25rem / 1.2 / 400",
+        "title": "2rem / 1.2 / 400 / -0.64px",
+        "h2": "2.5rem / 1.04 / 400 / -1.2px",
+        "h1": "4rem / 1 / 400 / -1.92px",
+        "stat": "4rem / 1 / 300 / -1.28px"
+      },
+      "cognition": {
+        "body": "STK Bureau Serif 16px/24px 400 #000",
+        "h1": "NB International 36px / 1.1 / -0.02em / 400",
+        "h2Section": "NB International 18px 400",
+        "nav": "NB International 15px / 1.3",
+        "caption": "serif 10px / 150% rgba(25,25,25,0.56)",
+        "sectionIndex": "tiny 10px serif numerals 01, 02, 04 in text-secondary",
+        "inlineLink": "dotted underline 1px black/30, offset 4px; hover indigo"
+      }
+    },
+    "radius": { "marketingSharp": "0px", "marketingSoft": "2px", "sm": "4px", "md": "6px", "lg": "8px", "xl": "12px", "2xl": "16px" },
+    "motion": {
+      "durationCognition": "250ms",
+      "durationDevin": "150ms",
+      "easeDefault": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "easeOut": "cubic-bezier(0, 0, 0.2, 1)",
+      "easeOutExpo": "cubic-bezier(0.19, 1, 0.22, 1)"
+    },
+    "elevation": {
+      "L1": "0px 1px 2px 0px rgb(0 0 0 / 0.05)",
+      "L2": "0px 1px 3px 0px rgb(0 0 0 / 0.06), 0px 1px 2px 0px #0000000f",
+      "L3": "0px 10px 15px -3px rgb(0 0 0 / 0.1), 0px 4px 6px -2px #0000000d",
+      "L4": "0px 25px 50px -12px rgb(0 0 0 / 0.25)"
+    },
+    "spacing": { "base": "4px", "containerPaddingCognition": "64px", "sectionCognition": "180px" }
+  },
+  "cognition.com": {
+    "aesthetic": "Editorial research-lab. Newspaper column grid, hairline vertical rules, numbered sections, fixed left rail. Almost no color except indigo on the active item.",
+    "layout": {
+      "structure": "Fixed left sidebar + multi-column content well + outer paper margins",
+      "sidebarActiveState": "Indigo text plus a 2px indigo tick on the left of the item",
+      "rules": "1px vertical rules in rgba(0,0,0,0.06) divide sidebar, gutter, and content",
+      "footer": "Top hairline, lockup, legal columns, paper background"
+    },
+    "components": {
+      "buttonPrimary": { "bg": "#191919", "fg": "#F7F6F5", "radius": "0px", "padding": "0 10px 1px", "font": "15px/1.3 400", "hover": "opacity 0.8" },
+      "buttonSecondary": { "bg": "transparent", "fg": "#000", "border": "1px solid #000", "radius": "0px", "hover": "bg #000, fg paper" },
+      "logoRow": "grayscale mid-gray logos on a slightly cooler paper band",
+      "leaderboard": "white inset table with 1px border, alternating paper/white rows, thin horizontal meters in green/rust/indigo",
+      "articleCarousel": "16:9 stills, no radius, film-grain/wireframe imagery; serif 16px titles; muted dates 09.10.26; square prev/next controls"
+    },
+    "imagery": "Black-and-white or near-mono photography, technical line drawings, film grain, architectural grids. No icons in marketing chrome besides the mark."
+  },
+  "devin.ai": {
+    "aesthetic": "Same paper-and-ink system scaled into a product landing page. Centered display type, sticky top navigation, large product screenshot, then a dark collaborative band. Indigo used as a word highlighter rather than a fill.",
+    "layout": {
+      "header": "sticky top, paper bg, 1px bottom hairline; mark + nav left; text link + outlined Log in + filled Get Started right",
+      "hero": "Centered H1, two compact CTAs, floating product window with 12-16px radius and light drop shadow",
+      "darkBand": "#191919 band, #E7E7E7 copy capped ~35ch, 12-16px cards #1F1F1F, uppercase 12px tag pills (e.g. COLLABORATE)"
+    },
+    "components": {
+      "buttonPrimary": { "bg": "#191919", "fg": "#FFF", "radius": "2px", "padding": "6px 12px 5px", "font": "16px/1.4 400" },
+      "buttonSecondary": { "bg": "transparent", "fg": "#191919", "border": "1px solid #191919", "radius": "2px", "padding": "5px 11px 4px" },
+      "textLink": { "color": "#2200FF", "weight": 500, "hover": "underline" },
+      "emphasizedWord": "same display face, color #2200FF (e.g. 'Build with Devin', 'work together')",
+      "productFrame": { "bg": "#FFF", "radius": "12-16px", "shadow": "L3-L4", "statusColors": { "open": "#21C19A", "additions": "#00A558", "deletions": "#F53B3A" } }
+    },
+    "imagery": "Live-looking product UI screenshots, not illustration. Dark band is typographic."
+  },
+  "howToApply": {
+    "cognitionEditorial": ["paper #F7F6F5, true black type, 0-radius controls", "grotesque headings, book serif body", "persistent left rail and hairline column rules", "#2200FF only for active state and inline links"],
+    "devinMarketing": ["paper field and #191919 fills", "grotesque Medium display, fluid size, -0.04em tracking", "2px buttons", "highlight key words in #2200FF", "dark #191919 bands with #E7E7E7 copy and 12-16px cards", "product shown in white framed screenshot"],
+    "devinProductUI": ["primary/selection #317CFF, not #2200FF", "Inter sans, IBM Plex Mono / Geist Mono code", "status greens/reds as PR chrome", "light default; wash #FCFCFC and paper #F7F6F5 backgrounds"]
+  }
+}

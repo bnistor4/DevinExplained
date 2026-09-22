@@ -1,0 +1,65 @@
+/* Licensed brand fonts — drop-in upgrade path.
+   NB International Pro and STK Bureau Serif are commercial typefaces.
+   If you hold a licence, copy the .woff2 files into public/fonts/ and
+   uncomment the blocks below — no code change needed: the theme CSS
+   variables already list them first in the font stacks. */
+
+/*
+@font-face {
+  font-family: 'NB International Pro';
+  src: url('/fonts/NBInternationalPro-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NB International Pro';
+  src: url('/fonts/NBInternationalPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NB International Pro';
+  src: url('/fonts/NBInternationalPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NB International Pro';
+  src: url('/fonts/NBInternationalPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'STK Bureau Serif';
+  src: url('/fonts/STKBureauSerif-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'STK Bureau Serif';
+  src: url('/fonts/STKBureauSerif-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'STK Bureau Serif';
+  src: url('/fonts/STKBureauSerif-RegularItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'STK Bureau Serif';
+  src: url('/fonts/STKBureauSerif-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+*/
