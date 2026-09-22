@@ -1,5 +1,6 @@
 import type { Lang } from '../../content/schema';
 import { getL10n } from '../../content/modules';
+import Icon from '../Icon';
 import Rich from '../Rich';
 import SlideFrame from './SlideFrame';
 import { ri, type BlockOf, type Frame } from './shared';
@@ -18,6 +19,15 @@ export default function BulletsSlide({
   const twoCol = block.items.length > 6;
   return (
     <SlideFrame f={f}>
+      {block.icon && (
+        <Icon
+          name={block.icon}
+          size={56}
+          strokeWidth={1.25}
+          className="sl-glyph"
+          aria-hidden="true"
+        />
+      )}
       <h2 className="sl-h2 reveal" style={ri(1)}>
         <Rich text={getL10n(block.title, lang)} />
       </h2>

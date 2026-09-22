@@ -24,7 +24,9 @@ export default function CardsSlide({
       <div className="sl-cards-grid" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
         {block.cards.map((c, i) => (
           <div key={i} className="sl-card reveal" style={ri(i + 2)}>
-            <Icon name={c.icon} size={20} strokeWidth={1.5} className="sl-card-icon" />
+            <div className="sl-card-icon">
+              <Icon name={c.icon} size={44} strokeWidth={1.5} />
+            </div>
             <h3>
               <Rich text={getL10n(c.title, lang)} />
             </h3>

@@ -26,6 +26,11 @@
   box-shadow: var(--shadow-4);
 }
 
+.stage.fill {
+  border: 0;
+  box-shadow: none;
+}
+
 .stage-slide {
   position: absolute;
   inset: 0;
@@ -47,7 +52,7 @@
 .fun-aside {
   position: absolute;
   right: 48px;
-  bottom: 44px;
+  bottom: 96px;
   display: flex;
   align-items: flex-end;
   pointer-events: none;
@@ -132,6 +137,13 @@
   pointer-events: none;
 }
 
+/* fill mode: the stage is edge-to-edge, so the chrome floats over it */
+.presenter.fill .chrome {
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--line);
+}
+
 .progress {
   height: 2px;
   background: var(--line);
@@ -201,4 +213,236 @@
 
 .clock {
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- live-QR badge (inside the stage, design px) ---------- */
+.qa-badge {
+  position: absolute;
+  right: 48px;
+  bottom: 110px;
+  z-index: 6;
+  background: #ffffff;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 12px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #191919;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.qa-badge.left {
+  right: auto;
+  left: 168px;
+}
+
+/* ---------- overlays ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay.scrim {
+  background: rgba(15, 15, 15, 0.82);
+}
+
+.overlay.blackout {
+  background: var(--ink);
+}
+
+.ov-tile {
+  background: #ffffff;
+  color: #191919;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.ov-tile.big {
+  padding: 40px;
+  gap: 20px;
+}
+
+.ov-label {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.ov-url {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 28px;
+  color: rgba(25, 25, 25, 0.6);
+  word-break: break-all;
+  max-width: 640px;
+  text-align: center;
+}
+
+.ov-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  max-width: 1200px;
+  width: 90vw;
+  max-height: 84vh;
+  overflow-y: auto;
+}
+
+.ov-tile-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ov-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(25, 25, 25, 0.56);
+  word-break: break-all;
+}
+
+.ov-empty {
+  color: #e7e7e7;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+/* ---------- break overlay ---------- */
+.break-ov {
+  flex-direction: column;
+  gap: 10px;
+  color: #f7f6f5;
+}
+
+.break-title {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 400;
+  margin: 12px 0 0;
+  letter-spacing: -0.01em;
+}
+
+.break-time {
+  font-family: var(--font-mono);
+  font-size: 120px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.break-controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.break-controls .chrome-btn.lg {
+  width: 44px;
+  height: 44px;
+  color: #f7f6f5;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.break-hint {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgba(247, 246, 245, 0.6);
+}
+
+/* ---------- timer chip ---------- */
+.timer-chip {
+  position: absolute;
+  left: 50%;
+  bottom: 52px;
+  transform: translateX(-50%);
+  z-index: 25;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 6px 14px;
+}
+
+.timer-chip.warn {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.timer-chip.over {
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+/* ---------- help cheatsheet ---------- */
+.help-panel {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 30px 36px;
+  max-width: 560px;
+  width: 88vw;
+}
+
+.help-title {
+  margin: 0 0 18px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  color: var(--muted);
+}
+
+.help-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.help-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.help-list li:first-child {
+  border-top: 0;
+}
+
+.help-list b {
+  font-weight: 500;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.help-list span {
+  color: var(--muted);
+  text-align: right;
 }

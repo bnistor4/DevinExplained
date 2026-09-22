@@ -31,9 +31,9 @@ export default function CompareSlide({
                 {panel.items.map((item, i) => (
                   <li key={i} className="reveal" style={ri(p + 3 + i)}>
                     {side === 'right' ? (
-                      <Check size={18} className="sl-check" strokeWidth={2} />
+                      <Check size={28} className="sl-check" strokeWidth={2} />
                     ) : (
-                      <X size={18} className="sl-x" strokeWidth={2} />
+                      <X size={28} className="sl-x" strokeWidth={2} />
                     )}
                     <span>
                       <Rich text={getL10n(item, lang)} />

@@ -12,6 +12,8 @@ import CodeSlide from './CodeSlide';
 import MediaSlide from './MediaSlide';
 import PeopleSlide from './PeopleSlide';
 import QaSlide from './QaSlide';
+import AgendaSlide from './AgendaSlide';
+import CommunitySlide from './CommunitySlide';
 import type { Frame } from './shared';
 import './slides.css';
 
@@ -52,6 +54,10 @@ export default function SlideRenderer({
       return <PeopleSlide block={b} lang={lang} f={f} />;
     case 'qa':
       return <QaSlide block={b} lang={lang} f={f} />;
+    case 'agenda':
+      return <AgendaSlide block={b} lang={lang} f={f} />;
+    case 'community':
+      return <CommunitySlide block={b} lang={lang} f={f} />;
     default:
       return null;
   }

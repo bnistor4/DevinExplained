@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "coverage": "tsx scripts/check-coverage.ts",
+    "audit:slides": "tsx scripts/audit-slides.ts",
     "check": "tsc -b && pnpm lint && pnpm coverage",
     "preview": "vite preview"
   },
@@ -29,6 +30,7 @@
     "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",

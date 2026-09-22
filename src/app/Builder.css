@@ -668,3 +668,150 @@
   margin: 2px 0 0;
   word-break: break-all;
 }
+
+/* ---------- event section ---------- */
+.wordmark-logo {
+  height: 28px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  margin-left: 8px;
+}
+
+.event-section {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.event-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.event-head .col-title {
+  flex: 1;
+  text-align: left;
+}
+
+.event-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.event-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.kind-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.kind-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 10px 4px;
+  font-size: 10px;
+}
+
+.kind-tile:hover {
+  border-color: var(--ink);
+}
+
+.kind-tile small {
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.link-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin-bottom: 6px;
+}
+
+.link-row.dragging {
+  opacity: 0.9;
+  box-shadow: var(--shadow-3);
+  z-index: 10;
+  position: relative;
+}
+
+.link-kind {
+  flex: none;
+  color: var(--muted);
+  margin-top: 9px;
+}
+
+.link-fields {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.link-fields .text-input {
+  padding: 6px 9px;
+  font-size: 12px;
+}
+
+.text-input.mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.text-input.invalid {
+  border-color: var(--bad);
+}
+
+.link-qr {
+  flex: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 4px;
+  line-height: 0;
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-preview {
+  height: 28px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  background: var(--surface);
+}

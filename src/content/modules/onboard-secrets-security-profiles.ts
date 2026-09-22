@@ -31,7 +31,7 @@ const mod: Module = {
             },
           },
           {
-            icon: 'Fingerprint',
+            icon: 'ScanFace',
             title: { en: 'OIDC', it: 'OIDC' },
             text: {
               en: 'Short-lived identity tokens exchanged by AWS/GCP/Vault — nothing static to store.',
@@ -58,7 +58,7 @@ const mod: Module = {
       block: {
         type: 'bullets',
         title: { en: 'OIDC: *nothing* to rotate', it: 'OIDC: *niente* da ruotare' },
-        icon: 'Fingerprint',
+        icon: 'ScanFace',
         items: [
           { en: 'Each session gets a short-lived, Devin-signed identity token', it: 'Ogni sessione riceve un token di identità a vita breve firmato da Devin' },
           { en: 'Your cloud verifies it against Devin’s public OIDC issuer', it: 'Il tuo cloud lo verifica sull’issuer OIDC pubblico di Devin' },

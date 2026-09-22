@@ -3,7 +3,7 @@ import type { Module } from '../schema';
 const mod: Module = {
   id: 'product-deepwiki',
   category: 'products',
-  icon: 'BookMarked',
+  icon: 'BookOpenCheck',
   title: { en: 'DeepWiki', it: 'DeepWiki' },
   summary: {
     en: 'Auto-generated wikis for your repos — architecture diagrams, sources, and Ask Devin on top.',
@@ -20,7 +20,7 @@ const mod: Module = {
       block: {
         type: 'bullets',
         title: { en: 'A wiki that *writes itself*', it: 'Una wiki che si *scrive da sola*' },
-        icon: 'BookMarked',
+        icon: 'BookOpenCheck',
         items: [
           { en: 'Devin indexes your repos and generates wikis with architecture diagrams', it: 'Devin indicizza le repo e genera wiki con diagrammi di architettura' },
           { en: 'Every claim links back to the source code', it: 'Ogni affermazione rimanda al codice sorgente' },

@@ -3,7 +3,7 @@ import type { Module } from '../schema';
 const mod: Module = {
   id: 'enterprise-overview',
   category: 'pricing-enterprise',
-  icon: 'Building2',
+  icon: 'Building',
   title: { en: 'Devin Enterprise', it: 'Devin Enterprise' },
   summary: {
     en: 'Brain in Cognition’s cloud, Devbox where you need it — orgs, roles and ACU limits on top.',
@@ -41,7 +41,7 @@ const mod: Module = {
             },
           },
           {
-            icon: 'Building2',
+            icon: 'Building',
             title: { en: 'Dedicated', it: 'Dedicated' },
             text: {
               en: 'Customer Dedicated: single-tenant VPC via AWS PrivateLink or IPSec.',
@@ -60,7 +60,7 @@ const mod: Module = {
       block: {
         type: 'bullets',
         title: { en: 'Organizations draw the *boundaries*', it: 'Le organization tracciano i *confini*' },
-        icon: 'Building2',
+        icon: 'Building',
         items: [
           { en: 'Each org: its own shared Devin machine, repos, members, ACU limit', it: 'Ogni org: macchina Devin condivisa, repo, membri e limite ACU propri' },
           { en: 'Repository access is org-level, not per-user', it: 'L’accesso alle repo è a livello org, non per utente' },
@@ -90,7 +90,7 @@ const mod: Module = {
             },
           },
           {
-            icon: 'Building2',
+            icon: 'Building',
             title: { en: 'Customer Dedicated', it: 'Customer Dedicated' },
             text: {
               en: 'Dedicated single-tenant infrastructure in your region, isolated end to end.',

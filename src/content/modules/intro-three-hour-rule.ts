@@ -109,7 +109,7 @@ const mod: Module = {
           en: 'having *five* extra teammates who never sleep — and actually read the ticket.',
           it: 'avere *cinque* colleghi in più che non dormono mai — e leggono davvero il ticket.',
         },
-        emoji: '🎟️',
+        icon: 'Ticket',
       },
       notes: {
         en: 'Parallelism is the multiplier: several scoped sessions at once beat one mega-prompt.',

@@ -109,7 +109,7 @@ const mod: Module = {
           en: 'a colleague who is *equally reachable* by desk, phone, chat and carrier pigeon.',
           it: 'un collega *sempre raggiungibile*: scrivania, telefono, chat e piccione viaggiatore.',
         },
-        emoji: '🚪',
+        icon: 'DoorOpen',
       },
       notes: {
         en: 'Whatever door you knock on, the same Devin answers.',

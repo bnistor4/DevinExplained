@@ -70,7 +70,9 @@ export default function TitleSlide({
   f: Frame;
 }) {
   const presenter = useDeckStore((s) => s.presenter);
+  const event = useDeckStore((s) => s.event);
   const who = [presenter.name, presenter.handle, presenter.org].filter(Boolean).join(' · ');
+  const evLine = [event.name, event.date, event.location].filter(Boolean).join(' · ');
   return (
     <SlideFrame f={f} className="slide-title">
       <div className="sl-title-grid">
@@ -88,6 +90,11 @@ export default function TitleSlide({
               {who}
             </p>
           )}
+          {f.isDeckTitle && evLine && (
+            <p className="sl-title-event reveal" style={ri(4)}>
+              {evLine}
+            </p>
+          )}
         </div>
         {f.isDeckTitle ? (
           <img
@@ -101,6 +108,9 @@ export default function TitleSlide({
           <ProductFrame />
         )}
       </div>
+      {f.isDeckTitle && event.hostLogo && (
+        <img src={event.hostLogo} alt="host" className="sl-deck-hostlogo reveal" style={ri(4)} />
+      )}
       {f.isDeckTitle && (
         <div className="sl-deck-brand">
           <BrandLogo brand="cognition" height={28} dark={f.band === 'dark'} />

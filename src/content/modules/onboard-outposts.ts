@@ -47,7 +47,7 @@ const mod: Module = {
           en: 'a *remote* driver for your own car — the GPS is ours, the garage is yours.',
           it: 'un pilota *remoto* per la tua auto: il GPS è nostro, il garage è tuo.',
         },
-        emoji: '🏎️',
+        icon: 'Gauge',
       },
       notes: {
         en: 'Good for the “but our code can’t leave the network” objection — it doesn’t have to.',

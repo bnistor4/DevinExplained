@@ -65,7 +65,7 @@ const mod: Module = {
       block: {
         type: 'bullets',
         title: { en: 'Same pattern, *every* cloud', it: 'Stesso pattern, *ogni* cloud' },
-        icon: 'Fingerprint',
+        icon: 'ScanFace',
         items: [
           { en: 'OIDC identity tokens work for AWS, GCP, Vault and JFrog', it: 'I token OIDC funzionano per AWS, GCP, Vault e JFrog' },
           { en: 'Trust policies scope access by org_id, session, or user email', it: 'Le trust policy limitano l’accesso per org_id, sessione o email utente' },

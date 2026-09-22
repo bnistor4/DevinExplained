@@ -64,7 +64,7 @@ const mod: Module = {
           en: 'a *tireless* junior colleague who works at 3am and never asks for coffee.',
           it: 'un collega junior *instancabile* che lavora alle 3 di notte e non chiede mai un caffè.',
         },
-        emoji: '🌙',
+        icon: 'Moon',
       },
       notes: {
         en: 'Playful framing — land the joke, then get back to the facts.',

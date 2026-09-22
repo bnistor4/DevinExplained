@@ -1,5 +1,7 @@
 import type { Lang } from '../../content/schema';
 import { getL10n } from '../../content/modules';
+import Icon from '../Icon';
+import Mascot from '../Mascot';
 import Rich from '../Rich';
 import SlideFrame from './SlideFrame';
 import { ri, type BlockOf, type Frame } from './shared';
@@ -17,10 +19,16 @@ export default function AnalogySlide({
     <SlideFrame f={f}>
       <div className="sl-analogy-grid">
         <div className="sl-analogy-side reveal" style={ri(1)}>
-          {block.emoji && (
-            <span className="sl-analogy-emoji" aria-hidden="true">
-              {block.emoji}
-            </span>
+          {block.icon ? (
+            <Icon
+              name={block.icon}
+              size={160}
+              strokeWidth={1.25}
+              className="sl-analogy-icon"
+              aria-hidden="true"
+            />
+          ) : (
+            <Mascot size={220} mood="think" />
           )}
           <span className="sl-analogy-label">ANALOGY</span>
         </div>

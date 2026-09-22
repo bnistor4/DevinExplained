@@ -42,7 +42,7 @@ const mod: Module = {
             },
           },
           {
-            icon: 'Building2',
+            icon: 'Building',
             title: { en: 'Azure DevOps', it: 'Azure DevOps' },
             text: {
               en: 'Managed inside Devin’s Connections — or via a Microsoft Entra service principal.',

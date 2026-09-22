@@ -22,7 +22,9 @@ export async function importDeckFile(file: File): Promise<Partial<DeckPayload> |
       tone: d.tone,
       theme: d.theme,
       density: d.density,
+      fit: d.fit,
       presenter: d.presenter,
+      event: d.event,
     };
   } catch {
     return null;

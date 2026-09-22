@@ -81,7 +81,7 @@ const mod: Module = {
           en: 'a *universal* remote for coding agents — one protocol, every IDE.',
           it: 'un telecomando *universale* per gli agenti di coding: un protocollo, ogni IDE.',
         },
-        emoji: '📡',
+        icon: 'SatelliteDish',
       },
       notes: {
         en: 'ACP decouples the agent from the editor — same reason LSP mattered for language servers.',

@@ -41,7 +41,7 @@ const mod: Module = {
           en: 'serving a tasting menu *course by course* instead of one giant platter nobody can finish.',
           it: 'servire un menù degustazione *portata per portata* invece di un vassoio gigante che nessuno finisce.',
         },
-        emoji: '🍽️',
+        icon: 'Layers',
       },
       notes: {
         en: 'Reviewers read one small self-contained change at a time — that is the whole point.',

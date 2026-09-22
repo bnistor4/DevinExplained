@@ -27,8 +27,8 @@ const mod: Module = {
             icon: 'MessageSquare',
             title: { en: 'Slack & chat', it: 'Slack e chat' },
             text: {
-              en: 'New message or reaction in a channel — e.g. 🚨 starts an investigation.',
-              it: 'Nuovo messaggio o reaction in canale: ad es. 🚨 avvia un’indagine.',
+              en: 'New message or reaction in a channel — a trigger keyword starts an investigation.',
+              it: 'Nuovo messaggio o reaction in canale: una keyword trigger avvia un’indagine.',
             },
           },
           {
@@ -83,7 +83,7 @@ const mod: Module = {
           en: 'a *pager* that fixes the thing before you finish reading the alert.',
           it: 'un *cercapersone* che aggiusta il problema prima che tu finisca di leggere l’allarme.',
         },
-        emoji: '📟',
+        icon: 'Radio',
       },
       notes: {
         en: 'Legacy Schedules still run, but new scheduled work is an automation with a Schedule trigger.',

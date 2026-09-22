@@ -44,7 +44,7 @@ const mod: Module = {
           en: 'Devin is the teammate who reads the whole thread, writes the PR, and *tests it* — before your coffee is cold.',
           it: 'Devin è il collega che legge tutto il thread, scrive la PR e la *testa* — prima che il caffè sia freddo.',
         },
-        emoji: '☕',
+        icon: 'Coffee',
       },
       notes: {
         en: 'Land this line, then open the floor.',

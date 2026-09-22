@@ -21,7 +21,8 @@ The Builder has three columns:
    select-all).
 2. **Deck** — your outline. Drag to reorder, expand a card to see its slides,
    trash to remove. The header shows the total: `~42 min · 61 slides`.
-3. **Customize** — presets, tone, theme, density, speaker notes, presenter name.
+3. **Customize** — presets, tone, theme, density, speaker notes, presenter name,
+   and the collapsible **04 Event** section (see Event kit below).
 
 **Presets**: Pitch 5 min, Meetup 20 min, Deep-dive Enterprise, Dev hands-on,
 Full tour (every module). They just set the module list — you can still edit it.
@@ -38,6 +39,26 @@ Full tour (every module). They just set the module list — you can still edit i
 - **Print to PDF**: press the print button in the presenter (or Ctrl+P) — one
   slide per page, landscape.
 
+## Event kit
+
+The **04 Event** section in Customize sets up a meetup:
+
+- **Event name / date / location / hashtag** — shown on the generated title
+  slide; the hashtag ends the community slide.
+- **Channels** — community links (Telegram, WhatsApp, Discord, Slack, LinkedIn,
+  Meetup, Luma, X, GitHub, website, feedback form, custom). Each becomes a QR
+  tile; drag to reorder. URLs must start with `http(s)://`.
+- **Live Q&A** — a Slido/Mentimeter/form URL. Press `Q` in the presenter for a
+  big QR; enable "Show QR badge" to pin a small QR on every slide.
+- **Wi-Fi** — SSID + password generate a `WIFI:` QR guests scan to join. The
+  password is never written into share links or exported decks.
+- **Host logo** — PNG/SVG ≤ 300KB, shown next to the builder wordmark, on the
+  title slide, and on the community slide.
+- **Generated slides** — an *Agenda* slide after the title (auto-grouped by
+  category past 12 modules) and a *Stay in touch* slide before the closing
+  module, built from the fields above. Toggle each off here.
+- **Planned duration** — target minutes for the presenter timer (`T`).
+
 ## Presenter shortcuts
 
 | Key | Action |
@@ -46,10 +67,22 @@ Full tour (every module). They just set the module list — you can still edit i
 | ← / PgUp | previous slide |
 | Home / End | first / last slide |
 | F | fullscreen |
+| W | stage fit: fill ↔ contain |
+| Q | live Q&A overlay (big QR) |
+| L | links overlay (click a tile to enlarge) |
+| B | blackout — any key returns |
+| T | timer chip; Shift+T resets |
+| P | break countdown (Space pauses, +/− adjusts) |
+| ? | shortcut cheatsheet |
 | N | speaker-notes drawer |
-| Esc | back to builder |
+| Esc | close overlay, else back to builder |
+| Ctrl+P | print to PDF |
 
 Click the right third of the stage to advance, left third to go back.
+
+**Stage fit**: *fill* (default) renders edge-to-edge — the canvas is 1080 design
+px tall and widens with the window (clamped 1440–2560). *Contain* keeps the
+classic 16:9 letterboxed frame. Print/PDF is always 1920×1080.
 
 ## Content: how modules work
 
@@ -123,8 +156,12 @@ licence, drop the `.woff2` files into `public/fonts/` and uncomment the
 ## Checks
 
 ```bash
-pnpm check      # tsc -b + oxlint + docs coverage (must be green before a meetup)
-pnpm coverage   # just the docs-coverage check
+pnpm check         # tsc -b + oxlint + docs coverage (must be green before a meetup)
+pnpm coverage      # just the docs-coverage check
+pnpm audit:slides  # renders every slide in a headless browser (dev server must
+                   # be running), screenshots it/en × contain/fill × viewports,
+                   # reports overflow + tiny text to audit/report.json, and
+                   # writes contact sheets to audit/sheet-<lang>.png
 ```
 
 ---
@@ -146,8 +183,20 @@ colonna 3 = preset, tono, tema, densità, note e dati del relatore.
 I preset disponibili: Pitch 5 min, Meetup 20 min, Deep-dive Enterprise, Dev
 hands-on, Tour completo.
 
-In presentazione: → / Spazio per avanzare, ← per tornare, F fullscreen, N per le
+In presentazione: → / Spazio per avanzare, ← per tornare, F fullscreen, W per
+cambiare l'adattamento dello stage (fill/contain), Q per il QR del Q&A dal vivo,
+L per i link community, B schermo nero, T timer, P pausa, ? guida tasti, N per le
 note, Esc per uscire. Ctrl+P stampa una slide per pagina in PDF.
+
+### Kit evento
+
+La sezione **04 Evento** nel pannello Personalizza configura il meetup: nome,
+data, luogo e hashtag (sulla slide titolo), canali community con QR (Telegram,
+WhatsApp, Discord, Slack, LinkedIn, Meetup, Luma, X, GitHub, sito, feedback),
+Q&A dal vivo con badge QR opzionale su ogni slide, Wi-Fi con QR `WIFI:` (la
+password non finisce mai nei link di condivisione o negli export), logo dell'host
+e le slide generate automaticamente: *Scaletta* dopo il titolo e *Restiamo in
+contatto* prima della chiusura.
 
 ### Modificare i contenuti
 

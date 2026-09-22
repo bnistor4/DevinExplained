@@ -74,7 +74,7 @@ const mod: Module = {
           en: 'hiring a *brilliant* contractor: great with a written spec, useless with “you know what I mean”.',
           it: 'assumere un contractor *brillante*: perfetto con una specifica scritta, in difficoltà con “hai capito cosa intendo”.',
         },
-        emoji: '📝',
+        icon: 'ClipboardList',
       },
       notes: {
         en: 'The spec is the prompt. Invest in it.',

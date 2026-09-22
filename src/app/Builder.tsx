@@ -37,6 +37,7 @@ import { exportDeckFile, importDeckFile } from '../lib/deckFile';
 import Icon from '../components/Icon';
 import BrandLogo from '../components/BrandLogo';
 import Mascot from '../components/Mascot';
+import EventSection from './EventSection';
 import { slideHeading } from '../components/slides/shared';
 import './Builder.css';
 
@@ -56,6 +57,7 @@ export default function Builder() {
   const density = useDeckStore((s) => s.density);
   const showNotes = useDeckStore((s) => s.showNotes);
   const presenter = useDeckStore((s) => s.presenter);
+  const hostLogo = useDeckStore((s) => s.event.hostLogo);
   const store = useDeckStore;
   const slides = useSlides();
 
@@ -162,6 +164,7 @@ export default function Builder() {
           <BrandLogo brand="devin" height={20} />
           <span className="wordmark-sep" />
           <span className="wordmark-sub">Explained</span>
+          {hostLogo && <img src={hostLogo} alt="host" className="wordmark-logo" />}
         </div>
         <div className="topbar-right">
           <div className="segmented sm">
@@ -429,6 +432,8 @@ export default function Builder() {
                 />
               </div>
             </div>
+
+            <EventSection />
 
             <div className="field actions">
               <button className="btn outline wide" onClick={copyLink}>

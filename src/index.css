@@ -58,6 +58,20 @@ input {
   }
 }
 
+html[data-static] .reveal {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Print deck: one slide per landscape page */
 .print-deck {
   display: none;

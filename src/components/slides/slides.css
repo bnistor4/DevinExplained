@@ -4,8 +4,8 @@
 
 .slide {
   position: relative;
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: var(--bg);
   color: var(--ink);
@@ -59,11 +59,11 @@
 
 .sl-h2 {
   font-family: var(--font-display);
-  font-size: 64px;
+  font-size: clamp(44px, calc(var(--sw, 1920px) * 0.0333), 64px);
   font-weight: 400;
-  letter-spacing: -1.92px;
+  letter-spacing: -0.03em;
   line-height: 1.04;
-  margin: 0 0 56px;
+  margin: 0 0 calc(var(--sw, 1920px) * 0.029);
 }
 
 /* ---------- dark feature band ---------- */
@@ -112,7 +112,7 @@
 
 .sl-title-h {
   font-family: var(--font-display);
-  font-size: 120px;
+  font-size: clamp(84px, calc(var(--sw, 1920px) * 0.0625), 120px);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -121,7 +121,7 @@
 }
 
 .sl-subtitle {
-  font-size: 32px;
+  font-size: clamp(26px, calc(var(--sw, 1920px) * 0.0188), 36px);
   line-height: 1.3;
   color: var(--muted);
   margin: 40px 0 0;
@@ -137,6 +137,23 @@
   padding-top: 18px;
   border-top: 1px solid var(--line);
   display: inline-block;
+}
+
+.sl-title-event {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 14px 0 0;
+}
+
+.sl-deck-hostlogo {
+  position: absolute;
+  left: 168px;
+  bottom: 96px;
+  max-height: 64px;
+  max-width: 300px;
+  object-fit: contain;
 }
 
 /* product frame — mocked Devin session window */
@@ -169,7 +186,7 @@
 .pf-url {
   margin-left: 14px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -276,7 +293,7 @@
 
 .pf-tag {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--muted);
   border: 1px solid var(--line-strong);
@@ -304,6 +321,14 @@
 }
 
 /* ---------- bullets ---------- */
+.sl-glyph {
+  /* inside .sl-body — negative top anchors it to the slide's top-right header corner */
+  position: absolute;
+  top: -94px;
+  right: 0;
+  color: var(--muted);
+}
+
 .sl-bullets {
   list-style: none;
   margin: 0;
@@ -317,7 +342,7 @@
   gap: 32px;
   padding: 26px 0;
   border-top: 1px solid var(--line);
-  font-size: 34px;
+  font-size: clamp(30px, calc(var(--sw, 1920px) * 0.0208), 40px);
   line-height: 1.25;
 }
 
@@ -329,7 +354,7 @@
 .sl-num {
   flex: none;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--muted);
   width: 40px;
@@ -343,7 +368,7 @@
 }
 
 .sl-bullets.two-col li {
-  font-size: 28px;
+  font-size: clamp(24px, calc(var(--sw, 1920px) * 0.0172), 33px);
   padding: 20px 0;
 }
 
@@ -396,7 +421,7 @@
   display: flex;
   align-items: baseline;
   gap: 18px;
-  font-size: 26px;
+  font-size: clamp(22px, calc(var(--sw, 1920px) * 0.0146), 28px);
   line-height: 1.3;
   padding: 20px 0;
   border-top: 1px solid var(--line);
@@ -420,7 +445,8 @@
   column-gap: 48px;
   row-gap: 80px;
   flex: 1;
-  align-content: center;
+  align-content: start;
+  padding-top: 32px;
 }
 
 .tl-line {
@@ -456,7 +482,7 @@
 }
 
 .tl-text {
-  font-size: 18px;
+  font-size: clamp(18px, calc(var(--sw, 1920px) * 0.0115), 22px);
   line-height: 1.4;
   color: var(--muted);
   margin: 0;
@@ -468,15 +494,17 @@
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
   flex: 1;
-  align-items: center;
+  align-items: stretch;
+  padding-top: 32px;
 }
 
 .sl-stat {
   display: flex;
   flex-direction: column;
   gap: 26px;
-  padding: 0 48px;
+  padding: 0 calc(var(--sw, 1920px) * 0.025);
   border-left: 1px solid var(--line);
+  min-width: 0;
 }
 
 .sl-stat:first-child {
@@ -486,10 +514,11 @@
 
 .sl-stat-value {
   font-family: var(--font-display);
-  font-size: 200px;
+  font-size: clamp(64px, calc(var(--sw, 1920px) * 0.072), 200px);
   font-weight: 300;
   letter-spacing: -0.04em;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .sl-stat-label {
@@ -503,7 +532,7 @@
   display: grid;
   gap: 24px;
   flex: 1;
-  align-content: center;
+  align-content: start;
 }
 
 .sl-card {
@@ -518,21 +547,26 @@
 }
 
 .sl-card-icon {
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  place-items: center;
   color: var(--ink);
-  display: block;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 .sl-card h3 {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: clamp(26px, calc(var(--sw, 1920px) * 0.0167), 32px);
   font-weight: 500;
   margin: 0 0 10px;
   letter-spacing: -0.01em;
 }
 
 .sl-card p {
-  font-size: 20px;
+  font-size: clamp(20px, calc(var(--sw, 1920px) * 0.0125), 24px);
   line-height: 1.4;
   color: var(--muted);
   margin: 0;
@@ -545,7 +579,7 @@
 
 .slide-quote blockquote {
   font-family: var(--font-display);
-  font-size: 72px;
+  font-size: clamp(46px, calc(var(--sw, 1920px) * 0.0375), 72px);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -587,14 +621,17 @@
   gap: 20px;
 }
 
-.sl-analogy-emoji {
-  font-size: 48px;
-  line-height: 1;
+.sl-analogy-icon {
+  color: var(--accent);
+}
+
+.sl-analogy-side .mascot {
+  align-self: flex-start;
 }
 
 .sl-analogy-label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.36px;
   text-transform: uppercase;
   color: var(--muted);
@@ -603,7 +640,7 @@
 .sl-analogy-text {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 64px;
+  font-size: clamp(44px, calc(var(--sw, 1920px) * 0.0333), 64px);
   line-height: 1.15;
   letter-spacing: -0.01em;
   margin: 0;
@@ -653,7 +690,7 @@
   top: -1px;
   right: 24px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -669,10 +706,11 @@
 
 .sl-plan-price {
   font-family: var(--font-display);
-  font-size: 64px;
+  font-size: clamp(40px, calc(var(--sw, 1920px) * 0.0333), 64px);
   font-weight: 300;
   letter-spacing: -0.04em;
   margin: 18px 0 4px;
+  white-space: nowrap;
 }
 
 .sl-plan-audience {
@@ -697,7 +735,7 @@
 
 .sl-pricing-footnote {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   margin: 28px 0 0;
 }
@@ -708,7 +746,10 @@
   background: #191919;
   color: #e7e7e7;
   border-radius: 8px;
-  padding: 56px 60px;
+  padding: 40px 56px;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
 
 [data-theme='dark'] .sl-code-panel,
@@ -722,7 +763,7 @@
   top: 24px;
   right: 28px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(231, 231, 231, 0.6);
@@ -734,16 +775,17 @@
 .sl-code-panel pre {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 26px;
-  line-height: 1.6;
+  font-size: clamp(16px, calc(var(--sw, 1920px) * 0.0115), 22px);
+  line-height: 1.55;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .sl-code-caption {
+  flex: none;
   font-size: 18px;
   color: var(--muted);
-  margin: 32px 0 0;
+  margin: 24px 0 0;
 }
 
 /* ---------- media ---------- */
@@ -783,7 +825,8 @@
   display: flex;
   gap: 64px;
   flex: 1;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 32px;
 }
 
 .sl-person {
@@ -820,7 +863,7 @@
 
 .sl-person-role {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -841,7 +884,7 @@
 
 .sl-qa-huge {
   font-family: var(--font-display);
-  font-size: 320px;
+  font-size: clamp(200px, calc(var(--sw, 1920px) * 0.1667), 320px);
   font-weight: 300;
   letter-spacing: -0.05em;
   line-height: 0.95;
@@ -943,6 +986,149 @@
   right: 0;
 }
 
+/* keep the title clear of the corner brand mark */
+.slide:has(.sl-people-logo) .sl-h2 {
+  margin-right: 260px;
+}
+
 .sl-qa-qr > img {
   align-self: center;
+}
+
+/* ---------- agenda ---------- */
+.sl-agenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  align-content: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sl-agenda li {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+
+.sl-agenda li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.sl-agenda-title {
+  font-size: clamp(26px, calc(var(--sw, 1920px) * 0.0167), 32px);
+  line-height: 1.2;
+  flex: 1;
+  min-width: 0;
+}
+
+.sl-agenda-min {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sl-agenda.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
+  align-content: start;
+}
+
+.sl-agenda.two-col li:nth-child(-n + 2) {
+  border-top: 0;
+}
+
+/* ---------- community ---------- */
+.sl-comm-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.sl-comm-head .sl-h2 {
+  margin-bottom: 0;
+}
+
+.sl-comm-grid {
+  display: grid;
+  gap: 24px;
+  grid-auto-rows: minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+  align-content: stretch;
+  justify-content: start;
+  padding-top: 32px;
+}
+
+.sl-comm-tile {
+  background: #ffffff;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #191919;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sl-comm-qr {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sl-comm-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #191919;
+}
+
+.sl-comm-label {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sl-comm-host {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: rgba(25, 25, 25, 0.56);
+}
+
+.sl-comm-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 0;
+}
+
+.sl-comm-logo {
+  max-height: 56px;
+  max-width: 260px;
+  object-fit: contain;
+}
+
+.sl-comm-hashtag {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(40px, calc(var(--sw, 1920px) * 0.0313), 60px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--accent);
 }

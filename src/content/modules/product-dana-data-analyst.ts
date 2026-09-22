@@ -62,7 +62,7 @@ const mod: Module = {
           en: 'a BI analyst who *lives* in Slack — query in, chart out.',
           it: 'un analista BI che *vive* in Slack: entra la query, esce il grafico.',
         },
-        emoji: '📊',
+        icon: 'ChartColumn',
       },
       notes: {
         en: 'DANA is tuned for speed on data questions — it is not the general coding agent.',

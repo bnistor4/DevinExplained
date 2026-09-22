@@ -74,7 +74,7 @@ const mod: Module = {
           en: 'a *senior* engineer who writes the plan and reviews the diff — and a fast junior who types it.',
           it: 'un *senior* che scrive il piano e revisiona la diff — e un junior velocissimo che la digita.',
         },
-        emoji: '🧑‍🏫',
+        icon: 'Users',
       },
       notes: {
         en: 'That is literally the architecture: lead owns plan and review, sidekick does the mechanical work.',
