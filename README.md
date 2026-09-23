@@ -164,6 +164,13 @@ pnpm audit:slides  # renders every slide in a headless browser (dev server must
                    # writes contact sheets to audit/sheet-<lang>.png
 ```
 
+## Licence
+
+Code is MIT (see `LICENSE`). The Devin and Cognition names, logos and the otter
+mascot in `public/assets/` belong to Cognition AI, Inc. and are not covered by
+the MIT licence: use them the way the official brand page allows,
+https://cognition.ai/brand.
+
 ---
 
 ## Italiano
@@ -210,5 +217,11 @@ Ogni stringa è `{ en, it }`. Registra il modulo in `src/content/modules/index.t
 - `notes` = le note del relatore: scrivile sempre, 1–3 frasi.
 
 Le fonti sono le pagine di `docs.devin.ai` elencate in `sources`: i fatti vengono
-solo da lì. `pnpm check` verifica tipi, lint e copertura della documentazione: 
+solo da lì. `pnpm check` verifica tipi, lint e copertura della documentazione:
 deve essere tutto verde prima del meetup.
+
+### Licenza
+
+Il codice è MIT (file `LICENSE`). Nomi, loghi Devin e Cognition e la lontra in
+`public/assets/` sono di Cognition AI, Inc. e restano fuori dalla licenza MIT:
+usali come consente la pagina brand ufficiale, https://cognition.ai/brand.
