@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'ArrowRightLeft',
   title: { en: 'Migrations & modernization', it: 'Migrazioni e modernizzazione' },
   summary: {
-    en: 'The bread and butter: version bumps, language ports, database moves — at scale.',
-    it: 'Il pane quotidiano: upgrade di versione, port di linguaggio, cambi di database — a scala.',
+    en: 'The bread and butter: version bumps, language ports, database moves, at scale.',
+    it: 'Il pane quotidiano: upgrade di versione, port di linguaggio, cambi di database, a scala.',
   },
   durationMin: 5,
   sources: [
@@ -54,16 +54,16 @@ const mod: Module = {
             icon: 'ChartColumn',
             title: { en: 'SAS → PySpark', it: 'SAS → PySpark' },
             text: {
-              en: 'Analytics workflows to cloud-scale data processing — or BigQuery/Snowflake.',
-              it: 'Workflow di analytics su data processing cloud — o BigQuery/Snowflake.',
+              en: 'Analytics workflows to cloud-scale data processing, or BigQuery/Snowflake.',
+              it: 'Workflow di analytics su data processing cloud, o BigQuery/Snowflake.',
             },
           },
           {
             icon: 'Database',
             title: { en: 'NoSQL → SQL', it: 'NoSQL → SQL' },
             text: {
-              en: 'Schema design, data transformation and query refactoring — MongoDB to Postgres, DynamoDB to MySQL.',
-              it: 'Schema design, trasformazione dati e refactor delle query — da MongoDB a Postgres, da DynamoDB a MySQL.',
+              en: 'Schema design, data transformation and query refactoring: MongoDB to Postgres, DynamoDB to MySQL.',
+              it: 'Schema design, trasformazione dati e refactor delle query, da MongoDB a Postgres, da DynamoDB a MySQL.',
             },
           },
         ],
@@ -80,7 +80,7 @@ const mod: Module = {
         title: { en: 'Why migrations are the *sweet spot*', it: 'Perché le migrazioni sono il *punto dolce*' },
         icon: 'ArrowRightLeft',
         items: [
-          { en: 'Isolated, repetitive, verifiable subtasks — the ideal Devin shape', it: 'Sotto-task isolati, ripetitivi, verificabili: la forma ideale per Devin' },
+          { en: 'Isolated, repetitive, verifiable subtasks: the ideal Devin shape', it: 'Sotto-task isolati, ripetitivi, verificabili: la forma ideale per Devin' },
           { en: 'Playbooks make one migration recipe reusable across hundreds of repos', it: 'I playbook rendono una ricetta riusabile su centinaia di repo' },
           { en: 'COBOL is where “junior task” meets “nobody wants to do it”', it: 'Il COBOL è dove “task da junior” incontra “nessuno vuole farlo”' },
           { en: 'Also: framework upgrades, dependency updates, architecture modernization', it: 'Anche: upgrade di framework, update di dipendenze, modernizzazione' },
@@ -110,8 +110,8 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Straight from the migration-modernization guide — including the COBOL JCL preprocessor caveat.',
-        it: 'Preso dalla guida migration-modernization — incluso il caveat sul preprocessore JCL per COBOL.',
+        en: 'Straight from the migration-modernization guide: including the COBOL JCL preprocessor caveat.',
+        it: 'Preso dalla guida migration-modernization: incluso il caveat sul preprocessore JCL per COBOL.',
       },
     },
   ],

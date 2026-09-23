@@ -20,14 +20,14 @@ const mod: Module = {
         icon: 'PenLine',
         items: [
           { en: 'Name the repo, the file, the pattern to follow', it: 'Nomina la repo, il file, il pattern da seguire' },
-          { en: 'Break work into logical parts — “create a task that…”', it: 'Spezza il lavoro in parti logiche — “crea un task che…”' },
+          { en: 'Break work into logical parts: “create a task that…”', it: 'Spezza il lavoro in parti logiche: “crea un task che…”' },
           { en: 'Define success: “emit an event when usage exceeds 80%”', it: 'Definisci il successo: “emetti un evento sopra l’80% di uso”' },
-          { en: 'Point at existing code worth reusing — Devin follows your architecture', it: 'Indica codice esistente da riusare: Devin segue la tua architettura' },
-          { en: 'Make the judgment calls yourself — don’t leave them open', it: 'Le decisioni prendile tu: non lasciarle aperte' },
+          { en: 'Point at existing code worth reusing: Devin follows your architecture', it: 'Indica codice esistente da riusare: Devin segue la tua architettura' },
+          { en: 'Make the judgment calls yourself: don’t leave them open', it: 'Le decisioni prendile tu: non lasciarle aperte' },
         ],
       },
       notes: {
-        en: 'The docs’ example prompt monitors RAM/CPU on remote machines — note how it specifies repo, tasks, and a measurable success event.',
+        en: 'The docs’ example prompt monitors RAM/CPU on remote machines: note how it specifies repo, tasks, and a measurable success event.',
         it: 'Il prompt d’esempio dei docs monitora RAM/CPU delle macchine remote: nota come specifica repo, task e un evento di successo misurabile.',
       },
     },

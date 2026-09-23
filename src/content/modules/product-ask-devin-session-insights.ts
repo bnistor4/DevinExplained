@@ -23,7 +23,7 @@ const mod: Module = {
         left: {
           title: { en: 'Ask Devin (before)', it: 'Ask Devin (prima)' },
           items: [
-            { en: 'Q&A over your indexed codebase — answers with citations', it: 'Q&A sul codebase indicizzato: risposte con citazioni' },
+            { en: 'Q&A over your indexed codebase: answers with citations', it: 'Q&A sul codebase indicizzato: risposte con citazioni' },
             { en: 'Scopes and plans tasks before any code is written', it: 'Delimita e pianifica i task prima di scrivere codice' },
             { en: 'Generates a context-rich prompt ready for an Agent session', it: 'Genera un prompt ricco di contesto pronto per una sessione Agent' },
             { en: 'The session’s status stays visible in the conversation', it: 'Lo stato della sessione resta visibile nella conversazione' },
@@ -32,7 +32,7 @@ const mod: Module = {
         right: {
           title: { en: 'Session Insights (after)', it: 'Session Insights (dopo)' },
           items: [
-            { en: 'Analyzes completed sessions — free of charge', it: 'Analizza le sessioni completate — gratis' },
+            { en: 'Analyzes completed sessions: free of charge', it: 'Analizza le sessioni completate: gratis' },
             { en: 'Metrics: ACU usage, user messages, session size', it: 'Metriche: ACU usati, messaggi utente, taglia della sessione' },
             { en: 'Actionable recommendations for better collaboration', it: 'Raccomandazioni concrete per collaborare meglio' },
             { en: 'L/XL sessions get a full analysis automatically at teardown', it: 'Le sessioni L/XL ricevono l’analisi completa in automatico' },
@@ -58,7 +58,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Sessions shorter than one Devin message produce no insights — too little signal.',
+        en: 'Sessions shorter than one Devin message produce no insights: too little signal.',
         it: 'Sessioni con meno di un messaggio di Devin non generano insights: troppo poco segnale.',
       },
     },
@@ -69,15 +69,15 @@ const mod: Module = {
         title: { en: 'The recommended *loop*', it: 'Il *loop* consigliato' },
         icon: 'MessageCircleQuestionMark',
         items: [
-          { en: 'Index the repo — it powers DeepWiki and Ask Devin', it: 'Indicizza la repo: alimenta DeepWiki e Ask Devin' },
+          { en: 'Index the repo: it powers DeepWiki and Ask Devin', it: 'Indicizza la repo: alimenta DeepWiki e Ask Devin' },
           { en: 'Ask questions, explore architecture, cite sources', it: 'Fai domande, esplora l’architettura, leggi le citazioni' },
-          { en: 'Scope the task in conversation — Devin drafts the prompt', it: 'Delimita il task in conversazione: Devin prepara il prompt' },
+          { en: 'Scope the task in conversation: Devin drafts the prompt', it: 'Delimita il task in conversazione: Devin prepara il prompt' },
           { en: 'Start the Agent session right from Ask', it: 'Avvia la sessione Agent direttamente da Ask' },
           { en: 'Track its status without leaving the conversation', it: 'Segui lo stato senza lasciare la conversazione' },
         ],
       },
       notes: {
-        en: 'Ask-first is the docs’ own recommended workflow — it writes a better prompt than most people do cold.',
+        en: 'Ask-first is the docs’ own recommended workflow: it writes a better prompt than most people do cold.',
         it: 'Prima Ask è il workflow consigliato dai docs: produce un prompt migliore di quello scritto a freddo.',
       },
     },

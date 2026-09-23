@@ -31,7 +31,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Slash commands are org-defined — /deploy, /security-review, /onboard are the docs’ examples.',
+        en: 'Slash commands are org-defined: /deploy, /security-review, /onboard are the docs’ examples.',
         it: 'Gli slash command li definisce l’organizzazione: /deploy, /security-review, /onboard sono gli esempi dei docs.',
       },
     },
@@ -53,7 +53,7 @@ const mod: Module = {
             icon: 'MessagesSquare',
             title: { en: 'Side chats', it: 'Side chat' },
             text: {
-              en: 'Read-only Q&A on the session — context included, work uninterrupted.',
+              en: 'Read-only Q&A on the session: context included, work uninterrupted.',
               it: 'Domande in sola lettura con contesto incluso, lavoro non interrotto.',
             },
           },
@@ -68,7 +68,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'If the slash menu is empty, your org hasn’t created commands yet — admins manage them in Settings → Devin → Commands.',
+        en: 'If the slash menu is empty, your org hasn’t created commands yet: admins manage them in Settings → Devin → Commands.',
         it: 'Se il menu degli slash è vuoto, l’org non ne ha ancora creati: li gestiscono gli admin in Settings → Devin → Commands.',
       },
     },
@@ -80,9 +80,9 @@ const mod: Module = {
         icon: 'MousePointerClick',
         items: [
           { en: 'Pick Ask or Agent on the home page', it: 'Scegli Ask o Agent nella home' },
-          { en: 'Select the repo — or @-mention what you need', it: 'Seleziona la repo — o @-menziona ciò che serve' },
+          { en: 'Select the repo, or @-mention what you need', it: 'Seleziona la repo, o @-menziona ciò che serve' },
           { en: 'Watch the plan in the Progress tab; steer from the chat', it: 'Segui il piano nel tab Progress; guida dalla chat' },
-          { en: 'Get the PR link when it’s done — review like any other', it: 'Ricevi il link alla PR a lavoro finito: review come le altre' },
+          { en: 'Get the PR link when it’s done: review like any other', it: 'Ricevi il link alla PR a lavoro finito: review come le altre' },
         ],
       },
       notes: {

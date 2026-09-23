@@ -19,15 +19,15 @@ const mod: Module = {
         title: { en: 'One change, *many small PRs*', it: 'Un cambiamento, *tante piccole PR*' },
         icon: 'Layers',
         items: [
-          { en: 'A stack is an ordered series of PRs — schema, then service layer, then UI', it: 'Uno stack è una serie ordinata di PR: schema, poi service layer, poi UI' },
-          { en: 'Each PR diffs only against the layer below — small, reviewable changes', it: 'Ogni PR fa diff solo col layer sotto: cambiamenti piccoli e revisionabili' },
+          { en: 'A stack is an ordered series of PRs: schema, then service layer, then UI', it: 'Uno stack è una serie ordinata di PR: schema, poi service layer, poi UI' },
+          { en: 'Each PR diffs only against the layer below: small, reviewable changes', it: 'Ogni PR fa diff solo col layer sotto: cambiamenti piccoli e revisionabili' },
           { en: 'Merging one PR atomically merges every open PR below it', it: 'Il merge di una PR fa il merge atomico di tutte le PR sotto di essa' },
           { en: 'Devin watches CI on every layer and fixes failures', it: 'Devin segue la CI di ogni layer e corregge i fallimenti' },
           { en: 'Conflicts get resolved silently; Devin asks only for real decisions', it: 'I conflitti si risolvono in silenzio; Devin chiede solo per decisioni vere' },
         ],
       },
       notes: {
-        en: 'GitHub.com only — no GHES, GitLab, Bitbucket or Azure DevOps. Stacks are 2–100 PRs.',
+        en: 'GitHub.com only: no GHES, GitLab, Bitbucket or Azure DevOps. Stacks are 2–100 PRs.',
         it: 'Solo GitHub.com: niente GHES, GitLab, Bitbucket o Azure DevOps. Stack da 2 a 100 PR.',
       },
     },
@@ -44,7 +44,7 @@ const mod: Module = {
         icon: 'Layers',
       },
       notes: {
-        en: 'Reviewers read one small self-contained change at a time — that is the whole point.',
+        en: 'Reviewers read one small self-contained change at a time: that is the whole point.',
         it: 'Chi fa review legge un cambiamento piccolo e autonomo alla volta: è tutto lì il punto.',
       },
     },
@@ -55,7 +55,7 @@ const mod: Module = {
         title: { en: 'You stay in *control*', it: 'Il *controllo* resta tuo' },
         icon: 'SlidersHorizontal',
         items: [
-          { en: 'Ask Devin to split a change into a stack — or keep one PR', it: 'Chiedi a Devin di spezzare in stack — o di tenere una PR sola' },
+          { en: 'Ask Devin to split a change into a stack, or keep one PR', it: 'Chiedi a Devin di spezzare in stack, o di tenere una PR sola' },
           { en: 'Add follow-up PRs on top of an existing stack', it: 'Aggiungi PR successive in cima a uno stack esistente' },
           { en: 'Ask for stack status: each layer’s state, CI, review, mergeability', it: 'Chiedi lo stato dello stack: layer, CI, review, mergeability' },
           { en: 'Say “unstack” and the open PRs become independent again', it: 'Dì “unstack” e le PR aperte tornano indipendenti' },

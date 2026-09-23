@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'Layers',
   title: { en: 'Environment & blueprints', it: 'Ambiente e blueprint' },
   summary: {
-    en: 'Every session boots from a snapshot. The blueprint is how you build a good one — once.',
-    it: 'Ogni sessione parte da uno snapshot. Il blueprint è come ne costruisci uno buono — una volta sola.',
+    en: 'Every session boots from a snapshot. The blueprint is how you build a good one: once.',
+    it: 'Ogni sessione parte da uno snapshot. Il blueprint è come ne costruisci uno buono: una volta sola.',
   },
   durationMin: 5,
   sources: [
@@ -30,15 +30,15 @@ const mod: Module = {
         icon: 'Layers',
         items: [
           { en: 'The environment is a VM with repos cloned, tools installed, secrets wired', it: 'L’ambiente è una VM con repo clonate, tool installati, secrets configurati' },
-          { en: 'Configuration is saved as a snapshot — a frozen, bootable image', it: 'La configurazione è salvata come snapshot: un’immagine congelata e avviabile' },
+          { en: 'Configuration is saved as a snapshot: a frozen, bootable image', it: 'La configurazione è salvata come snapshot: un’immagine congelata e avviabile' },
           { en: 'Every session boots a fresh copy of the same snapshot', it: 'Ogni sessione avvia una copia fresca dello stesso snapshot' },
-          { en: 'It’s the single highest-leverage thing for Devin’s effectiveness', it: 'È la singola cosa con più leva sull’efficacia di Devin' },
-          { en: 'Easiest setup: just ask Devin “set up your environment for this repository”', it: 'Il setup più facile: chiedi a Devin “set up your environment for this repository”' },
+          { en: 'It’s the single biggest lever for Devin’s effectiveness', it: 'È la singola cosa con più leva sull’efficacia di Devin' },
+          { en: 'Easiest setup: ask Devin “set up your environment for this repository”', it: 'Il setup più facile: chiedi a Devin “set up your environment for this repository”' },
         ],
       },
       notes: {
-        en: 'The docs literally say: hiring a developer without a laptop. The repo-setup tutorial shows the one-prompt setup.',
-        it: 'I docs lo dicono letteralmente: assumere uno sviluppatore senza laptop. Il tutorial repo-setup mostra il setup con un prompt.',
+        en: 'The docs put it this way: hiring a developer without a laptop. The repo-setup tutorial shows the one-prompt setup.',
+        it: 'I docs lo dicono così: assumere uno sviluppatore senza laptop. Il tutorial repo-setup mostra il setup con un prompt.',
       },
     },
     {
@@ -54,7 +54,7 @@ const mod: Module = {
         },
       },
       notes: {
-        en: 'initialize runs at build time into the snapshot; knowledge is never executed — it’s reference for the agent.',
+        en: 'initialize runs at build time into the snapshot; knowledge is never executed: it’s reference for the agent.',
         it: 'initialize gira a build time e finisce nello snapshot; knowledge non è mai eseguita: è riferimento per l’agente.',
       },
     },
@@ -63,29 +63,29 @@ const mod: Module = {
       band: 'dark',
       block: {
         type: 'cards',
-        title: { en: 'Not just *Linux* anymore', it: 'Non solo *Linux* ormai' },
+        title: { en: '*Linux*, macOS, Windows, Android', it: '*Linux*, macOS, Windows, Android' },
         cards: [
           {
             icon: 'Apple',
             title: { en: 'macOS VMs', it: 'VM macOS' },
             text: {
-              en: 'runs-on: macos — build and test iOS/macOS apps, upload to TestFlight.',
-              it: 'runs-on: macos — build e test di app iOS/macOS, upload su TestFlight.',
+              en: 'runs-on: macos, build and test iOS/macOS apps, upload to TestFlight.',
+              it: 'runs-on: macos, build e test di app iOS/macOS, upload su TestFlight.',
             },
           },
           {
             icon: 'AppWindow',
             title: { en: 'Windows VMs', it: 'VM Windows' },
             text: {
-              en: 'runs-on: windows — Git Bash by default, or PowerShell via the shell field.',
-              it: 'runs-on: windows — Git Bash di default, o PowerShell con il campo shell.',
+              en: 'runs-on: windows, Git Bash by default, or PowerShell via the shell field.',
+              it: 'runs-on: windows, Git Bash di default, o PowerShell con il campo shell.',
             },
           },
           {
             icon: 'Smartphone',
             title: { en: 'Android emulators', it: 'Emulatori Android' },
             text: {
-              en: 'adb + computer-use on a real emulator — tap flows, capture logcat, send the video.',
+              en: 'adb + computer-use on a real emulator: tap flows, capture logcat, send the video.',
               it: 'adb + computer use su un vero emulatore: tocca i flussi, cattura logcat, manda il video.',
             },
           },

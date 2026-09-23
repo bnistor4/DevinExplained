@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'Building',
   title: { en: 'Devin Enterprise', it: 'Devin Enterprise' },
   summary: {
-    en: 'Brain in Cognition’s cloud, Devbox where you need it — orgs, roles and ACU limits on top.',
-    it: 'Il cervello nel cloud di Cognition, la Devbox dove serve — con org, ruoli e limiti ACU sopra.',
+    en: 'Brain in Cognition’s cloud, Devbox where you need it: orgs, roles and ACU limits on top.',
+    it: 'Il cervello nel cloud di Cognition, la Devbox dove serve, con org, ruoli e limiti ACU sopra.',
   },
   durationMin: 5,
   sources: [
@@ -28,7 +28,7 @@ const mod: Module = {
             icon: 'Brain',
             title: { en: 'The Brain', it: 'Il cervello' },
             text: {
-              en: 'Stateless, always in Cognition’s cloud — the Copilot-style architecture.',
+              en: 'Stateless, always in Cognition’s cloud: the Copilot-style architecture.',
               it: 'Stateless, sempre nel cloud di Cognition: architettura stile Copilot.',
             },
           },
@@ -36,7 +36,7 @@ const mod: Module = {
             icon: 'Box',
             title: { en: 'The Devbox', it: 'La Devbox' },
             text: {
-              en: 'Shell + browser + editor — runs where your deployment model puts it.',
+              en: 'Shell + browser + editor: runs where your deployment model puts it.',
               it: 'Shell + browser + editor: gira dove lo mette il tuo modello di deployment.',
             },
           },
@@ -64,8 +64,8 @@ const mod: Module = {
         items: [
           { en: 'Each org: its own shared Devin machine, repos, members, ACU limit', it: 'Ogni org: macchina Devin condivisa, repo, membri e limite ACU propri' },
           { en: 'Repository access is org-level, not per-user', it: 'L’accesso alle repo è a livello org, non per utente' },
-          { en: 'A user can belong to many orgs — permissions scoped independently', it: 'Un utente può stare in più org: permessi scopati separatamente' },
-          { en: 'Setup mirrors onboarding a new engineer — same access, same tools', it: 'Il setup replica l’onboarding di un nuovo assunto: stessi accessi e tool' },
+          { en: 'A user can belong to many orgs: permissions scoped independently', it: 'Un utente può stare in più org: permessi scopati separatamente' },
+          { en: 'Setup mirrors onboarding a new engineer: same access, same tools', it: 'Il setup replica l’onboarding di un nuovo assunto: stessi accessi e tool' },
           { en: 'Consumption tracked at enterprise, org, and per-session level', it: 'Consumi tracciati a livello enterprise, org e singola sessione' },
         ],
       },
@@ -85,7 +85,7 @@ const mod: Module = {
             icon: 'Cloud',
             title: { en: 'Enterprise Cloud', it: 'Enterprise Cloud' },
             text: {
-              en: 'Managed by Cognition on shared infra — the standard path for most enterprises.',
+              en: 'Managed by Cognition on shared infra: the standard path for most enterprises.',
               it: 'Gestito da Cognition su infrastruttura condivisa: il percorso standard.',
             },
           },
@@ -108,7 +108,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Deployment options live under enterprise/deployment — the dedicated tier adds private networking.',
+        en: 'Deployment options live under enterprise/deployment: the dedicated tier adds private networking.',
         it: 'Le opzioni di deploy stanno sotto enterprise/deployment: il tier dedicato aggiunge il networking privato.',
       },
     },

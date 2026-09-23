@@ -19,12 +19,12 @@ const mod: Module = {
       id: 'voice-bullets',
       block: {
         type: 'bullets',
-        title: { en: 'Talk to Devin, *literally*', it: 'Parla con Devin, *letteralmente*' },
+        title: { en: 'Talk to Devin, *out loud*', it: 'Parla con Devin, *a voce alta*' },
         icon: 'Mic',
         items: [
           { en: 'Start a call from the voice button in Agent mode or any session', it: 'Avvia una chiamata dal pulsante voce in Agent mode o in una sessione' },
           { en: 'Explore ideas and pressure-test approaches away from the keyboard', it: 'Esplora idee e metti alla prova gli approcci lontano dalla tastiera' },
-          { en: 'Interrupt Devin mid-sentence — it’s fine, it’s expected', it: 'Interrompi Devin mentre parla: va bene, è previsto' },
+          { en: 'Interrupt Devin mid-sentence: it’s fine, it’s expected', it: 'Interrompi Devin mentre parla: va bene, è previsto' },
           { en: 'The whole conversation lands in the session history', it: 'Tutta la conversazione finisce nella cronologia della sessione' },
           { en: 'Ask Devin to speak faster, slower, or change style', it: 'Chiedi a Devin di parlare più veloce, più lento o cambiare stile' },
         ],
@@ -48,7 +48,7 @@ const mod: Module = {
             icon: 'MessagesSquare',
             title: { en: 'Side chats', it: 'Side chat' },
             text: {
-              en: 'Ask read-only questions with full context — /btw or the hover menu.',
+              en: 'Ask read-only questions with full context: /btw or the hover menu.',
               it: 'Domande in sola lettura con tutto il contesto: /btw o il menu al passaggio.',
             },
           },
@@ -82,7 +82,7 @@ const mod: Module = {
         title: { en: 'Why it *matters*', it: 'Perché *conta*' },
         icon: 'Mic',
         items: [
-          { en: 'Voice is for thinking out loud — sessions keep working while you talk', it: 'La voce serve a ragionare ad alta voce: la sessione lavora mentre parli' },
+          { en: 'Voice is for thinking out loud: sessions keep working while you talk', it: 'La voce serve a ragionare ad alta voce: la sessione lavora mentre parli' },
           { en: 'Side chats answer without touching the running plan', it: 'Le side chat rispondono senza toccare il piano in corso' },
           { en: 'Steering mid-run beats cancelling and restarting', it: 'Guidare a metà corsa batte cancellare e ricominciare' },
           { en: 'Everything is recorded in the same session timeline', it: 'Tutto finisce nella stessa timeline della sessione' },

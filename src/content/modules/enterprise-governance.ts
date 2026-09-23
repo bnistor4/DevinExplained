@@ -41,7 +41,7 @@ const mod: Module = {
         items: [
           { en: 'Usage tiers: named groups with per-member monthly ACU allocations', it: 'Usage tier: gruppi con allocazioni ACU mensili per membro' },
           { en: 'Local + cloud usage count against one per-user limit', it: 'Uso locale + cloud contano contro un unico limite per utente' },
-          { en: 'Devin Coach flags wasteful prompts inline — before they send', it: 'Devin Coach segnala i prompt dispendiosi inline — prima dell’invio' },
+          { en: 'Devin Coach flags wasteful prompts inline, before they send', it: 'Devin Coach segnala i prompt dispendiosi inline, prima dell’invio' },
           { en: 'Personal analytics: each user sees their own consumption', it: 'Personal analytics: ogni utente vede i propri consumi' },
         ],
       },
@@ -58,7 +58,7 @@ const mod: Module = {
         icon: 'Layers',
         items: [
           { en: 'Three blueprint tiers: enterprise → organization → repository', it: 'Tre livelli di blueprint: enterprise → organization → repository' },
-          { en: 'Default everything to the enterprise tier — org tier is for exceptions', it: 'Metti tutto nel tier enterprise di default: quello org è per le eccezioni' },
+          { en: 'Default everything to the enterprise tier: org tier is for exceptions', it: 'Metti tutto nel tier enterprise di default: quello org è per le eccezioni' },
           { en: 'The Rollout page tracks build health across all orgs', it: 'La pagina Rollout traccia la salute delle build in tutte le org' },
           { en: 'Local-agent controls: root baseline + per-org overrides, always enforced', it: 'Controlli sugli agenti locali: baseline root + override per org, sempre applicati' },
         ],
@@ -75,9 +75,9 @@ const mod: Module = {
         title: { en: 'Reaching *inside* the network', it: 'Raggiungere l’*interno* della rete' },
         icon: 'Network',
         items: [
-          { en: 'Dedicated deployment: AWS PrivateLink per domain — NLB + Endpoint Service', it: 'Deployment dedicato: AWS PrivateLink per dominio — NLB + Endpoint Service' },
+          { en: 'Dedicated deployment: AWS PrivateLink per domain (NLB + Endpoint Service)', it: 'Deployment dedicato: AWS PrivateLink per dominio (NLB + Endpoint Service)' },
           { en: 'Client VPN in the blueprint: OpenVPN/WireGuard, profile as attachment', it: 'VPN client nel blueprint: OpenVPN/WireGuard, profilo come attachment' },
-          { en: 'GitHub Enterprise Server, GitLab self-managed, Azure DevOps SP — all covered', it: 'GitHub Enterprise Server, GitLab self-managed, Azure DevOps SP: tutti coperti' },
+          { en: 'GitHub Enterprise Server, GitLab self-managed, Azure DevOps SP: all covered', it: 'GitHub Enterprise Server, GitLab self-managed, Azure DevOps SP: tutti coperti' },
           { en: 'Artifact proxies keep package installs inside your perimeter', it: 'I proxy per gli artefatti tengono le installazioni nel tuo perimetro' },
         ],
       },

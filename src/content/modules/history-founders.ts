@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'Users',
   title: { en: 'Who builds Devin', it: 'Chi costruisce Devin' },
   summary: {
-    en: 'Cognition: an applied AI lab building end-to-end software agents — and the team behind it.',
-    it: 'Cognition: un laboratorio di AI applicata che costruisce agenti software end-to-end — e il team dietro.',
+    en: 'Cognition: an applied AI lab building end-to-end software agents, and the team behind it.',
+    it: 'Cognition: un laboratorio di AI applicata che costruisce agenti software end-to-end e il team che c’è dietro.',
   },
   durationMin: 3,
   sources: ['https://cognition.com', 'https://cognition.ai/blog'],
@@ -45,7 +45,7 @@ const mod: Module = {
           { en: 'The founding team holds 10 IOI gold medals', it: 'Il founding team vanta 10 medaglie d’oro IOI' },
           { en: 'Builders from Google DeepMind, Scale AI, Cursor, Modal, Waymo, Nuro', it: 'Persone da Google DeepMind, Scale AI, Cursor, Modal, Waymo, Nuro' },
           { en: '21 of the first 35 team members had founded a company', it: '21 dei primi 35 membri del team avevano già fondato un’azienda' },
-          { en: 'HQ in San Francisco — also New York, Austin, D.C., London, Singapore, Japan', it: 'HQ a San Francisco — poi New York, Austin, D.C., Londra, Singapore, Giappone' },
+          { en: 'HQ in San Francisco, also New York, Austin, D.C., London, Singapore, Japan', it: 'HQ a San Francisco, poi New York, Austin, D.C., Londra, Singapore, Giappone' },
         ],
       },
       notes: {

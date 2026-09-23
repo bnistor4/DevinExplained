@@ -16,7 +16,7 @@ const mod: Module = {
       id: 'devin-timeline',
       block: {
         type: 'timeline',
-        title: { en: 'A very *fast* two years', it: 'Due anni *velocissimi*' },
+        title: { en: 'A *fast* two years', it: 'Due anni *velocissimi*' },
         events: [
           {
             date: '03.2024',
@@ -37,8 +37,8 @@ const mod: Module = {
             date: '04.2026',
             title: { en: 'Self-serve plans + Devin CLI', it: 'Piani self-serve e Devin CLI' },
             text: {
-              en: 'Free, Pro, Max, Teams — and a CLI to start local, hand off to the cloud',
-              it: 'Free, Pro, Max, Teams — e una CLI per partire in locale e passare al cloud',
+              en: 'Free, Pro, Max, Teams, and a CLI to start local, hand off to the cloud',
+              it: 'Free, Pro, Max, Teams, e una CLI per partire in locale e passare al cloud',
             },
           },
           {

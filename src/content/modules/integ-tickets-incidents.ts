@@ -26,7 +26,7 @@ const mod: Module = {
             icon: 'Ticket',
             title: { en: 'Assign', it: 'Assegna' },
             text: {
-              en: 'Assign the ticket to Devin — the default playbook runs it.',
+              en: 'Assign the ticket to Devin: the default playbook runs it.',
               it: 'Assegna il ticket a Devin: lo esegue il playbook di default.',
             },
           },
@@ -42,7 +42,7 @@ const mod: Module = {
             icon: 'AtSign',
             title: { en: 'Mention', it: 'Menziona' },
             text: {
-              en: '@Devin in a comment — your comment becomes the task, no playbook.',
+              en: '@Devin in a comment: your comment becomes the task, no playbook.',
               it: '@Devin in un commento: il commento diventa il task, senza playbook.',
             },
           },
@@ -68,7 +68,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'General Access key required — user API tokens are not accepted. US and EU regions supported.',
+        en: 'General Access key required: user API tokens are not accepted. US and EU regions supported.',
         it: 'Serve una General Access key: i token utente non sono accettati. Regioni US ed EU supportate.',
       },
       funAside: {
@@ -83,14 +83,14 @@ const mod: Module = {
         title: { en: 'Setup *notes*', it: 'Note di *setup*' },
         icon: 'Ticket',
         items: [
-          { en: 'Linear: connecting it also wires the native Linear tools — no MCP needed', it: 'Linear: la connessione attiva anche i tool nativi — niente MCP da configurare' },
+          { en: 'Linear: connecting it also wires the native Linear tools, no MCP needed', it: 'Linear: la connessione attiva anche i tool nativi, niente MCP da configurare' },
           { en: 'Linear: pick which teams Devin can see, changeable later', it: 'Linear: scegli quali team Devin vede, modificabile dopo' },
           { en: 'Jira: connect a service account so comments come from the bot', it: 'Jira: collega un service account così i commenti arrivano dal bot' },
-          { en: 'PagerDuty: only General Access API keys — user tokens rejected', it: 'PagerDuty: solo chiavi General Access — i token utente sono rifiutati' },
+          { en: 'PagerDuty: only General Access API keys, user tokens rejected', it: 'PagerDuty: solo chiavi General Access, i token utente sono rifiutati' },
         ],
       },
       notes: {
-        en: 'These are the details people trip on during setup — worth one slide of honesty.',
+        en: 'These are the details people trip on during setup: worth one slide of honesty.',
         it: 'Sono i dettagli su cui la gente inciampa in setup: vale una slide di onestà.',
       },
     },

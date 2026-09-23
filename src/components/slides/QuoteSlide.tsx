@@ -24,7 +24,7 @@ export default function QuoteSlide({
       {(block.author || block.role) && (
         <p className="sl-quote-author reveal" style={ri(2)}>
           {block.author}
-          {block.author && block.role && ' — '}
+          {block.author && block.role && ', '}
           {block.role && <span className="sl-quote-role">{getL10n(block.role, lang)}</span>}
         </p>
       )}

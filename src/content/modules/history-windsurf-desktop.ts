@@ -22,7 +22,7 @@ const mod: Module = {
             date: '07.2025',
             title: { en: 'Cognition acquires Windsurf', it: 'Cognition acquisisce Windsurf' },
             text: {
-              en: 'A 72-hour deal: cloud agent meets IDE — no product overlap',
+              en: 'A 72-hour deal: cloud agent meets IDE, no product overlap',
               it: 'Un accordo in 72 ore: agente cloud + IDE, prodotti non sovrapposti',
             },
           },
@@ -38,7 +38,7 @@ const mod: Module = {
             date: '06.2026',
             title: { en: 'Devin Desktop', it: 'Devin Desktop' },
             text: {
-              en: 'Windsurf becomes Devin Desktop — the Agent Command Center by default',
+              en: 'Windsurf becomes Devin Desktop: the Agent Command Center by default',
               it: 'Windsurf diventa Devin Desktop: l’Agent Command Center di default',
             },
           },
@@ -63,7 +63,7 @@ const mod: Module = {
         type: 'compare',
         title: { en: 'Local agent vs *cloud agent*', it: 'Agente *locale* vs agente *cloud*' },
         left: {
-          title: { en: 'Local — where you think', it: 'Locale — dove pensi' },
+          title: { en: 'Local: where you think', it: 'Locale: dove pensi' },
           items: [
             { en: 'Runs on your machine, in your session', it: 'Gira sulla tua macchina, nella tua sessione' },
             { en: 'Plan, prototype, iterate hands-on', it: 'Pianifica, prototipa, itera a mani sulla tastiera' },
@@ -71,7 +71,7 @@ const mod: Module = {
           ],
         },
         right: {
-          title: { en: 'Cloud — where you delegate', it: 'Cloud — dove deleghi' },
+          title: { en: 'Cloud: where you delegate', it: 'Cloud: dove deleghi' },
           items: [
             { en: 'Own infrastructure, own environment', it: 'Infrastruttura e ambiente propri' },
             { en: 'Works for minutes or hours, past your attention', it: 'Lavora per minuti o ore, oltre la tua attenzione' },

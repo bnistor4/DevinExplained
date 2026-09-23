@@ -27,7 +27,7 @@ const mod: Module = {
             icon: 'MessageSquare',
             title: { en: 'Slack & chat', it: 'Slack e chat' },
             text: {
-              en: 'New message or reaction in a channel — a trigger keyword starts an investigation.',
+              en: 'New message or reaction in a channel: a trigger keyword starts an investigation.',
               it: 'Nuovo messaggio o reaction in canale: una keyword trigger avvia un’indagine.',
             },
           },
@@ -35,16 +35,16 @@ const mod: Module = {
             icon: 'FolderGit2',
             title: { en: 'GitHub / GitLab / Linear / Jira', it: 'GitHub / GitLab / Linear / Jira' },
             text: {
-              en: 'Issues, PRs, CI failures, label and status changes — even assignments to Devin.',
-              it: 'Issue, PR, CI fallite, cambi di label e stato — perfino ticket assegnati a Devin.',
+              en: 'Issues, PRs, CI failures, label and status changes, even assignments to Devin.',
+              it: 'Issue, PR, CI fallite, cambi di label e stato, perfino ticket assegnati a Devin.',
             },
           },
           {
             icon: 'AlarmClock',
             title: { en: 'Schedule & webhook', it: 'Schedule e webhook' },
             text: {
-              en: 'Cron schedules, one-off runs, and a webhook URL for anything else — PagerDuty included.',
-              it: 'Schedule cron, esecuzioni singole e una URL webhook per tutto il resto — PagerDuty incluso.',
+              en: 'Cron schedules, one-off runs, and a webhook URL for anything else: PagerDuty included.',
+              it: 'Schedule cron, esecuzioni singole e una URL webhook per tutto il resto: PagerDuty incluso.',
             },
           },
         ],
@@ -69,8 +69,8 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Tip from the docs: connect MCP integrations (logs, metrics) — they dramatically improve triage quality.',
-        it: 'Consiglio dei docs: collega integrazioni MCP (log, metriche) — migliorano tantissimo il triage.',
+        en: 'Tip from the docs: connect MCP integrations (logs, metrics), they dramatically improve triage quality.',
+        it: 'Consiglio dei docs: collega integrazioni MCP (log, metriche), migliorano nettamente il triage.',
       },
     },
     {

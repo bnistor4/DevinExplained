@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'LayoutTemplate',
   title: { en: 'The prompt cheat sheet', it: 'La cheat sheet dei prompt' },
   summary: {
-    en: 'Fill-in-the-brackets templates for bugs, production issues and features — verbatim from the docs.',
-    it: 'Template da compilare per bug, incidenti e feature — presi pari pari dai docs.',
+    en: 'Fill-in-the-brackets templates for bugs, production issues and features: verbatim from the docs.',
+    it: 'Template da compilare per bug, incidenti e feature: presi pari pari dai docs.',
   },
   durationMin: 4,
   sources: ['https://docs.devin.ai/essential-guidelines/prompt-templates-cheat-sheet'],
@@ -60,7 +60,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'The cheat sheet has a dozen templates — point people at it, then graduate them to org playbooks.',
+        en: 'The cheat sheet has a dozen templates: point people at it, then graduate them to org playbooks.',
         it: 'La cheat sheet ha una dozzina di template: indicala, poi fai laureare la gente ai playbook dell’org.',
       },
     },

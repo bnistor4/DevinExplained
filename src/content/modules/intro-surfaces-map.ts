@@ -30,7 +30,7 @@ const mod: Module = {
             icon: 'Globe',
             title: { en: 'Web app', it: 'Web app' },
             text: {
-              en: 'app.devin.ai — the full workspace with Shell, IDE and Browser.',
+              en: 'app.devin.ai: the full workspace with Shell, IDE and Browser.',
               it: 'app.devin.ai: il workspace completo con Shell, IDE e Browser.',
             },
           },
@@ -46,7 +46,7 @@ const mod: Module = {
             icon: 'SquareTerminal',
             title: { en: 'Devin CLI', it: 'Devin CLI' },
             text: {
-              en: 'A local coding agent in your terminal — macOS, Linux, WSL and Windows.',
+              en: 'A local coding agent in your terminal: macOS, Linux, WSL and Windows.',
               it: 'Un agente locale nel tuo terminale: macOS, Linux, WSL e Windows.',
             },
           },

@@ -6,7 +6,7 @@ const mod: Module = {
   icon: 'Sparkles',
   title: { en: 'Skills & Playbooks', it: 'Skills e Playbook' },
   summary: {
-    en: 'Reusable procedures committed to the repo vs. shared prompt templates — when to use which.',
+    en: 'Reusable procedures committed to the repo vs. shared prompt templates: when to use which.',
     it: 'Procedure riusabili committate nella repo vs. prompt template condivisi: quando usare cosa.',
   },
   durationMin: 4,
@@ -25,15 +25,15 @@ const mod: Module = {
           title: { en: 'Skills', it: 'Skills' },
           items: [
             { en: 'SKILL.md files committed at .agents/skills/<name>/', it: 'File SKILL.md committati in .agents/skills/<nome>/' },
-            { en: 'Open standard — work across multiple AI coding tools', it: 'Standard aperto: funzionano in più strumenti AI' },
-            { en: 'Devin suggests new skills after sessions — one click to PR', it: 'Devin propone nuove skill dopo le sessioni: un click per la PR' },
+            { en: 'Open standard: work across multiple AI coding tools', it: 'Standard aperto: funzionano in più strumenti AI' },
+            { en: 'Devin suggests new skills after sessions: one click to PR', it: 'Devin propone nuove skill dopo le sessioni: un click per la PR' },
             { en: 'Invoke with /skill-name or let Devin pick them up', it: 'Si invocano con /skill-name o le usa Devin da solo' },
           ],
         },
         right: {
           title: { en: 'Playbooks', it: 'Playbook' },
           items: [
-            { en: 'Shared prompt templates — org, enterprise or system scope', it: 'Prompt template condivisi: scope org, enterprise o system' },
+            { en: 'Shared prompt templates: org, enterprise or system scope', it: 'Prompt template condivisi: scope org, enterprise o system' },
             { en: 'Attach via the playbook picker or a !macro', it: 'Si allegano dal picker o con una !macro' },
             { en: 'Editable inline before the session starts', it: 'Modificabili inline prima di avviare la sessione' },
             { en: 'Iterate live as you run them', it: 'Si rifiniscono live mentre le usi' },
@@ -52,9 +52,9 @@ const mod: Module = {
         title: { en: 'When a workflow *deserves* a skill', it: 'Quando un workflow *merita* una skill' },
         icon: 'Sparkles',
         items: [
-          { en: 'It should run the same way every time — test checklists, deploy steps', it: 'Deve girare sempre uguale: checklist di test, passi di deploy' },
-          { en: 'It needs repo-specific knowledge — services, ports, commands', it: 'Serve conoscenza della repo: servizi, porte, comandi' },
-          { en: 'It benefits from dynamic context — diffs, branch names, env', it: 'Gode di contesto dinamico: diff, nomi di branch, env' },
+          { en: 'It should run the same way every time: test checklists, deploy steps', it: 'Deve girare sempre uguale: checklist di test, passi di deploy' },
+          { en: 'It needs repo-specific knowledge: services, ports, commands', it: 'Serve conoscenza della repo: servizi, porte, comandi' },
+          { en: 'It benefits from dynamic context: diffs, branch names, env', it: 'Gode di contesto dinamico: diff, nomi di branch, env' },
           { en: 'A skill can even carry a dynamic-workflow script', it: 'Una skill può anche contenere uno script di dynamic workflow' },
         ],
       },
@@ -75,8 +75,8 @@ const mod: Module = {
         language: 'markdown',
         code: '---\nname: test-before-pr\ndescription: Run the dev server and verify\n  pages before opening any frontend PR.\n---\n\n## Setup\n1. Install dependencies: `npm install`\n2. Start the dev server\n3. Click through the pages you changed',
         caption: {
-          en: 'Committed at .agents/skills/<name>/SKILL.md — auto-discovered across connected repos.',
-          it: 'Committato in .agents/skills/<nome>/SKILL.md — scoperto automaticamente su tutte le repo collegate.',
+          en: 'Committed at .agents/skills/<name>/SKILL.md: auto-discovered across connected repos.',
+          it: 'Committato in .agents/skills/<nome>/SKILL.md: scoperto automaticamente su tutte le repo collegate.',
         },
       },
       notes: {

@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'Scale',
   title: { en: 'Good vs bad instructions', it: 'Istruzioni buone vs cattive' },
   summary: {
-    en: 'Real side-by-side prompts from the docs — and why one works and the other flops.',
-    it: 'Prompt veri a confronto dai docs — e perché uno funziona e l’altro no.',
+    en: 'Real side-by-side prompts from the docs, and why one works and the other flops.',
+    it: 'Prompt veri a confronto dai docs, e perché uno funziona e l’altro no.',
   },
   durationMin: 4,
   sources: ['https://docs.devin.ai/essential-guidelines/good-vs-bad-instructions'],
@@ -77,7 +77,7 @@ const mod: Module = {
         title: { en: 'The recipe, *compressed*', it: 'La ricetta, *compressa*' },
         icon: 'ListChecks',
         items: [
-          { en: 'The outcome, not just the task', it: 'L’obiettivo, non solo il task' },
+          { en: 'The outcome you want, with the task as a means', it: 'L’obiettivo che vuoi, con il task come mezzo' },
           { en: 'Constraints: versions, scope, what NOT to touch', it: 'Vincoli: versioni, scope, cosa NON toccare' },
           { en: 'Done = how you’ll verify it', it: 'Fatto = come lo verifichi' },
           { en: 'Standards: tests, changelog, migrations', it: 'Standard: test, changelog, migrazioni' },

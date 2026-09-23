@@ -24,10 +24,10 @@ const mod: Module = {
         left: {
           title: { en: 'Adaptive', it: 'Adaptive' },
           items: [
-            { en: 'One model per request — the router picks it', it: 'Un modello per richiesta: lo sceglie il router' },
+            { en: 'One model per request: the router picks it', it: 'Un modello per richiesta: lo sceglie il router' },
             { en: 'Simple prompts go to fast models, hard ones to frontier', it: 'Prompt semplici ai modelli veloci, quelli duri alla frontier' },
             { en: 'Fixed per-token rate, whichever model answers', it: 'Tariffa per token fissa, qualunque modello risponda' },
-            { en: 'Off by default for enterprise — admin enables it', it: 'Per le enterprise è spento: lo attiva un admin' },
+            { en: 'Off by default for enterprise: admin enables it', it: 'Per le enterprise è spento: lo attiva un admin' },
           ],
         },
         right: {
@@ -71,14 +71,14 @@ const mod: Module = {
         type: 'analogy',
         title: { en: "It's like…", it: 'È come…' },
         text: {
-          en: 'a *senior* engineer who writes the plan and reviews the diff — and a fast junior who types it.',
-          it: 'un *senior* che scrive il piano e revisiona la diff — e un junior velocissimo che la digita.',
+          en: 'a *senior* engineer who writes the plan and reviews the diff, and a fast junior who types it.',
+          it: 'un *senior* che scrive il piano e revisiona la diff, e un junior velocissimo che la digita.',
         },
         icon: 'Users',
       },
       notes: {
-        en: 'That is literally the architecture: lead owns plan and review, sidekick does the mechanical work.',
-        it: 'È letteralmente l’architettura: il lead possiede piano e review, lo sidekick fa il lavoro meccanico.',
+        en: 'That is the architecture, verbatim: lead owns plan and review, sidekick does the mechanical work.',
+        it: 'È l’architettura, pari pari: il lead possiede piano e review, lo sidekick fa il lavoro meccanico.',
       },
     },
   ],

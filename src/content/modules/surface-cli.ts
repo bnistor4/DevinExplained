@@ -6,7 +6,7 @@ const mod: Module = {
   icon: 'SquareTerminal',
   title: { en: 'Devin CLI', it: 'Devin CLI' },
   summary: {
-    en: 'A local coding agent in your terminal — install in 2 minutes, hand off to the cloud when needed.',
+    en: 'A local coding agent in your terminal: install in 2 minutes, hand off to the cloud when needed.',
     it: 'Un agente locale nel tuo terminale: si installa in 2 minuti e passa al cloud quando serve.',
   },
   durationMin: 5,
@@ -42,15 +42,15 @@ const mod: Module = {
         title: { en: 'The *essential* commands', it: 'I comandi *essenziali*' },
         icon: 'SquareTerminal',
         items: [
-          { en: 'devin — interactive REPL; devin -- “prompt” starts with a prompt', it: 'devin apre la REPL; devin -- “prompt” parte già con un prompt' },
-          { en: 'devin -p “prompt” — single-turn, prints to stdout (great for scripts)', it: 'devin -p “prompt”: singolo turno su stdout, perfetto per gli script' },
+          { en: 'devin: interactive REPL; devin -- “prompt” starts with a prompt', it: 'devin apre la REPL; devin -- “prompt” parte già con un prompt' },
+          { en: 'devin -p “prompt”: single-turn, prints to stdout (great for scripts)', it: 'devin -p “prompt”: singolo turno su stdout, perfetto per gli script' },
           { en: '@ autocompletes local files; Ctrl+V pastes images', it: '@ autocompleta i file locali; Ctrl+V incolla le immagini' },
           { en: 'Five permission modes: Normal, Accept Edits, Smart, Bypass, Autonomous', it: 'Cinque modalità di permesso: Normal, Accept Edits, Smart, Bypass, Autonomous' },
           { en: '/plan and /ask switch agent modes mid-session', it: '/plan e /ask cambiano modalità a sessione in corso' },
         ],
       },
       notes: {
-        en: 'Long-running commands go to background automatically — Devin keeps working and checks output later.',
+        en: 'Long-running commands go to background automatically: Devin keeps working and checks output later.',
         it: 'I comandi lunghi vanno in background da soli: Devin continua e controlla l’output dopo.',
       },
     },
@@ -64,16 +64,16 @@ const mod: Module = {
             icon: 'Cloud',
             title: { en: '/handoff', it: '/handoff' },
             text: {
-              en: 'Sends the session — branch, context, uncommitted diff — to a cloud Devin VM.',
-              it: 'Manda la sessione — branch, contesto, diff non committato — a una VM Devin cloud.',
+              en: 'Sends the session (branch, context, uncommitted diff) to a cloud Devin VM.',
+              it: 'Manda la sessione (branch, contesto, diff non committato) a una VM Devin cloud.',
             },
           },
           {
             icon: 'SquareTerminal',
             title: { en: 'devin ssh', it: 'devin ssh' },
             text: {
-              en: 'Open a shell on the cloud session’s VM — or use plain ssh and scp.',
-              it: 'Apre una shell sulla VM della sessione cloud — oppure ssh e scp normali.',
+              en: 'Open a shell on the cloud session’s VM, or use plain ssh and scp.',
+              it: 'Apre una shell sulla VM della sessione cloud, oppure ssh e scp normali.',
             },
           },
           {

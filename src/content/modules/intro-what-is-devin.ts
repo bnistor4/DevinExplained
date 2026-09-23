@@ -46,8 +46,8 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'It handles most tasks, excluding extremely difficult ones. Keep the tone practical.',
-        it: 'Gestisce la maggior parte dei compiti, esclusi quelli estremamente difficili.',
+        en: 'It handles most tasks, excluding the most difficult ones. Keep the tone practical.',
+        it: 'Gestisce la maggior parte dei compiti, esclusi i più difficili.',
       },
       funAside: {
         en: 'And it never asks where the coffee machine is.',
@@ -67,7 +67,7 @@ const mod: Module = {
         icon: 'Moon',
       },
       notes: {
-        en: 'Playful framing — land the joke, then get back to the facts.',
+        en: 'Playful framing: land the joke, then get back to the facts.',
         it: 'Framing giocoso: fai la battuta e torna subito ai fatti.',
       },
     },
@@ -90,7 +90,7 @@ const mod: Module = {
             icon: 'Code',
             title: { en: 'IDE', it: 'IDE' },
             text: {
-              en: "An embedded editor — follow Devin's work live and take over anytime.",
+              en: "An embedded editor: follow Devin's work live and take over anytime.",
               it: 'Un editor integrato: segui il lavoro di Devin e subentri quando vuoi.',
             },
           },
@@ -105,7 +105,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'You can jump into the browser to help Devin navigate — Interactive Browser.',
+        en: 'You can jump into the browser to help Devin navigate: Interactive Browser.',
         it: "Puoi entrare nel browser per aiutare Devin nella navigazione: l'Interactive Browser.",
       },
       funAside: {

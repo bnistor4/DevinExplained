@@ -277,7 +277,7 @@ export default function Presenter() {
       <div className="presenter">
         <div className="empty-present">
           <Mascot size={64} mood="think" />
-          <p>Esc — {t('presenter.exit')}</p>
+          <p>Esc · {t('presenter.exit')}</p>
         </div>
       </div>
     );

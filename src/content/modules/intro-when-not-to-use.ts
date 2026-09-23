@@ -22,7 +22,7 @@ const mod: Module = {
           items: [
             { en: 'Clear success criteria: tests, CI, a pattern to match', it: 'Criteri di successo chiari: test, CI, un pattern da seguire' },
             { en: 'Enough context: files, examples, docs, links', it: 'Contesto sufficiente: file, esempi, documentazione, link' },
-            { en: 'Focused sessions — think XS, S or M', it: 'Sessioni mirate: pensa a taglie XS, S o M' },
+            { en: 'Focused sessions: think XS, S or M', it: 'Sessioni mirate: pensa a taglie XS, S o M' },
             { en: 'Work you can verify: lint, compile, a UI you can click', it: 'Lavoro verificabile: lint, compilazione, una UI da cliccare' },
           ],
         },
@@ -37,7 +37,7 @@ const mod: Module = {
         },
       },
       notes: {
-        en: 'Devin handles most tasks, including medium and hard ones — the failure mode is vague instructions, not difficulty.',
+        en: 'Devin handles most tasks, including medium and hard ones: the failure mode is vague instructions, not difficulty.',
         it: 'Devin gestisce la maggior parte dei compiti, anche medi e difficili: il problema è la vaghezza, non la difficoltà.',
       },
     },

@@ -6,7 +6,7 @@ const mod: Module = {
   icon: 'Database',
   title: { en: 'Databricks & OIDC to your cloud', it: 'Databricks e OIDC verso il tuo cloud' },
   summary: {
-    en: 'Devin as a Databricks coworker — OAuth secret today, token federation when you scale.',
+    en: 'Devin as a Databricks coworker: OAuth secret today, token federation when you scale.',
     it: 'Devin come collega su Databricks: secret OAuth per partire, token federation per crescere.',
   },
   durationMin: 3,
@@ -29,7 +29,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Databricks, workspaces and every permission stay in your account — Devin just borrows the identity.',
+        en: 'Databricks, workspaces and every permission stay in your account: Devin only borrows the identity.',
         it: 'Databricks, workspace e ogni permesso restano nel tuo account: Devin prende solo l’identità in prestito.',
       },
     },
@@ -49,7 +49,7 @@ const mod: Module = {
         right: {
           title: { en: 'Option B: OIDC federation', it: 'Opzione B: federation OIDC' },
           items: [
-            { en: 'Sessions exchange a short-lived token — nothing to rotate', it: 'Le sessioni scambiano un token a vita breve: niente da ruotare' },
+            { en: 'Sessions exchange a short-lived token: nothing to rotate', it: 'Le sessioni scambiano un token a vita breve: niente da ruotare' },
             { en: 'Databricks itself recommends federation for automation', it: 'Databricks stessa consiglia la federation per l’automazione' },
             { en: 'Best for: scaling the integration', it: 'Ideale per: scalare l’integrazione' },
           ],

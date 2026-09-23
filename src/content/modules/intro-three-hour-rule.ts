@@ -22,8 +22,8 @@ const mod: Module = {
             icon: 'Layers',
             title: { en: 'Many tasks in parallel', it: 'Tanti compiti in parallelo' },
             text: {
-              en: 'Tickets, features, bug reports and tests — done before they pile up in the backlog.',
-              it: 'Ticket, feature, bug report e test — chiusi prima che si accumulino nel backlog.',
+              en: 'Tickets, features, bug reports and tests: done before they pile up in the backlog.',
+              it: 'Ticket, feature, bug report e test: chiusi prima che si accumulino nel backlog.',
             },
           },
           {
@@ -53,12 +53,12 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'These four categories come straight from the Devin intro doc — they map to where agent work compounds fastest.',
+        en: 'These four categories come straight from the Devin intro doc: they map to where agent work compounds fastest.',
         it: 'Queste quattro categorie vengono dalla doc introduttiva di Devin: sono dove il lavoro agentico rende di più.',
       },
       funAside: {
-        en: 'Basically: all the tickets you keep postponing.',
-        it: 'In pratica: tutti i ticket che continui a rimandare.',
+        en: 'All the tickets you keep postponing.',
+        it: 'Tutti i ticket che continui a rimandare.',
       },
     },
     {
@@ -73,7 +73,7 @@ const mod: Module = {
             it: 'Scrivi prompt chiari, con criteri di completamento espliciti',
           },
           {
-            en: 'Make tasks easy to verify — green CI, a deploy to test',
+            en: 'Make tasks easy to verify: green CI, a deploy to test',
             it: 'Rendi i compiti facili da verificare: CI verde, una deploy da testare',
           },
           {
@@ -89,8 +89,8 @@ const mod: Module = {
             it: "Delega dalla web app, poi subentra nell'IDE quando serve",
           },
           {
-            en: 'Run Devin CLI locally — /handoff sends long tasks to cloud Devin',
-            it: 'Usa Devin CLI in locale: con /handoff i compiti lunghi passano al cloud',
+            en: 'Run Devin CLI locally: /handoff sends long tasks to cloud Devin',
+            it: 'Usa Devin CLI in locale, con /handoff i compiti lunghi passano al cloud',
           },
         ],
       },
@@ -106,8 +106,8 @@ const mod: Module = {
         type: 'analogy',
         title: { en: "It's like…", it: 'È come…' },
         text: {
-          en: 'having *five* extra teammates who never sleep — and actually read the ticket.',
-          it: 'avere *cinque* colleghi in più che non dormono mai — e leggono davvero il ticket.',
+          en: 'having *five* extra teammates who never sleep and read the ticket.',
+          it: 'avere *cinque* colleghi in più che non dormono mai e leggono il ticket.',
         },
         icon: 'Ticket',
       },

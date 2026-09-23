@@ -34,7 +34,7 @@ const mod: Module = {
             icon: 'ScanFace',
             title: { en: 'OIDC', it: 'OIDC' },
             text: {
-              en: 'Short-lived identity tokens exchanged by AWS/GCP/Vault — nothing static to store.',
+              en: 'Short-lived identity tokens exchanged by AWS/GCP/Vault: nothing static to store.',
               it: 'Token di identità a vita breve scambiati da AWS/GCP/Vault: niente di statico da salvare.',
             },
           },
@@ -64,11 +64,11 @@ const mod: Module = {
           { en: 'Your cloud verifies it against Devin’s public OIDC issuer', it: 'Il tuo cloud lo verifica sull’issuer OIDC pubblico di Devin' },
           { en: 'Claims like org_id and requesting_user_email drive trust policies', it: 'Claim come org_id e requesting_user_email guidano le trust policy' },
           { en: 'Blueprint actions exist for AWS, GCP, Vault and JFrog', it: 'Esistono action per blueprint per AWS, GCP, Vault e JFrog' },
-          { en: 'Tokens expire on their own — nothing stored, nothing revoked', it: 'I token scadono da soli: niente salvato, niente da revocare' },
+          { en: 'Tokens expire on their own: nothing stored, nothing revoked', it: 'I token scadono da soli: niente salvato, niente da revocare' },
         ],
       },
       notes: {
-        en: 'One blueprint line: uses: github.com/CognitionAI/actions/setup-aws-oidc@main + role-arn. Then aws sts just works.',
+        en: 'One blueprint line: uses: github.com/CognitionAI/actions/setup-aws-oidc@main + role-arn. Then aws sts works out of the box.',
         it: 'Una riga di blueprint: uses: github.com/CognitionAI/actions/setup-aws-oidc@main + role-arn. Poi aws sts funziona e basta.',
       },
     },
@@ -83,7 +83,7 @@ const mod: Module = {
           { en: 'MCP access: which MCP servers the session may call', it: 'Accesso MCP: quali server MCP la sessione può chiamare' },
           { en: 'Devin MCP read-only: inspect, but don’t create or edit', it: 'Devin MCP read-only: ispeziona, ma non creare né modificare' },
           { en: 'Git access: read-only (no pushes, no PRs) or full', it: 'Accesso git: read-only (niente push, niente PR) o completo' },
-          { en: 'Strip the GitHub CLI token — repos still work via the integration', it: 'Rimuovi il token GitHub CLI: le repo funzionano comunque via integrazione' },
+          { en: 'Strip the GitHub CLI token: repos still work via the integration', it: 'Rimuovi il token GitHub CLI: le repo funzionano comunque via integrazione' },
         ],
       },
       notes: {

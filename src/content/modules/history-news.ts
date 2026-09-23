@@ -21,7 +21,7 @@ const mod: Module = {
           {
             date: '09.2026',
             title: { en: 'Series E', it: 'Series E' },
-            text: { en: '“Do it all with Devin” — over $2B at $48B', it: '“Do it all with Devin”: oltre 2 miliardi a 48 miliardi' },
+            text: { en: '“Do it all with Devin”: over $2B at $48B', it: '“Do it all with Devin”: oltre 2 miliardi a 48 miliardi' },
           },
           {
             date: '09.2026',
@@ -56,7 +56,7 @@ const mod: Module = {
           {
             date: '07.2026',
             title: { en: 'FedRAMP High In-Process', it: 'FedRAMP High In-Process' },
-            text: { en: 'Unlocking federal agencies', it: 'Verso le agenzie federali' },
+            text: { en: 'Expanding into federal agencies', it: 'Verso le agenzie federali' },
           },
         ],
       },
@@ -74,7 +74,7 @@ const mod: Module = {
         stats: [
           { value: '$2B+', label: { en: 'raised in Series E', it: 'raccolti col Series E' } },
           { value: '$48B', label: { en: 'valuation', it: 'valutazione' } },
-          { value: '39%', label: { en: 'more efficient — Fusion vs other harnesses', it: 'più efficiente — Fusion vs altri harness' } },
+          { value: '39%', label: { en: 'more efficient: Fusion vs other harnesses', it: 'più efficiente: Fusion vs altri harness' } },
         ],
       },
       notes: {
@@ -96,11 +96,11 @@ const mod: Module = {
           { en: 'Models: SWE-2 keeps pushing the efficiency frontier', it: 'Modelli: SWE-2 continua a spingere la frontiera di efficienza' },
           { en: 'Harnesses: Fusion brings lead+sidekick pairing to Desktop and CLI', it: 'Harness: Fusion porta la coppia lead+sidekick su Desktop e CLI' },
           { en: 'Enterprise trust: FedRAMP High in process, AWS collaboration', it: 'Fiducia enterprise: FedRAMP High in process, collaborazione AWS' },
-          { en: 'The blog itself is the pulse — check it before every talk', it: 'Il blog stesso è il polso: controllalo prima di ogni talk' },
+          { en: 'The blog itself is the pulse: check it before every talk', it: 'Il blog stesso è il polso: controllalo prima di ogni talk' },
         ],
       },
       notes: {
-        en: 'These summaries paraphrase the post titles on cognition.com/blog — keep them high level.',
+        en: 'These summaries paraphrase the post titles on cognition.com/blog: keep them high level.',
         it: 'Questi riepiloghi parafrasano i titoli dei post su cognition.com/blog: tienili alti.',
       },
     },

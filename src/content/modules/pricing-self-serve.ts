@@ -66,7 +66,7 @@ const mod: Module = {
         },
       },
       notes: {
-        en: 'Pro and Max are single-user plans — for multiple people on one subscription you need Teams.',
+        en: 'Pro and Max are single-user plans: for multiple people on one subscription you need Teams.',
         it: 'Pro e Max sono piani individuali: per più persone su un solo abbonamento serve Teams.',
       },
     },
@@ -78,16 +78,16 @@ const mod: Module = {
         icon: 'Users',
         items: [
           {
-            en: 'Full seat: $40/month — Pro-equivalent quota plus Devin Desktop access',
-            it: 'Posto full: 40$/mese — quota equivalente a Pro più accesso a Devin Desktop',
+            en: 'Full seat: $40/month, Pro-equivalent quota plus Devin Desktop access',
+            it: 'Posto full: 40$/mese, quota equivalente a Pro più accesso a Devin Desktop',
           },
           {
-            en: "Flex seat: free — draws entirely from the team's shared on-demand credits",
-            it: 'Posto flex: gratuito — attinge interamente dai crediti on-demand condivisi del team',
+            en: "Flex seat: free, draws entirely from the team's shared on-demand credits",
+            it: 'Posto flex: gratuito, attinge interamente dai crediti on-demand condivisi del team',
           },
           {
-            en: 'Every Teams account pays at least $80/month — credits cover the gap under 2 full seats',
-            it: 'Ogni account Teams paga almeno 80$/mese — sotto i 2 posti full il resto diventa crediti',
+            en: 'Every Teams account pays at least $80/month: credits cover the gap under 2 full seats',
+            it: 'Ogni account Teams paga almeno 80$/mese: sotto i 2 posti full il resto diventa crediti',
           },
           {
             en: 'Up to 200 members per Teams organization; larger teams go Enterprise',
@@ -116,7 +116,7 @@ const mod: Module = {
             it: 'Si accumulano di mese in mese e non scadono mai',
           },
           {
-            en: 'On Teams they are shared across all members — no per-member balance',
+            en: 'On Teams they are shared across all members: no per-member balance',
             it: 'Su Teams sono condivisi da tutti i membri, senza saldo individuale',
           },
           {
@@ -130,7 +130,7 @@ const mod: Module = {
         it: 'Trucco gratuito: sostituisci github.com con devinreview.com nell’URL di qualsiasi PR pubblica.',
       },
       funAside: {
-        en: 'The only credits that never expire — unlike the ones in your favorite game.',
+        en: 'The only credits that never expire, unlike the ones in your favorite game.',
         it: 'Gli unici crediti che non scadono mai, a differenza di quelli del tuo gioco preferito.',
       },
     },

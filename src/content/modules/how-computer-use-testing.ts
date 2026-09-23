@@ -6,7 +6,7 @@ const mod: Module = {
   icon: 'MonitorSmartphone',
   title: { en: 'Devin tests like a human', it: 'Devin testa come un umano' },
   summary: {
-    en: 'Computer Use gives Devin a mouse, keyboard and screen — so it can click through your app and send you a recording.',
+    en: 'Computer Use gives Devin a mouse, keyboard and screen, so it can click through your app and send you a recording.',
     it: 'Computer Use dà a Devin mouse, tastiera e schermo: clicca nella tua app e ti manda la registrazione.',
   },
   durationMin: 4,
@@ -20,18 +20,18 @@ const mod: Module = {
       id: 'computer-use-bullets',
       block: {
         type: 'bullets',
-        title: { en: 'A *real desktop*, not just a browser', it: 'Un *desktop vero*, non solo un browser' },
+        title: { en: 'A *real desktop* with its own apps', it: 'Un *desktop vero* con le sue app' },
         icon: 'MousePointerClick',
         items: [
           { en: 'Devin sees a 1024×768 screen and can click, type, scroll, drag, screenshot', it: 'Devin vede uno schermo 1024×768: clicca, scrive, scorre, trascina, fa screenshot' },
-          { en: 'Works on web apps, desktop apps, TUIs — anything on screen', it: 'Funziona su web app, app desktop, TUI: qualunque cosa sia a schermo' },
+          { en: 'Works on web apps, desktop apps, TUIs: anything on screen', it: 'Funziona su web app, app desktop, TUI: qualunque cosa sia a schermo' },
           { en: 'Linux by default; Windows and macOS sessions supported', it: 'Linux di default; sessioni Windows e macOS supportate' },
           { en: 'On macOS it can test Mac apps and iOS apps in the Simulator', it: 'Su macOS testa app Mac e app iOS nel Simulator' },
           { en: 'Enable it in Settings → Devin → Computer use (all plans)', it: 'Si attiva in Settings → Devin → Computer use (tutti i piani)' },
         ],
       },
       notes: {
-        en: 'This is what “tests like a human” means literally: pixels, pointer and keyboard.',
+        en: 'This is what “tests like a human” means concretely: pixels, pointer and keyboard.',
         it: 'Questo è il senso letterale di “testa come un umano”: pixel, puntatore e tastiera.',
       },
       funAside: {
@@ -84,14 +84,14 @@ const mod: Module = {
         icon: 'KeyRound',
         items: [
           { en: 'Drive the browser yourself through SSO, MFA, CAPTCHAs', it: 'Guidi tu il browser attraverso SSO, MFA e CAPTCHA' },
-          { en: 'Say “save the browser profile” — Devin zips cookies and storage', it: 'Poi dici “save the browser profile”: Devin zippa cookie e storage' },
-          { en: 'Approve the blueprint step once — every future session starts logged in', it: 'Approvato lo step nel blueprint, ogni sessione futura parte già loggata' },
-          { en: 'Org-level, under 200 MB, saved passwords excluded — use Secrets for credentials', it: 'A livello org, sotto i 200 MB, password escluse: per le credenziali usa Secrets' },
+          { en: 'Say “save the browser profile”: Devin zips cookies and storage', it: 'Poi dici “save the browser profile”: Devin zippa cookie e storage' },
+          { en: 'Approve the blueprint step once: every future session starts logged in', it: 'Approvato lo step nel blueprint, ogni sessione futura parte già loggata' },
+          { en: 'Org-level, under 200 MB, saved passwords excluded: use Secrets for credentials', it: 'A livello org, sotto i 200 MB, password escluse: per le credenziali usa Secrets' },
         ],
       },
       notes: {
-        en: 'Warn the room: saved profiles are org-level — use a dedicated service account, not your personal login.',
-        it: 'Avviso da fare a voce: i profili salvati sono a livello org — usa un service account dedicato, non il tuo login.',
+        en: 'Warn the room: saved profiles are org-level; use a dedicated service account, not your personal login.',
+        it: 'Avviso da fare a voce: i profili salvati sono a livello org, usa un service account dedicato, non il tuo login.',
       },
     },
   ],

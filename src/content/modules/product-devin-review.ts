@@ -6,7 +6,7 @@ const mod: Module = {
   icon: 'GitPullRequest',
   title: { en: 'Devin Review', it: 'Devin Review' },
   summary: {
-    en: 'The bottleneck moved from writing code to reviewing it — so Devin reviews PRs too.',
+    en: 'The bottleneck moved from writing code to reviewing it, so Devin reviews PRs too.',
     it: 'Il collo di bottiglia si è spostato dallo scrivere codice al revisionarlo: quindi Devin fa review anche delle PR.',
   },
   durationMin: 4,
@@ -23,11 +23,11 @@ const mod: Module = {
         title: { en: 'Review is the *new* bottleneck', it: 'La review è il *nuovo* collo di bottiglia' },
         icon: 'GitPullRequest',
         items: [
-          { en: 'Groups changes logically — not alphabetically by file', it: 'Raggruppa le modifiche per logica, non per nome di file' },
+          { en: 'Groups changes logically, not alphabetically by file', it: 'Raggruppa le modifiche per logica, non per nome di file' },
           { en: 'Detects moved/copied code instead of showing delete+insert', it: 'Riconosce codice spostato/copiato invece di mostrare delete+insert' },
           { en: 'Flags bugs by confidence and security issues with CWE/severity', it: 'Segnala bug per confidence e vulnerabilità con CWE e severità' },
-          { en: 'Comment, approve, request changes — synced back to your SCM', it: 'Commenti, approve, request changes — sincronizzati sul tuo SCM' },
-          { en: 'Public PRs work for free — no Devin account needed', it: 'Sulle PR pubbliche funziona gratis: non serve un account Devin' },
+          { en: 'Comment, approve, request changes: synced back to your SCM', it: 'Commenti, approve, request changes: sincronizzati sul tuo SCM' },
+          { en: 'Public PRs work for free: no Devin account needed', it: 'Sulle PR pubbliche funziona gratis: non serve un account Devin' },
         ],
       },
       notes: {
@@ -42,14 +42,14 @@ const mod: Module = {
         title: { en: 'The *details* that matter', it: 'I *dettagli* che contano' },
         icon: 'SlidersHorizontal',
         items: [
-          { en: 'Ask questions about the PR — answers use the whole codebase', it: 'Puoi fare domande sulla PR: le risposte usano tutto il codebase' },
-          { en: 'Devin ignores bot comments by default — no infinite loops', it: 'Devin ignora i commenti dei bot di default: niente loop infiniti' },
+          { en: 'Ask questions about the PR: answers use the whole codebase', it: 'Puoi fare domande sulla PR: le risposte usano tutto il codebase' },
+          { en: 'Devin ignores bot comments by default: no infinite loops', it: 'Devin ignora i commenti dei bot di default: niente loop infiniti' },
           { en: '“Selected only” allowlists trusted bots like github-actions', it: '“Selected only” mette in allowlist i bot fidati tipo github-actions' },
           { en: 'Devin PR template: DEVIN_PR_TEMPLATE.md overrides the human one', it: 'Template Devin: DEVIN_PR_TEMPLATE.md ha la precedenza su quello umano' },
         ],
       },
       notes: {
-        en: 'The bot-comment allowlist lives in Settings → Devin → Pull requests — admins only.',
+        en: 'The bot-comment allowlist lives in Settings → Devin → Pull requests: admins only.',
         it: 'L’allowlist dei bot sta in Settings → Devin → Pull requests: solo admin.',
       },
       funAside: {
@@ -66,19 +66,19 @@ const mod: Module = {
           title: { en: 'No bots (default)', it: 'No bot (default)' },
           items: [
             { en: 'Ignores all bot comments', it: 'Ignora tutti i commenti dei bot' },
-            { en: 'Safest — zero loop risk', it: 'Il più sicuro: zero rischio di loop' },
+            { en: 'Safest: zero loop risk', it: 'Il più sicuro: zero rischio di loop' },
           ],
         },
         right: {
           title: { en: 'Selected only', it: 'Solo selezionati' },
           items: [
             { en: 'Allowlist bot usernames like github-actions[bot]', it: 'Allowlist di username come github-actions[bot]' },
-            { en: '“All bots” exists — the docs warn it can loop', it: 'Esiste “All bots”: i docs avvisano che può entrare in loop' },
+            { en: '“All bots” exists: the docs warn it can loop', it: 'Esiste “All bots”: i docs avvisano che può entrare in loop' },
           ],
         },
       },
       notes: {
-        en: '“Selected only” is the recommended mode — precise control without open loops.',
+        en: '“Selected only” is the recommended mode: precise control without open loops.',
         it: '“Selected only” è la modalità consigliata: controllo preciso senza loop aperti.',
       },
     },

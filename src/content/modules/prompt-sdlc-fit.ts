@@ -24,7 +24,7 @@ const mod: Module = {
         stats: [
           { value: '<20%', label: { en: 'of engineer time spent writing code', it: 'del tempo degli sviluppatori passato a scrivere codice' } },
           { value: '8x', label: { en: 'human time saved on a multi-million-line ETL migration', it: 'di tempo umano risparmiato su una migrazione ETL multi-milione di righe' } },
-          { value: '1.5–2x', label: { en: 'typical coverage increase — often reaching 90%+', it: 'aumento tipico di coverage — spesso oltre il 90%' } },
+          { value: '1.5–2x', label: { en: 'typical coverage increase: often reaching 90%+', it: 'aumento tipico di coverage: spesso oltre il 90%' } },
         ],
       },
       notes: {
@@ -74,13 +74,13 @@ const mod: Module = {
         items: [
           { en: 'Best projects: high-value work splittable into isolated, repetitive subtasks', it: 'Progetti migliori: lavoro di valore spezzabile in sotto-task isolati e ripetitivi' },
           { en: 'Ideal slices: junior-level, backwards-compatible, objectively verifiable', it: 'Slice ideali: livello junior, retrocompatibili, verificabili oggettivamente' },
-          { en: 'Net-new complex features scale worse — “tall & deep”', it: 'Feature complesse da zero scalano peggio — “tall & deep”' },
+          { en: 'Net-new complex features scale worse: “tall & deep”', it: 'Feature complesse da zero scalano peggio: “tall & deep”' },
           { en: 'A backlog of small tasks × thousands of iterations = the ROI pattern', it: 'Un backlog di task piccoli × migliaia di iterazioni = il pattern di ROI' },
         ],
       },
       notes: {
-        en: 'The docs’ example: resolving SonarQube issues — a wide & shallow backlog that scales.',
-        it: 'L’esempio dei docs: risolvere issue SonarQube — un backlog “wide & shallow” che scala.',
+        en: 'The docs’ example: resolving SonarQube issues, a wide & shallow backlog that scales.',
+        it: 'L’esempio dei docs: risolvere issue SonarQube, un backlog “wide & shallow” che scala.',
       },
     },
   ],

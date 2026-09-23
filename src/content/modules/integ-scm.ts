@@ -45,8 +45,8 @@ const mod: Module = {
             icon: 'Building',
             title: { en: 'Azure DevOps', it: 'Azure DevOps' },
             text: {
-              en: 'Managed inside Devin’s Connections — or via a Microsoft Entra service principal.',
-              it: 'Gestito dalle Connections di Devin — o via service principal Microsoft Entra.',
+              en: 'Managed inside Devin’s Connections, or via a Microsoft Entra service principal.',
+              it: 'Gestito dalle Connections di Devin, o via service principal Microsoft Entra.',
             },
           },
         ],
@@ -65,8 +65,8 @@ const mod: Module = {
         items: [
           { en: 'NLB + allowlist of Devin’s static IPs + a DNS record', it: 'NLB + allowlist degli IP statici di Devin + un record DNS' },
           { en: 'Works for self-hosted SCM and artifact repos (Artifactory, Nexus)', it: 'Funziona per SCM self-hosted e registry di artefatti (Artifactory, Nexus)' },
-          { en: 'A few hours of engineering — infra stays yours', it: 'Poche ore di lavoro: l’infrastruttura resta tua' },
-          { en: 'Enterprise plan feature — enterprise@cognition.ai helps', it: 'Funzione del piano Enterprise: aiuta enterprise@cognition.ai' },
+          { en: 'A few hours of engineering: infra stays yours', it: 'Poche ore di lavoro: l’infrastruttura resta tua' },
+          { en: 'Enterprise plan feature: enterprise@cognition.ai helps', it: 'Funzione del piano Enterprise: aiuta enterprise@cognition.ai' },
         ],
       },
       notes: {
@@ -74,7 +74,7 @@ const mod: Module = {
         it: 'Caveat da sapere: su GitLab on-prem lo stato delle MR si sincronizza alle sessioni solo una volta al giorno.',
       },
       funAside: {
-        en: '“All repositories” or “select repositories” — choose before Devin chooses for you.',
+        en: '“All repositories” or “select repositories”: choose before Devin chooses for you.',
         it: '“All repositories” o “select repositories”: sceglilo tu prima che lo scelga Devin.',
       },
     },
@@ -85,7 +85,7 @@ const mod: Module = {
         title: { en: 'The *service account* pattern', it: 'Il pattern del *service account*' },
         icon: 'UserCog',
         items: [
-          { en: 'Create a dedicated account — e.g. devin@yourcompany.com', it: 'Crea un account dedicato — es. devin@yourcompany.com' },
+          { en: 'Create a dedicated account: e.g. devin@yourcompany.com', it: 'Crea un account dedicato: es. devin@yourcompany.com' },
           { en: 'Cleaner access management and audit trails', it: 'Gestione degli accessi e audit trail più puliti' },
           { en: 'PRs and comments are clearly attributed to Devin', it: 'PR e commenti sono attribuiti chiaramente a Devin' },
           { en: 'Revoking access = disabling one account, not untangling permissions', it: 'Revocare l’accesso = disabilitare un account, non districare permessi' },

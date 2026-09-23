@@ -41,15 +41,15 @@ const mod: Module = {
         title: { en: 'Coverage for the *unloved* paths', it: 'Coverage per i percorsi *trascurati*' },
         icon: 'TestTube',
         items: [
-          { en: 'Teams test critical paths first — everything else stays uncovered', it: 'I team testano prima i percorsi critici: il resto resta scoperto' },
+          { en: 'Teams test critical paths first: everything else stays uncovered', it: 'I team testano prima i percorsi critici: il resto resta scoperto' },
           { en: 'Devin reads your suite’s style and extends it', it: 'Devin legge lo stile della tua suite e la estende' },
           { en: 'Walkthrough: baseline coverage → new tests → PR with the report', it: 'Walkthrough: baseline di coverage → test nuovi → PR con il report' },
           { en: 'Also: refactors that don’t break behavior, perf improvements', it: 'Anche: refactor che non rompono il comportamento, miglioramenti di perf' },
         ],
       },
       notes: {
-        en: 'The code-coverage tutorial walks a RealWorld Express+Prisma app end to end — session link included.',
-        it: 'Il tutorial code-coverage segue un’app RealWorld Express+Prisma dall’inizio alla fine — con link alla sessione.',
+        en: 'The code-coverage tutorial walks a RealWorld Express+Prisma app end to end: session link included.',
+        it: 'Il tutorial code-coverage segue un’app RealWorld Express+Prisma dall’inizio alla fine, con link alla sessione.',
       },
     },
     {
@@ -57,8 +57,8 @@ const mod: Module = {
       block: {
         type: 'quote',
         text: {
-          en: 'Hand off a small refactor you spot while coding — and keep working on your main task while Devin opens a PR.',
-          it: 'Passa a Devin il refactor che noti mentre codi — e continua sul tuo task mentre lui apre la PR.',
+          en: 'Hand off a small refactor you spot while coding, and keep working on your main task while Devin opens a PR.',
+          it: 'Passa a Devin il refactor che noti mentre codi, e continua sul tuo task mentre lui apre la PR.',
         },
         author: 'Tutorial library',
         role: { en: 'docs.devin.ai', it: 'docs.devin.ai' },

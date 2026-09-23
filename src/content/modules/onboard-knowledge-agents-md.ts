@@ -24,15 +24,15 @@ const mod: Module = {
         icon: 'GraduationCap',
         items: [
           { en: 'Devin auto-generates repo knowledge from READMEs and structure', it: 'Devin genera da solo la knowledge dai README e dalla struttura' },
-          { en: 'Every knowledge item needs a trigger description — the more specific, the better', it: 'Ogni knowledge vuole una trigger description: più è specifica, meglio è' },
-          { en: 'Pin knowledge to all repos, or to just one', it: 'La knowledge si fissa su tutte le repo o solo su una' },
-          { en: 'Sessions show “Accessed Knowledge” — you see what it used', it: 'In sessione vedi “Accessed Knowledge”: sai cosa ha usato' },
+          { en: 'Every knowledge item needs a trigger description: the more specific, the better', it: 'Ogni knowledge vuole una trigger description: più è specifica, meglio è' },
+          { en: 'Pin knowledge to all repos, or to a single one', it: 'La knowledge si fissa su tutte le repo o solo su una' },
+          { en: 'Sessions show “Accessed Knowledge”: you see what it used', it: 'In sessione vedi “Accessed Knowledge”: sai cosa ha usato' },
           { en: 'Macros like !deploy-checklist inject knowledge into a prompt', it: 'Le macro tipo !deploy-checklist iniettano knowledge nel prompt' },
         ],
       },
       notes: {
-        en: 'Important: Knowledge is deprecated and being migrated to Skills in Plugins automatically — use Skills for new context.',
-        it: 'Importante: Knowledge è deprecata e migrata automaticamente a Skills nei Plugin — per il contesto nuovo usa le Skills.',
+        en: 'Important: Knowledge is deprecated and being migrated to Skills in Plugins automatically, use Skills for new context.',
+        it: 'Importante: Knowledge è deprecata e migrata automaticamente a Skills nei Plugin, per il contesto nuovo usa le Skills.',
       },
     },
     {
@@ -52,7 +52,7 @@ const mod: Module = {
         right: {
           title: { en: 'AGENTS.md (repo level)', it: 'AGENTS.md (a livello repo)' },
           items: [
-            { en: 'An open standard — a README for agents', it: 'Uno standard aperto: un README per gli agenti' },
+            { en: 'An open standard: a README for agents', it: 'Uno standard aperto: un README per gli agenti' },
             { en: 'Lives in the repo root, versioned with the code', it: 'Sta nella root della repo, versionato col codice' },
             { en: 'Setup commands, style rules, testing conventions', it: 'Comandi di setup, regole di stile, convenzioni di test' },
             { en: 'Read automatically before Devin starts coding', it: 'Letto automaticamente prima che Devin scriva codice' },
@@ -72,12 +72,12 @@ const mod: Module = {
         language: 'markdown',
         code: '# AGENTS.md\n\n## Setup Commands\n- Install: `pnpm install`\n- Dev server: `pnpm dev`\n- Tests: `pnpm test`\n\n## Code Style\n- TypeScript strict mode\n- Functional React components\n- Conventional commits',
         caption: {
-          en: 'Setup, style, tests, workflow — that’s the whole file. From docs.devin.ai/onboard-devin/agents-md.',
+          en: 'Setup, style, tests, workflow: that’s the whole file. From docs.devin.ai/onboard-devin/agents-md.',
           it: 'Setup, stile, test, workflow: il file è tutto qui. Da docs.devin.ai/onboard-devin/agents-md.',
         },
       },
       notes: {
-        en: 'Keep it small — rules and AGENTS.md cost context in every session.',
+        en: 'Keep it small: rules and AGENTS.md cost context in every session.',
         it: 'Tienilo piccolo: regole e AGENTS.md costano contesto in ogni sessione.',
       },
     },

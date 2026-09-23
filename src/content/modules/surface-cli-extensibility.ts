@@ -33,8 +33,8 @@ const mod: Module = {
             icon: 'BookOpen',
             title: { en: 'Rules', it: 'Regole' },
             text: {
-              en: 'Always-on instructions — AGENTS.md — that shape behavior in every session.',
-              it: 'Istruzioni sempre attive — AGENTS.md — che guidano ogni sessione.',
+              en: 'Always-on instructions (AGENTS.md) that shape behavior in every session.',
+              it: 'Istruzioni sempre attive (AGENTS.md) che guidano ogni sessione.',
             },
           },
           {
@@ -49,16 +49,16 @@ const mod: Module = {
             icon: 'Webhook',
             title: { en: 'Hooks', it: 'Hook' },
             text: {
-              en: 'Shell commands at lifecycle events — e.g. block a dangerous command.',
-              it: 'Comandi shell agli eventi del ciclo di vita — ad es. bloccare un comando pericoloso.',
+              en: 'Shell commands at lifecycle events: e.g. block a dangerous command.',
+              it: 'Comandi shell agli eventi del ciclo di vita: ad es. bloccare un comando pericoloso.',
             },
           },
           {
             icon: 'PlugZap',
             title: { en: 'MCP servers', it: 'Server MCP' },
             text: {
-              en: 'External tools — GitHub, Linear, databases — callable like built-ins.',
-              it: 'Strumenti esterni — GitHub, Linear, database — chiamabili come quelli interni.',
+              en: 'External tools (GitHub, Linear, databases) callable like built-ins.',
+              it: 'Strumenti esterni (GitHub, Linear, database) chiamabili come quelli interni.',
             },
           },
           {
@@ -80,8 +80,8 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Docs’ advice: prefer skills over rules — skills load only when relevant, keeping context lean.',
-        it: 'Consiglio dei docs: preferisci le skill alle regole — le skill entrano nel contesto solo quando servono.',
+        en: 'Docs’ advice: prefer skills over rules, skills load only when relevant, keeping context lean.',
+        it: 'Consiglio dei docs: preferisci le skill alle regole, le skill entrano nel contesto solo quando servono.',
       },
     },
     {
@@ -110,8 +110,8 @@ const mod: Module = {
         items: [
           { en: '--sandbox isolates the CLI at OS level: only granted paths are writable', it: '--sandbox isola la CLI a livello OS: scrivibili solo i percorsi autorizzati' },
           { en: 'deny rules can hide paths entirely from sandboxed commands', it: 'Le regole deny possono nascondere del tutto dei percorsi ai comandi' },
-          { en: 'If sandboxing can’t initialize, the CLI refuses to start — fail closed', it: 'Se il sandbox non si inizializza, la CLI non parte: fail closed' },
-          { en: 'Subagents run foreground or background — each with its own context and cost', it: 'I subagent girano in foreground o background, con contesto e costo propri' },
+          { en: 'If sandboxing can’t initialize, the CLI refuses to start: fail closed', it: 'Se il sandbox non si inizializza, la CLI non parte: fail closed' },
+          { en: 'Subagents run foreground or background: each with its own context and cost', it: 'I subagent girano in foreground o background, con contesto e costo propri' },
         ],
       },
       notes: {

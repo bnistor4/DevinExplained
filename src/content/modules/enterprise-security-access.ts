@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'ShieldCheck',
   title: { en: 'Security & access control', it: 'Sicurezza e controllo accessi' },
   summary: {
-    en: 'SSO, SCIM, RBAC, IP allowlists, CMK — and guardrails that screen every prompt.',
-    it: 'SSO, SCIM, RBAC, allowlist IP, CMK — e guardrail che filtrano ogni prompt.',
+    en: 'SSO, SCIM, RBAC, IP allowlists, CMK, and guardrails that screen every prompt.',
+    it: 'SSO, SCIM, RBAC, allowlist IP, CMK e guardrail che filtrano ogni prompt.',
   },
   durationMin: 5,
   sources: [
@@ -63,7 +63,7 @@ const mod: Module = {
             icon: 'Network',
             title: { en: 'IP access lists', it: 'IP access list' },
             text: {
-              en: 'Restrict the webapp and APIs to corporate ranges — 401 for everything else.',
+              en: 'Restrict the webapp and APIs to corporate ranges: 401 for everything else.',
               it: 'Limita webapp e API a range aziendali: 401 per tutto il resto.',
             },
           },
@@ -86,8 +86,8 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Gotcha: turn off just-in-time provisioning when using SCIM — otherwise groups re-sync on every login and fight SCIM.',
-        it: 'Trappola: spegni il provisioning just-in-time quando usi SCIM — altrimenti i gruppi si risincronizzano a ogni login e litigano con SCIM.',
+        en: 'Gotcha: turn off just-in-time provisioning when using SCIM; otherwise groups re-sync on every login and fight SCIM.',
+        it: 'Trappola: spegni il provisioning just-in-time quando usi SCIM, altrimenti i gruppi si risincronizzano a ogni login e litigano con SCIM.',
       },
     },
     {
@@ -106,7 +106,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Guardrails are enterprise-wide — they apply to every org, no per-org override.',
+        en: 'Guardrails are enterprise-wide: they apply to every org, no per-org override.',
         it: 'I guardrail sono a livello enterprise: valgono per ogni org, senza override per-org.',
       },
     },
@@ -114,18 +114,18 @@ const mod: Module = {
       id: 'sec-sso',
       block: {
         type: 'bullets',
-        title: { en: 'SSO & provisioning, *in practice*', it: 'SSO e provisioning, *in pratica*' },
+        title: { en: 'SSO & provisioning, *hands-on*', it: 'SSO e provisioning, *sul campo*' },
         icon: 'KeyRound',
         items: [
-          { en: 'SAML and OIDC — guided setups for Okta and Microsoft Entra', it: 'SAML e OIDC: setup guidati per Okta e Microsoft Entra' },
+          { en: 'SAML and OIDC: guided setups for Okta and Microsoft Entra', it: 'SAML e OIDC: setup guidati per Okta e Microsoft Entra' },
           { en: 'SCIM provisioning keeps users and groups in sync with the IdP', it: 'Il provisioning SCIM tiene utenti e gruppi allineati all’IdP' },
-          { en: 'IdP groups map to Devin roles — join the group, get the role', it: 'I gruppi IdP mappano sui ruoli Devin: entri nel gruppo, prendi il ruolo' },
+          { en: 'IdP groups map to Devin roles: join the group, get the role', it: 'I gruppi IdP mappano sui ruoli Devin: entri nel gruppo, prendi il ruolo' },
           { en: 'IP access lists restrict which networks can reach the org', it: 'Le IP access list limitano le reti che raggiungono l’org' },
           { en: 'Customer-managed keys for orgs that need their own encryption', it: 'Customer-managed key per le org che vogliono la propria crittografia' },
         ],
       },
       notes: {
-        en: 'Per-IdP guides exist for Azure/Entra, Okta and generic SAML/OIDC — check the SSO section of the docs.',
+        en: 'Per-IdP guides exist for Azure/Entra, Okta and generic SAML/OIDC: check the SSO section of the docs.',
         it: 'Esistono guide per-IdP per Azure/Entra, Okta e SAML/OIDC generici: vedi la sezione SSO dei docs.',
       },
     },

@@ -25,7 +25,7 @@ const mod: Module = {
           { en: 'A coordinator session scopes work and delegates to managed Devins in parallel', it: 'Una sessione coordinatore delinea il lavoro e delega a managed Devin in parallelo' },
           { en: 'Each child session runs in its own isolated VM', it: 'Ogni sessione figlia gira nella sua VM isolata' },
           { en: 'The coordinator monitors progress, resolves conflicts, compiles results', it: 'Il coordinatore monitora, risolve i conflitti, raccoglie i risultati' },
-          { en: 'It can message, pause or terminate child sessions — and schedule reminders to itself', it: 'Può scrivere, sospendere o terminare le sessioni figlie — e programmare promemoria per sé' },
+          { en: 'It can message, pause or terminate child sessions, and schedule reminders to itself', it: 'Può scrivere, sospendere o terminare le sessioni figlie, e programmare promemoria per sé' },
           { en: 'Just ask: “spin up a managed Devin for each module”', it: 'Basta chiederlo: “avvia un managed Devin per ogni modulo”' },
         ],
       },
@@ -45,8 +45,8 @@ const mod: Module = {
             icon: 'Network',
             title: { en: 'Wide fan-out', it: 'Fan-out ampio' },
             text: {
-              en: 'Five or more independent units — files, modules, tickets — with a combine step at the end.',
-              it: 'Cinque o più unità indipendenti — file, moduli, ticket — con un passo di raccolta finale.',
+              en: 'Five or more independent units (files, modules, tickets) with a combine step at the end.',
+              it: 'Cinque o più unità indipendenti (file, moduli, ticket) con un passo di raccolta finale.',
             },
           },
           {
@@ -68,7 +68,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'A dynamic workflow is a deterministic Python script Devin writes and runs — the orchestration itself is code, recorded and resumable.',
+        en: 'A dynamic workflow is a deterministic Python script Devin writes and runs: the orchestration itself is code, recorded and resumable.',
         it: 'Un dynamic workflow è uno script Python deterministico che Devin scrive ed esegue: l’orchestrazione è codice, registrata e riprendibile.',
       },
       funAside: {
@@ -84,12 +84,12 @@ const mod: Module = {
         language: 'python',
         code: 'async def main():\n    await register_workflow(META)\n    results = await pipeline(MODULES, analyze, fix)\n    for module, result in zip(MODULES, results):\n        log(f"{module}: {result or \'no fix needed\'}")',
         caption: {
-          en: 'An audit-then-fix pipeline across modules — from the Dynamic Workflows docs.',
-          it: 'Una pipeline audit-poi-fix su più moduli — dalla documentazione Dynamic Workflows.',
+          en: 'An audit-then-fix pipeline across modules, from the Dynamic Workflows docs.',
+          it: 'Una pipeline audit-poi-fix su più moduli, dalla documentazione Dynamic Workflows.',
         },
       },
       notes: {
-        en: 'agent() takes a JSON Schema and returns structured output — that is how one stage feeds the next.',
+        en: 'agent() takes a JSON Schema and returns structured output: that is how one stage feeds the next.',
         it: 'agent() accetta una JSON Schema e restituisce output strutturato: così uno stadio alimenta il successivo.',
       },
     },

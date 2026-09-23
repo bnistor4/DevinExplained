@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'Landmark',
   title: { en: 'Devin for government', it: 'Devin per il governo' },
   summary: {
-    en: 'A federal deployment on AWS GovCloud via Palantir FedStart — FedRAMP, ITAR, IL4/5, on-prem.',
-    it: 'Un deployment federale su AWS GovCloud via Palantir FedStart — FedRAMP, ITAR, IL4/5, on-prem.',
+    en: 'A federal deployment on AWS GovCloud via Palantir FedStart: FedRAMP, ITAR, IL4/5, on-prem.',
+    it: 'Un deployment federale su AWS GovCloud via Palantir FedStart: FedRAMP, ITAR, IL4/5, on-prem.',
   },
   durationMin: 4,
   sources: [
@@ -58,8 +58,8 @@ const mod: Module = {
             icon: 'Users',
             title: { en: 'Groups', it: 'Gruppi' },
             text: {
-              en: 'Group model allowlists narrow — never expand — team availability.',
-              it: 'Le allowlist di gruppo restringono — mai allargano — i modelli del team.',
+              en: 'Group model allowlists narrow team availability, never expand it.',
+              it: 'Le allowlist di gruppo restringono i modelli del team, mai li allargano.',
             },
           },
           {
@@ -82,8 +82,8 @@ const mod: Module = {
             icon: 'Braces',
             title: { en: 'Federal API', it: 'API federali' },
             text: {
-              en: 'ACU consumption, group management, caps — plus a Python SDK.',
-              it: 'Consumo ACU, gestione gruppi, cap — più un SDK Python.',
+              en: 'ACU consumption, group management, caps, plus a Python SDK.',
+              it: 'Consumo ACU, gestione gruppi, cap, più un SDK Python.',
             },
           },
         ],
@@ -100,7 +100,7 @@ const mod: Module = {
         title: { en: 'Compliance *posture*', it: 'Postura di *compliance*' },
         icon: 'Landmark',
         items: [
-          { en: 'FedRAMP High: In Process — announced July 2026', it: 'FedRAMP High: In Process — annunciato a luglio 2026' },
+          { en: 'FedRAMP High: In Process, announced July 2026', it: 'FedRAMP High: In Process, annunciato a luglio 2026' },
           { en: 'Single-tenant AWS environment, fully isolated per agency', it: 'Ambiente AWS single-tenant, isolato per ogni agenzia' },
           { en: 'No data shared with external model providers', it: 'Nessun dato condiviso con provider di modelli esterni' },
           { en: 'Groups partition users, repos and ACU budgets inside one org', it: 'I gruppi dividono utenti, repo e budget ACU dentro un’org' },
@@ -108,7 +108,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Full control list is in the federal/security and federal/compliance pages — bring those to a security review.',
+        en: 'Full control list is in the federal/security and federal/compliance pages: bring those to a security review.',
         it: 'La lista completa dei controlli è in federal/security e federal/compliance: portale a una security review.',
       },
     },

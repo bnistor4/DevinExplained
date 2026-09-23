@@ -22,7 +22,7 @@ export const linkIcon = (kind: LinkKind): string =>
 export const linkDefaultLabel = (kind: LinkKind, lang: Lang): string =>
   LINK_KINDS.find((k) => k.kind === kind)?.label[lang === 'it' ? 'it' : 'en'] ?? 'Link';
 
-/** WIFI: QR payload — escapes \ ; , : " per the ZXing spec. */
+/** WIFI: QR payload, escapes \ ; , : " per the ZXing spec. */
 export function wifiQrValue(wifi: WifiInfo): string {
   const esc = (s: string) => s.replace(/([\\;,:"])/g, '\\$1');
   const t = wifi.security === 'nopass' ? 'nopass' : 'WPA';

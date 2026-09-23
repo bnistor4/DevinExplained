@@ -6,8 +6,8 @@ const mod: Module = {
   icon: 'Server',
   title: { en: 'Outposts: your own infra', it: 'Outposts: la tua infrastruttura' },
   summary: {
-    en: 'Devin’s brain in the cloud, the execution on your machines — even a Mac Mini on your desk.',
-    it: 'Il cervello di Devin nel cloud, l’esecuzione sulle tue macchine — anche un Mac Mini sulla scrivania.',
+    en: 'Devin’s brain in the cloud, the execution on your machines, even a Mac Mini on your desk.',
+    it: 'Il cervello di Devin nel cloud, l’esecuzione sulle tue macchine, anche un Mac Mini sulla scrivania.',
   },
   durationMin: 4,
   sources: [
@@ -26,10 +26,10 @@ const mod: Module = {
         icon: 'Server',
         items: [
           { en: 'Agent loop runs in Devin’s cloud; commands, edits, repo access run on your machines', it: 'L’agent loop gira nel cloud di Devin; comandi, edit e accesso alle repo sulle tue macchine' },
-          { en: 'An outpost is a named queue — e.g. gpu-h200 or dev-boxes', it: 'Un outpost è una coda con un nome — tipo gpu-h200 o dev-boxes' },
+          { en: 'An outpost is a named queue: e.g. gpu-h200 or dev-boxes', it: 'Un outpost è una coda con un nome: tipo gpu-h200 o dev-boxes' },
           { en: 'A worker is a machine running devin worker start --outpost=<name>', it: 'Un worker è una macchina che gira devin worker start --outpost=<nome>' },
           { en: 'N workers serve N concurrent sessions; the rest queue', it: 'N worker servono N sessioni in parallelo; le altre aspettano in coda' },
-          { en: 'Workers need outbound HTTPS only — no inbound ports or VPN', it: 'Ai worker basta HTTPS in uscita: niente porte in ingresso né VPN' },
+          { en: 'Workers need outbound HTTPS only: no inbound ports or VPN', it: 'Ai worker basta HTTPS in uscita: niente porte in ingresso né VPN' },
         ],
       },
       notes: {
@@ -44,13 +44,13 @@ const mod: Module = {
         type: 'analogy',
         title: { en: "It's like…", it: 'È come…' },
         text: {
-          en: 'a *remote* driver for your own car — the GPS is ours, the garage is yours.',
+          en: 'a *remote* driver for your own car: the GPS is ours, the garage is yours.',
           it: 'un pilota *remoto* per la tua auto: il GPS è nostro, il garage è tuo.',
         },
         icon: 'Gauge',
       },
       notes: {
-        en: 'Good for the “but our code can’t leave the network” objection — it doesn’t have to.',
+        en: 'Good for the “but our code can’t leave the network” objection: it doesn’t have to.',
         it: 'Ottima per l’obiezione “il nostro codice non può uscire dalla rete”: non deve.',
       },
     },

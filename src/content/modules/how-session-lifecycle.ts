@@ -25,7 +25,7 @@ const mod: Module = {
           items: [
             { en: 'Explore the codebase with advanced code search', it: 'Esplora il codebase con la ricerca avanzata' },
             { en: 'Plan work and generate context-rich prompts', it: 'Pianifica il lavoro e genera prompt ricchi di contesto' },
-            { en: 'No code changes — safe place to think', it: 'Nessuna modifica al codice: spazio sicuro per ragionare' },
+            { en: 'No code changes: safe place to think', it: 'Nessuna modifica al codice: spazio sicuro per ragionare' },
           ],
         },
         right: {
@@ -49,7 +49,7 @@ const mod: Module = {
         title: { en: 'Setting up a *session*', it: 'Preparare una *sessione*' },
         icon: 'Settings2',
         items: [
-          { en: 'Pick the repository — Devin branches and opens PRs there', it: 'Scegli la repository: lì Devin crea branch e apre le PR' },
+          { en: 'Pick the repository: Devin branches and opens PRs there', it: 'Scegli la repository: lì Devin crea branch e apre le PR' },
           { en: 'Pick the agent: Devin (default), Fast Mode, or Data Analyst (DANA)', it: 'Scegli l’agente: Devin (default), Fast Mode o Data Analyst (DANA)' },
           { en: 'Use @ mentions: repos, files, playbooks, skills, secrets, past sessions', it: 'Usa le @-mention: repo, file, playbook, skill, secrets, sessioni passate' },
           { en: 'Switch agent mid-session from the toggle by the message box', it: 'Cambia agente a sessione in corso dal toggle accanto al campo messaggio' },
@@ -71,7 +71,7 @@ const mod: Module = {
             icon: 'SquareTerminal',
             title: { en: 'Shell', it: 'Shell' },
             text: {
-              en: 'Full command history with output previews — copy any command or jump back in time.',
+              en: 'Full command history with output previews: copy any command or jump back in time.',
               it: 'Cronologia completa dei comandi con anteprima degli output: copia o torna indietro nel tempo.',
             },
           },
@@ -95,8 +95,8 @@ const mod: Module = {
             icon: 'MessagesSquare',
             title: { en: 'Side chats', it: 'Side chat' },
             text: {
-              en: 'Read-only questions on a session — /btw or the hover menu — without interrupting Devin.',
-              it: 'Domande in sola lettura sulla sessione — /btw o il menu al passaggio — senza interrompere Devin.',
+              en: 'Read-only questions on a session (/btw or the hover menu) without interrupting Devin.',
+              it: 'Domande in sola lettura sulla sessione (/btw o il menu al passaggio) senza interrompere Devin.',
             },
           },
         ],

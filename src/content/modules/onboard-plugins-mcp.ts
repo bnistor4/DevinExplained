@@ -28,15 +28,15 @@ const mod: Module = {
             icon: 'Package',
             title: { en: 'Plugin', it: 'Plugin' },
             text: {
-              en: 'A bundle of skills — plus optional rules, hooks, MCPs, subagents — installed as a unit.',
-              it: 'Un bundle di skill — più eventuali regole, hook, MCP, subagent — installato come un’unità.',
+              en: 'A bundle of skills (plus optional rules, hooks, MCPs, subagents) installed as a unit.',
+              it: 'Un bundle di skill (più eventuali regole, hook, MCP, subagent) installato come un’unità.',
             },
           },
           {
             icon: 'PlugZap',
             title: { en: 'MCP', it: 'MCP' },
             text: {
-              en: 'The open protocol for external tools — stdio, SSE and HTTP transports supported.',
+              en: 'The open protocol for external tools: stdio, SSE and HTTP transports supported.',
               it: 'Il protocollo aperto per strumenti esterni: supporta trasporti stdio, SSE e HTTP.',
             },
           },
@@ -44,15 +44,15 @@ const mod: Module = {
             icon: 'Store',
             title: { en: 'Marketplace', it: 'Marketplace' },
             text: {
-              en: 'Browse marketplace on the Customize page — most official plugins wrap one MCP plus skills.',
+              en: 'Browse marketplace on the Customize page: most official plugins wrap one MCP plus skills.',
               it: 'Browse marketplace nella pagina Customize: i plugin ufficiali sono di solito un MCP più skill.',
             },
           },
         ],
       },
       notes: {
-        en: 'Three install scopes: Personal, Organization, Enterprise — same plugin everywhere you use Devin.',
-        it: 'Tre scope di installazione: Personal, Organization, Enterprise — stesso plugin ovunque usi Devin.',
+        en: 'Three install scopes: Personal, Organization, Enterprise, same plugin everywhere you use Devin.',
+        it: 'Tre scope di installazione: Personal, Organization, Enterprise, stesso plugin ovunque usi Devin.',
       },
     },
     {
@@ -62,15 +62,15 @@ const mod: Module = {
         title: { en: 'MCP is a *USB-C* port for AI', it: 'MCP è una porta *USB-C* per l’AI' },
         icon: 'PlugZap',
         items: [
-          { en: 'Sentry, Datadog, Vercel logs — Devin can dig through them', it: 'Log di Sentry, Datadog, Vercel: Devin ci scava dentro' },
-          { en: 'Linear tickets, Notion docs, Airtable, Stripe — all reachable', it: 'Ticket Linear, doc Notion, Airtable, Stripe: tutti raggiungibili' },
+          { en: 'Sentry, Datadog, Vercel logs: Devin can dig through them', it: 'Log di Sentry, Datadog, Vercel: Devin ci scava dentro' },
+          { en: 'Linear tickets, Notion docs, Airtable, Stripe: all reachable', it: 'Ticket Linear, doc Notion, Airtable, Stripe: tutti raggiungibili' },
           { en: 'Connect = install plugin → wait for indexing → Connect → credentials/OAuth', it: 'Connect = installa il plugin → attendi l’indicizzazione → Connect → credenziali/OAuth' },
           { en: 'Devin MCP at mcp.devin.ai gives agents session/knowledge/playbook APIs', it: 'Devin MCP su mcp.devin.ai dà agli agenti API per sessioni/knowledge/playbook' },
           { en: 'DeepWiki MCP at mcp.deepwiki.com is free and authless for public repos', it: 'DeepWiki MCP su mcp.deepwiki.com è gratis e senza auth per repo pubbliche' },
         ],
       },
       notes: {
-        en: 'Installing a plugin does not authorize the external service — you still Connect with credentials.',
+        en: 'Installing a plugin does not authorize the external service: you still Connect with credentials.',
         it: 'Installare un plugin non autorizza il servizio esterno: serve comunque Connect con le credenziali.',
       },
       funAside: {
@@ -92,7 +92,7 @@ const mod: Module = {
         ],
       },
       notes: {
-        en: 'Both templates ship a validator script and a CI workflow — plugins are code, review them like code.',
+        en: 'Both templates ship a validator script and a CI workflow: plugins are code, review them like code.',
         it: 'Entrambi i template hanno uno script di validazione e una CI: i plugin sono codice, trattali da codice.',
       },
     },
