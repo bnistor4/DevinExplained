@@ -64,11 +64,18 @@ html[data-static] .reveal {
   transform: none;
 }
 
+html[data-static] .mascot {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+  .mascot {
+    animation: none;
   }
 }
 

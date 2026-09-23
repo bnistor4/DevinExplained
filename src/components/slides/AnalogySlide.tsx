@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { Lang } from '../../content/schema';
 import { getL10n } from '../../content/modules';
 import Icon from '../Icon';
@@ -15,6 +16,7 @@ export default function AnalogySlide({
   lang: Lang;
   f: Frame;
 }) {
+  const { t } = useTranslation();
   return (
     <SlideFrame f={f}>
       <div className="sl-analogy-grid">
@@ -30,7 +32,7 @@ export default function AnalogySlide({
           ) : (
             <Mascot size={220} mood="think" />
           )}
-          <span className="sl-analogy-label">ANALOGY</span>
+          <span className="sl-analogy-label">{t('slide.analogyLabel')}</span>
         </div>
         <p className="sl-analogy-text reveal" style={ri(2)}>
           <span className="sl-analogy-title">{getL10n(block.title, lang)} </span>

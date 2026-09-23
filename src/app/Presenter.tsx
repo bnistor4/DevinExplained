@@ -375,12 +375,16 @@ export default function Presenter() {
             <motion.div
               key={`aside-${idx}`}
               className="fun-aside"
+              data-band={entry.slide.band}
               initial={isStatic() ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={tr(0.25, 0.6)}
             >
-              <div className="fun-bubble">{aside}</div>
+              <div className="fun-bubble">
+                <span className="fun-kicker">{t('slide.funKicker')}</span>
+                {aside}
+              </div>
               <Mascot size={96} mood="wink" />
             </motion.div>
           )}

@@ -50,7 +50,9 @@
     "fun": "Fun mode"
   },
   "slide": {
-    "popular": "Popular"
+    "popular": "Popular",
+    "funKicker": "Side note",
+    "analogyLabel": "Analogy"
   },
   "eventkit": {
     "section": "Event",

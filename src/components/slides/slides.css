@@ -941,25 +941,41 @@
 .mascot {
   flex: none;
   object-fit: contain;
-  transition: transform 0.15s var(--ease);
   user-select: none;
+  transform-origin: 50% 100%;
+  will-change: transform;
+  animation: mascot-idle 4.5s ease-in-out infinite;
 }
 
 .mascot--wink {
-  transform: rotate(-6deg) scale(1.04);
+  animation:
+    mascot-pop 0.5s var(--ease) both,
+    mascot-idle 4.5s ease-in-out 0.5s infinite;
 }
 
 .mascot--think {
-  animation: mascot-float 3s ease-in-out infinite;
+  --bob: 8%;
 }
 
-@keyframes mascot-float {
+@keyframes mascot-idle {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0);
   }
   50% {
-    transform: translateY(-8%);
+    transform: translateY(calc(-1 * var(--bob, 5%))) rotate(-1.5deg);
+  }
+}
+
+@keyframes mascot-pop {
+  0% {
+    transform: scale(0.9) rotate(-8deg);
+  }
+  60% {
+    transform: scale(1.04) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
   }
 }
 
