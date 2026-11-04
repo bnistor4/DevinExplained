@@ -16,12 +16,17 @@ export default function CardsSlide({
 }) {
   const n = block.cards.length;
   const cols = n === 4 ? 2 : Math.min(3, Math.max(2, n));
+  const maxLen = Math.max(0, ...block.cards.map((c) => getL10n(c.text, lang).length));
+  const sizeCls = maxLen <= 120 ? '' : maxLen <= 220 ? ' sl-cards-md' : ' sl-cards-sm';
   return (
     <SlideFrame f={f}>
       <h2 className="sl-h2 reveal" style={ri(1)}>
         <Rich text={getL10n(block.title, lang)} />
       </h2>
-      <div className="sl-cards-grid" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
+      <div
+        className={`sl-cards-grid${sizeCls}`}
+        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
+      >
         {block.cards.map((c, i) => (
           <div key={i} className="sl-card reveal" style={ri(i + 2)}>
             <div className="sl-card-icon">
@@ -36,6 +41,7 @@ export default function CardsSlide({
           </div>
         ))}
       </div>
+      {block.footnote && <p className="sl-cards-foot">{getL10n(block.footnote, lang)}</p>}
     </SlideFrame>
   );
 }

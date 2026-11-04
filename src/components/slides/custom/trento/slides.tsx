@@ -664,26 +664,129 @@ export const Trento14: CustomSlideComponent = () => (
 
 /* 15 — La cassetta degli attrezzi */
 export const Trento15: CustomSlideComponent = () => {
-  const tools: [string, string][] = [
-    ['Devin Review', 'legge ogni PR: bug per confidenza, sicurezza sempre attiva'],
-    ['Auto-Fix', 'i problemi trovati tornano nella PR come correzioni'],
-    ['Skills', 'SKILL.md nel repo: procedure ripetibili. Assorbono Playbooks e Knowledge'],
-    ['AGENTS.md', 'le regole del repo, lette a ogni setup'],
-    ['Memoria', 'note personali tra sessioni, riordinate ogni giorno'],
-    ['MCP', 'collega Datadog, Sentry, database, ticket'],
-    ['Automations', 'trigger (Slack, GitHub, orario, webhook) → sessione'],
-    ['Oncall', 'da ottobre per tutti: alert → indagine → fix'],
-    ['Data Analyst', 'SQL e grafici sui dati collegati, anche da Slack'],
-    ['API e Devin MCP', 'Devin da script e da altri agenti'],
+  const groups: { label: string; tools: [string, string, string][] }[] = [
+    {
+      label: 'Controlla il lavoro',
+      tools: [
+        [
+          'Devin Review',
+          'Rilegge ogni PR prima di voi: segnala i possibili bug, dal più probabile al meno, e controlla sempre la sicurezza.',
+          '«qui la variabile può arrivare vuota»',
+        ],
+        [
+          'Auto-Fix',
+          'I problemi che Review trova, li corregge lui nella stessa PR.',
+          'trova il bug e aggiunge il commit con la correzione',
+        ],
+      ],
+    },
+    {
+      label: 'Si ricorda come lavorate',
+      tools: [
+        [
+          'AGENTS.md',
+          'Un file nel repo con le regole della casa. Devin lo legge da solo a ogni sessione.',
+          '«usa pnpm, non npm»',
+        ],
+        [
+          'Skills',
+          "Procedure scritte una volta e riusate: come si avvia l'app, come si fa un rilascio.",
+          'SKILL.md «come testare il checkout»',
+        ],
+        [
+          'Memoria',
+          "Si ricorda le tue preferenze tra una sessione e l'altra, e ogni notte le riordina.",
+          '«a Bogdan piacciono le PR piccole»',
+        ],
+      ],
+    },
+    {
+      label: 'Parte da solo',
+      tools: [
+        [
+          'Automations',
+          '«Quando succede X, fai partire Devin»: un orario, un messaggio Slack, una issue, un webhook.',
+          'il Growth Engine di TuttoCalcolato, ogni mattina alle 8:05',
+        ],
+        [
+          'Oncall',
+          'Pensato per gli incidenti: arriva un alert, indaga su log e metriche, trova la causa e propone come sistemare.',
+          'un alert da PagerDuty alle 3 di notte',
+        ],
+      ],
+    },
+    {
+      label: 'Si collega ad altro',
+      tools: [
+        [
+          'MCP',
+          'La presa per collegare Devin ai vostri strumenti: Datadog, Sentry, database, ticket.',
+          "legge l'errore direttamente da Sentry",
+        ],
+        [
+          'Data Analyst',
+          'Domande sui dati a parole, risposte con query SQL e grafici.',
+          '«quanti ordini a ottobre?», anche da Slack',
+        ],
+        [
+          'API e Devin MCP',
+          'Il contrario di MCP: sono script e altri agenti a comandare Devin.',
+          'uno script che apre 10 sessioni insieme',
+        ],
+      ],
+    },
   ];
   return (
     <div className="tn">
       <h2 className="tn-h2">La cassetta degli attrezzi</h2>
-      <div className="tn-toolgrid">
-        {tools.map(([n, a]) => (
-          <div className="tn-tc" key={n}>
-            <div className="tn-tname">{n}</div>
-            <div className="tn-ta">{a}</div>
+      <div className="tn-tg">
+        {groups.map((g) => (
+          <div className="tn-tgroup" key={g.label}>
+            <div className="tn-tglabel">{g.label}</div>
+            <div className="tn-tglist">
+              {g.tools.map(([n, a, e]) => (
+                <div className="tn-tgc" key={n}>
+                  <div className="tn-tgname">{n}</div>
+                  <div className="tn-tgline">{a}</div>
+                  <div className="tn-tgex">Es.: {e}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* 15b — Le domande che vi state facendo */
+export const Trento15b: CustomSlideComponent = () => {
+  const qa: [string, string][] = [
+    [
+      "Oncall e Automations: che differenza c'è?",
+      'Le Automations sono il meccanismo generico: «quando succede X, parte Devin», per qualsiasi lavoro. Oncall è già pronto per gli incidenti: conosce i vostri sistemi e sa come si indaga.',
+    ],
+    [
+      'AGENTS.md, Skills e Memoria non sono la stessa cosa?',
+      'AGENTS.md: le regole del progetto, sempre lette. Skills: procedure passo passo, usate quando servono. Memoria: le tue preferenze, solo tue.',
+    ],
+    [
+      'MCP e API: chi comanda chi?',
+      'Con MCP è Devin a usare i vostri strumenti. Con API e Devin MCP sono script e altri agenti a usare Devin.',
+    ],
+    [
+      'Devin Review funziona solo sul codice di Devin?',
+      'No, anche sulle PR scritte da persone: basta commentare /devin review. Sulle PR pubbliche è gratis, anche senza account.',
+    ],
+  ];
+  return (
+    <div className="tn">
+      <h2 className="tn-h2">Le domande che vi state facendo</h2>
+      <div className="tn-qa15">
+        {qa.map(([q, a]) => (
+          <div className="tn-q15" key={q}>
+            <div className="tn-q15q">{q}</div>
+            <div className="tn-q15a">{a}</div>
           </div>
         ))}
       </div>
@@ -872,10 +975,10 @@ export const TrentoQ: CustomSlideComponent = ({ props }: CustomSlideProps) => {
           <h2 className="tn-h2">Scansiona e partecipa</h2>
           <div className="tn-qurl tn-mono">{url ? short || url : '[URL breve da inserire]'}</div>
           <div className="tn-qwhen">
-            Niente sticker né magliette: al loro posto, <b>licenze Devin</b>.<br />
-            Le invio dopo la serata.
+            Niente sticker né magliette: al loro posto, <b>10 licenze Devin</b>.<br />
+            Arrivano dopo l'evento, all'email del check-in su Luma.
           </div>
-          <div className="tn-qprize">Piani Pro (20 $) e Max (200 $)</div>
+          <div className="tn-qprize">Tra piani Pro (20 $) e Max (200 $)</div>
         </div>
       </div>
     </div>
@@ -891,7 +994,7 @@ export const Trento20: CustomSlideComponent = () => (
         src={`${A}/meme-lavoro-onesto.png`}
         alt="Non è molto, ma è un lavoro onesto"
       />
-      <div className="tn-s22cap">Licenze Devin Pro e Max, al posto di sticker e magliette</div>
+      <div className="tn-s22cap">10 licenze Devin tra Pro e Max, al posto di sticker e magliette</div>
     </div>
   </div>
 );

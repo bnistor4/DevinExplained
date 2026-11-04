@@ -16,7 +16,7 @@ export type SlideBlock =
   | { type: 'compare'; title: L10n; left: { title: L10n; items: L10n[] }; right: { title: L10n; items: L10n[] }; split?: boolean } // split = two neutral columns (check marks on both sides), not before/after
   | { type: 'timeline'; title: L10n; events: { date: string; title: L10n; text?: L10n }[] }
   | { type: 'stats'; title: L10n; stats: { value: string; label: L10n }[] }
-  | { type: 'cards'; title: L10n; cards: { icon: string; title: L10n; text: L10n }[] }
+  | { type: 'cards'; title: L10n; cards: { icon: string; title: L10n; text: L10n }[]; footnote?: L10n }
   | { type: 'quote'; text: L10n; author?: string; role?: L10n }
   | { type: 'analogy'; title: L10n; text: L10n; icon?: string }                  // "it's like..." slide, playful; icon = lucide name
   | { type: 'pricing'; title: L10n; plans: { name: string; price: string; audience: L10n; features: L10n[]; highlight?: boolean }[]; footnote?: L10n }

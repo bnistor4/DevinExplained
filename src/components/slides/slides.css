@@ -740,6 +740,58 @@
   margin: 0;
 }
 
+/* denser cards when card texts are long */
+.sl-cards-md .sl-card {
+  padding: 26px;
+}
+
+.sl-cards-md .sl-card-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 22px;
+}
+
+.sl-cards-md .sl-card h3 {
+  font-size: clamp(24px, calc(var(--sw, 1920px) * 0.0146), 28px);
+}
+
+.sl-cards-md .sl-card p {
+  font-size: clamp(18px, calc(var(--sw, 1920px) * 0.0104), 20px);
+  line-height: 1.35;
+}
+
+.sl-cards-sm .sl-card {
+  padding: 22px;
+}
+
+.sl-cards-sm .sl-card-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+
+.sl-cards-sm .sl-card-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.sl-cards-sm .sl-card h3 {
+  font-size: clamp(22px, calc(var(--sw, 1920px) * 0.0135), 26px);
+  margin: 0 0 8px;
+}
+
+.sl-cards-sm .sl-card p {
+  font-size: clamp(17px, calc(var(--sw, 1920px) * 0.0094), 19px);
+  line-height: 1.32;
+}
+
+.sl-cards-foot {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+  margin: 20px 0 0;
+}
+
 /* ---------- quote ---------- */
 .slide-quote .sl-body {
   justify-content: center;
