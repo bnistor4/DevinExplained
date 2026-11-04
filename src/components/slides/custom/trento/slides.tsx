@@ -60,7 +60,7 @@ export const Trento00: CustomSlideComponent = () => {
             {FUN_LINES[staticMode ? 0 : line]}
           </div>
         )}
-        <div className="tn-wclock">{clock}</div>
+        {!staticMode && <div className="tn-wclock">{clock}</div>}
       </div>
       <img className="tn-wotter" src="/assets/devin.png" alt="" aria-hidden="true" />
     </div>
