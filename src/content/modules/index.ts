@@ -1,4 +1,6 @@
 import type { Category, Lang, L10n, Module } from '../schema';
+import type { EventPack } from '../events/types';
+import { eventPacks } from '../events';
 import introWhatIsDevin from './intro-what-is-devin';
 import introThreeHourRule from './intro-three-hour-rule';
 import introWhenNotToUse from './intro-when-not-to-use';
@@ -58,6 +60,7 @@ export function getL10n(l: L10n | undefined, lang: Lang): string {
 }
 
 export const categories: Category[] = [
+  { id: 'events', icon: 'CalendarDays', title: { en: 'Events', it: 'Eventi' }, order: 0 },
   { id: 'intro', icon: 'Sparkles', title: { en: 'Introduction', it: 'Introduzione' }, order: 1 },
   { id: 'history', icon: 'Timeline', title: { en: 'History', it: 'Storia' }, order: 2 },
   { id: 'how-it-works', icon: 'Cog', title: { en: 'How it works', it: 'Come funziona' }, order: 3 },
@@ -71,7 +74,7 @@ export const categories: Category[] = [
   { id: 'closing', icon: 'MessageCircleQuestionMark', title: { en: 'Closing', it: 'Chiusura' }, order: 11 },
 ];
 
-export const modules: Module[] = [
+export const baseModules: Module[] = [
   // intro
   introWhatIsDevin,
   introThreeHourRule,
@@ -136,3 +139,13 @@ export const modules: Module[] = [
   closingResources,
   closingQa,
 ];
+
+export const modules: Module[] = [
+  ...baseModules,
+  ...eventPacks.flatMap((p) => p.modules),
+];
+
+/** The event pack that owns a module, if it's an event-only module. */
+export function packOfModule(id: string): EventPack | undefined {
+  return eventPacks.find((p) => p.modules.some((m) => m.id === id));
+}

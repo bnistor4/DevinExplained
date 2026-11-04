@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'motion/react';
@@ -46,6 +47,53 @@ function stageGeom(fit: 'contain' | 'fill') {
     w: DESIGN_W,
     scale: Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H),
   };
+}
+
+/** Speaker notes: paragraphs split on blank lines; "- " runs become a list. */
+function NotesBody({ text }: { text: string }) {
+  const out: ReactNode[] = [];
+  let key = 0;
+  for (const para of text.split(/\n{2,}/)) {
+    const lines = para
+      .split('\n')
+      .map((l) => l.trim())
+      .filter(Boolean);
+    let buf: string[] = [];
+    let list: string[] = [];
+    const flushBuf = () => {
+      if (!buf.length) return;
+      out.push(
+        <p key={key++} className={buf[0].startsWith('Tempo:') ? 'timing' : undefined}>
+          {buf.join(' ')}
+        </p>,
+      );
+      buf = [];
+    };
+    const flushList = () => {
+      if (!list.length) return;
+      const items = list;
+      list = [];
+      out.push(
+        <ul key={key++}>
+          {items.map((li, i) => (
+            <li key={i}>{li}</li>
+          ))}
+        </ul>,
+      );
+    };
+    for (const l of lines) {
+      if (l.startsWith('- ')) {
+        flushBuf();
+        list.push(l.slice(2));
+      } else {
+        flushList();
+        buf.push(l);
+      }
+    }
+    flushBuf();
+    flushList();
+  }
+  return <>{out}</>;
 }
 
 const fmt = (sec: number) => {
@@ -243,6 +291,16 @@ export default function Presenter() {
 
   const idx = Math.min(currentIndex, slides.length - 1);
 
+  // fun aside closes on its own after 15 s; it comes back when the slide changes
+  const [asideClosedIdx, setAsideClosedIdx] = useState(-1);
+  useEffect(() => {
+    const id = window.setTimeout(() => setAsideClosedIdx(idx), 15000);
+    return () => {
+      window.clearTimeout(id);
+      setAsideClosedIdx(-1);
+    };
+  }, [idx]);
+
   const eventTiles = useMemo(() => {
     const list = event.links
       .filter((l) => /^https?:\/\//i.test(l.url.trim()))
@@ -287,7 +345,8 @@ export default function Presenter() {
   const mod = modules.find((m) => m.id === entry.moduleId);
   const moduleLabel = mod ? getL10n(mod.title, lang) : 'DevinExplained';
   const notes = getL10n(entry.slide.notes, lang);
-  const aside = tone === 'fun' ? getL10n(entry.slide.funAside, lang) : '';
+  const aside =
+    tone === 'fun' && asideClosedIdx !== idx ? getL10n(entry.slide.funAside, lang) : '';
   const frame = slideFrame(entry.moduleId, moduleIds, lang, idx + 1, slides.length, entry.slide.band);
 
   const plannedSec = (event.plannedMinutes ??
@@ -366,28 +425,30 @@ export default function Presenter() {
             </motion.div>
           </AnimatePresence>
           {qaBadge && (
-            <div className={`qa-badge${aside ? ' left' : ''}`}>
+            <div className="qa-badge">
               <QRCodeSVG value={event.liveQa.url.trim()} size={120} level="M" />
               <span>{event.liveQa.label || 'Q&A'}</span>
             </div>
           )}
-          {aside && (
-            <motion.div
-              key={`aside-${idx}`}
-              className="fun-aside"
-              data-band={entry.slide.band}
-              initial={isStatic() ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={tr(0.25, 0.6)}
-            >
-              <div className="fun-bubble">
-                <span className="fun-kicker">{t('slide.funKicker')}</span>
-                {aside}
-              </div>
-              <Mascot size={96} mood="wink" />
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {aside && (
+              <motion.div
+                key={`aside-${idx}`}
+                className="fun-aside"
+                data-band={entry.slide.band}
+                initial={isStatic() ? false : { opacity: 0, y: -24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -24 }}
+                transition={tr(0.25, 0.6)}
+              >
+                <div className="fun-bubble">
+                  <span className="fun-kicker">{t('slide.funKicker')}</span>
+                  {aside}
+                </div>
+                <Mascot size={77} mood="wink" />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -527,7 +588,7 @@ export default function Presenter() {
             transition={tr(0.25)}
           >
             <span className="notes-label">{t('presenter.title')}</span>
-            <p>{notes || t('presenter.noNotes')}</p>
+            {notes ? <NotesBody text={notes} /> : <p>{t('presenter.noNotes')}</p>}
           </motion.div>
         )}
       </AnimatePresence>

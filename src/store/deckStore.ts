@@ -13,6 +13,8 @@ import type {
   WifiInfo,
 } from '../content/schema';
 import { categories, modules } from '../content/modules';
+import { eventPacks } from '../content/events';
+import type { EventPack } from '../content/events/types';
 
 export type Theme = 'devin' | 'cognition' | 'dark' | 'product';
 export type Density = 'short' | 'full';
@@ -41,6 +43,8 @@ export type SharedEvent = Omit<EventState, 'wifi'> & {
 
 export type DeckPayload = {
   moduleIds: string[];
+  packId: string | null;
+  hiddenSlides: string[];
   lang: Lang;
   tone: Tone;
   theme: Theme;
@@ -60,6 +64,10 @@ type DeckState = Omit<DeckPayload, 'event'> & {
   currentIndex: number;
   toggleModule: (id: string) => void;
   setModules: (ids: string[]) => void;
+  arrangeSuggested: () => void;
+  loadEventPack: (id: string) => void;
+  clearEventPack: () => void;
+  toggleSlideHidden: (key: string) => void;
   setLang: (lang: Lang) => void;
   setTone: (tone: Tone) => void;
   setTheme: (theme: Theme) => void;
@@ -103,6 +111,8 @@ const emptyEvent = (): EventState => ({
 const defaults = {
   view: 'builder' as View,
   moduleIds: [] as string[],
+  packId: null as string | null,
+  hiddenSlides: [] as string[],
   lang: defaultLang(),
   tone: 'serious' as Tone,
   theme: 'devin' as Theme,
@@ -117,13 +127,15 @@ const defaults = {
 
 const pad2 = (n: number) => String(n).padStart(2, '0');
 
-function deckTitleSlide(): Slide {
+function deckTitleSlide(pack?: EventPack): Slide {
+  const d = pack?.deckTitle === false ? undefined : pack?.deckTitle;
   return {
     id: '__deck-title',
     block: {
       type: 'title',
-      kicker: { en: 'DEVINEXPLAINED · COMMUNITY DECK', it: 'DEVINEXPLAINED · DECK DELLA COMMUNITY' },
-      title: { en: 'Devin, explained', it: 'Devin, spiegato semplice' },
+      kicker: d?.kicker,
+      title: d?.title ?? { en: 'Devin, explained', it: 'Devin, spiegato semplice' },
+      subtitle: d?.subtitle,
     },
   };
 }
@@ -157,6 +169,22 @@ function agendaSlide(moduleIds: string[]): Slide {
   return {
     id: '__agenda',
     block: { type: 'agenda', title: { en: 'Agenda', it: 'Scaletta' }, items },
+  };
+}
+
+/** Agenda slide from a pack's custom agenda — replaces the generated one. */
+function packAgendaSlide(agenda: Exclude<NonNullable<EventPack['agenda']>, false>): Slide {
+  return {
+    id: '__agenda',
+    block: {
+      type: 'agenda',
+      title: agenda.title ?? { en: 'Agenda', it: 'Scaletta' },
+      items: agenda.items.map((it, i) => ({
+        index: pad2(i + 1),
+        title: it.title,
+        ...(it.minutes !== undefined ? { minutes: it.minutes } : {}),
+      })),
+    },
   };
 }
 
@@ -197,22 +225,28 @@ export function buildDeckSlides(
   tone: Tone,
   density: Density,
   event?: EventState,
+  opts?: { pack?: EventPack; hidden?: string[] },
 ): DeckSlide[] {
+  const hidden = new Set(opts?.hidden ?? []);
   const list: DeckSlide[] = [];
   for (const id of moduleIds) {
     const mod = modules.find((m) => m.id === id);
     if (!mod) continue;
     let slides = mod.slides.filter((s) => tone === 'fun' || s.tone !== 'fun');
+    slides = slides.filter((s) => !hidden.has(`${id}/${s.id}`));
     if (density === 'short') slides = slides.slice(0, 2);
     for (const slide of slides) list.push({ moduleId: id, slide });
   }
+  const pack = opts?.pack;
   const first = moduleIds.length ? modules.find((m) => m.id === moduleIds[0]) : undefined;
-  const hasTitle = list.length > 0 && first && first.category !== 'intro';
-  if (hasTitle) list.unshift({ moduleId: '__deck', slide: deckTitleSlide() });
-  if (list.length > 0 && event && event.autoSlides.agenda) {
-    list.splice(hasTitle ? 1 : 0, 0, { moduleId: '__deck', slide: agendaSlide(moduleIds) });
+  const hasTitle =
+    list.length > 0 && first && first.category !== 'intro' && pack?.deckTitle !== false;
+  if (hasTitle) list.unshift({ moduleId: '__deck', slide: deckTitleSlide(pack) });
+  if (list.length > 0 && event && event.autoSlides.agenda && pack?.agenda !== false) {
+    const agenda = pack?.agenda ? packAgendaSlide(pack.agenda) : agendaSlide(moduleIds);
+    list.splice(hasTitle ? 1 : 0, 0, { moduleId: '__deck', slide: agenda });
   }
-  if (list.length > 0 && event && event.autoSlides.community) {
+  if (list.length > 0 && event && event.autoSlides.community && pack?.community !== false) {
     const gen = communitySlides(event);
     if (gen.length) {
       const lastId = moduleIds[moduleIds.length - 1];
@@ -303,6 +337,68 @@ export const useDeckStore = create<DeckState>()(
       setModules: (ids) =>
         set({ moduleIds: ids.filter((id) => modules.some((m) => m.id === id)), currentIndex: 0 }),
 
+      arrangeSuggested: () =>
+        set((s) => {
+          const pack = eventPacks.find((p) => p.id === s.packId);
+          const map = pack?.suggestedAfter;
+          if (!pack || !map) return s;
+          const movable = s.moduleIds.filter(
+            (id) => map[id] && s.moduleIds.includes(map[id]),
+          );
+          const movableSet = new Set(movable);
+          const order = new Map(pack.modules.map((m, i) => [m.id, i]));
+          const rest = s.moduleIds.filter((id) => !movableSet.has(id));
+          const next: string[] = [];
+          for (const id of rest) {
+            next.push(id);
+            next.push(
+              ...movable
+                .filter((m) => map[m] === id)
+                .sort((a, b) => (order.get(a) ?? 0) - (order.get(b) ?? 0)),
+            );
+          }
+          return { moduleIds: next, currentIndex: 0 };
+        }),
+
+      loadEventPack: (id) =>
+        set((s) => {
+          const pack = eventPacks.find((p) => p.id === id);
+          if (!pack) return s;
+          const pe = pack.event;
+          return {
+            moduleIds: pack.moduleIds.filter((mid) => modules.some((m) => m.id === mid)),
+            packId: pack.id,
+            hiddenSlides: pack.hiddenSlides ?? [],
+            lang: pack.lang && SELECTABLE_LANGS.includes(pack.lang) ? pack.lang : s.lang,
+            tone: pack.tone ?? s.tone,
+            theme: pack.theme && THEMES.includes(pack.theme) ? pack.theme : s.theme,
+            density: 'full' as Density,
+            event: {
+              ...s.event,
+              ...(pe?.name !== undefined ? { name: pe.name } : {}),
+              ...(pe?.date !== undefined ? { date: pe.date } : {}),
+              ...(pe?.location !== undefined ? { location: pe.location } : {}),
+              ...(pe?.hashtag !== undefined ? { hashtag: pe.hashtag } : {}),
+              ...(pe?.links !== undefined ? { links: pe.links } : {}),
+              ...(pe?.plannedMinutes !== undefined ? { plannedMinutes: pe.plannedMinutes } : {}),
+              ...(pe?.liveQa !== undefined ? { liveQa: pe.liveQa } : {}),
+              autoSlides: pack.agenda
+                ? { ...s.event.autoSlides, agenda: true }
+                : s.event.autoSlides,
+            },
+            currentIndex: 0,
+          };
+        }),
+
+      clearEventPack: () => set({ packId: null }),
+
+      toggleSlideHidden: (key) =>
+        set((s) => ({
+          hiddenSlides: s.hiddenSlides.includes(key)
+            ? s.hiddenSlides.filter((k) => k !== key)
+            : [...s.hiddenSlides, key],
+        })),
+
       setLang: (lang) => set({ lang: SELECTABLE_LANGS.includes(lang) ? lang : 'en' }),
       setTone: (tone) => set({ tone }),
       setTheme: (theme) => set({ theme: THEMES.includes(theme) ? theme : 'devin' }),
@@ -316,7 +412,7 @@ export const useDeckStore = create<DeckState>()(
         set((s) => ({
           currentIndex: Math.min(
             s.currentIndex + 1,
-            buildDeckSlides(s.moduleIds, s.tone, s.density, s.event).length - 1,
+            buildDeckSlides(s.moduleIds, s.tone, s.density, s.event, slideOpts(s)).length - 1,
           ),
         })),
       prev: () => set((s) => ({ currentIndex: Math.max(s.currentIndex - 1, 0) })),
@@ -324,7 +420,7 @@ export const useDeckStore = create<DeckState>()(
         set((s) => ({
           currentIndex: Math.max(
             0,
-            Math.min(i, buildDeckSlides(s.moduleIds, s.tone, s.density, s.event).length - 1),
+            Math.min(i, buildDeckSlides(s.moduleIds, s.tone, s.density, s.event, slideOpts(s)).length - 1),
           ),
         })),
 
@@ -352,6 +448,13 @@ export const useDeckStore = create<DeckState>()(
             p.presenter && typeof p.presenter === 'object'
               ? { ...emptyPresenter, ...p.presenter }
               : s.presenter,
+          packId:
+            typeof p.packId === 'string' && eventPacks.some((pk) => pk.id === p.packId)
+              ? p.packId
+              : null,
+          hiddenSlides: Array.isArray(p.hiddenSlides)
+            ? p.hiddenSlides.filter((k): k is string => typeof k === 'string')
+            : [],
           event: sanitizeEvent(p.event, s.event),
           currentIndex: 0,
         })),
@@ -362,6 +465,8 @@ export const useDeckStore = create<DeckState>()(
       name: 'devinexplained:deck',
       partialize: (s) => ({
         moduleIds: s.moduleIds,
+        packId: s.packId,
+        hiddenSlides: s.hiddenSlides,
         lang: s.lang,
         tone: s.tone,
         theme: s.theme,
@@ -380,6 +485,8 @@ export function deckPayload(s: DeckState | DeckPayload): DeckPayload {
     'password' in s.event.wifi ? shareableEvent(s.event as EventState) : s.event;
   return {
     moduleIds: s.moduleIds,
+    packId: s.packId,
+    hiddenSlides: s.hiddenSlides,
     lang: s.lang,
     tone: s.tone,
     theme: s.theme,
@@ -390,13 +497,23 @@ export function deckPayload(s: DeckState | DeckPayload): DeckPayload {
   };
 }
 
+function slideOpts(s: { packId: string | null; hiddenSlides: string[] }) {
+  return { pack: eventPacks.find((p) => p.id === s.packId), hidden: s.hiddenSlides };
+}
+
 export function useSlides(): DeckSlide[] {
   const moduleIds = useDeckStore((s) => s.moduleIds);
   const tone = useDeckStore((s) => s.tone);
   const density = useDeckStore((s) => s.density);
   const event = useDeckStore((s) => s.event);
+  const packId = useDeckStore((s) => s.packId);
+  const hiddenSlides = useDeckStore((s) => s.hiddenSlides);
   return useMemo(
-    () => buildDeckSlides(moduleIds, tone, density, event),
-    [moduleIds, tone, density, event],
+    () =>
+      buildDeckSlides(moduleIds, tone, density, event, {
+        pack: eventPacks.find((p) => p.id === packId),
+        hidden: hiddenSlides,
+      }),
+    [moduleIds, tone, density, event, packId, hiddenSlides],
   );
 }

@@ -77,6 +77,11 @@ export default function TitleSlide({
     <SlideFrame f={f} className="slide-title">
       <div className="sl-title-grid">
         <div className="sl-title-main">
+          {f.isDeckTitle && block.kicker && (
+            <p className="sl-title-kick reveal" style={ri(0)}>
+              <Rich text={getL10n(block.kicker, lang)} />
+            </p>
+          )}
           <h1 className="sl-title-h reveal" style={ri(1)}>
             <Rich text={getL10n(block.title, lang)} />
           </h1>
@@ -113,7 +118,7 @@ export default function TitleSlide({
       )}
       {f.isDeckTitle && (
         <div className="sl-deck-brand">
-          <BrandLogo brand="cognition" height={28} dark={f.band === 'dark'} />
+          <BrandLogo brand="cognition" height={28} dark={f.band === 'dark' || undefined} />
         </div>
       )}
     </SlideFrame>

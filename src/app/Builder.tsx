@@ -22,13 +22,17 @@ import {
   ChevronDown,
   ChevronRight,
   Copy,
+  Eye,
+  EyeOff,
   GripVertical,
   Play,
   Search,
   Trash,
 } from 'lucide-react';
-import { categories, getL10n, modules } from '../content/modules';
-import type { Lang, Module } from '../content/schema';
+import { baseModules, categories, getL10n, modules, packOfModule } from '../content/modules';
+import { eventPacks } from '../content/events';
+import type { EventPack } from '../content/events/types';
+import type { Lang, L10n, Module } from '../content/schema';
 import { presets } from '../content/presets';
 import { deckPayload, useDeckStore, useSlides } from '../store/deckStore';
 import type { Density, Theme } from '../store/deckStore';
@@ -41,6 +45,34 @@ import EventSection from './EventSection';
 import { slideHeading } from '../components/slides/shared';
 import './Builder.css';
 
+/** Event catalog modules grouped by the pack they belong to (order preserved). */
+function groupByPack(mods: Module[]): { pack?: EventPack; mods: Module[] }[] {
+  const groups: { pack?: EventPack; mods: Module[] }[] = [];
+  for (const m of mods) {
+    const pack = packOfModule(m.id);
+    const last = groups[groups.length - 1];
+    if (last && last.pack === pack) last.mods.push(m);
+    else groups.push({ pack, mods: [m] });
+  }
+  return groups;
+}
+
+/** Pack modules split into the pack's catalog sections (rest last, untitled). */
+function packSections(pack: EventPack, mods: Module[]): { title?: L10n; mods: Module[] }[] {
+  if (!pack.sections?.length) return [{ mods }];
+  const seen = new Set<string>();
+  const out: { title?: L10n; mods: Module[] }[] = [];
+  for (const sec of pack.sections) {
+    const ids = new Set(sec.moduleIds);
+    const list = mods.filter((m) => ids.has(m.id));
+    list.forEach((m) => seen.add(m.id));
+    if (list.length) out.push({ title: sec.title, mods: list });
+  }
+  const rest = mods.filter((m) => !seen.has(m.id));
+  if (rest.length) out.push({ mods: rest });
+  return out;
+}
+
 const THEME_SWATCHES: { id: Theme; colors: [string, string, string] }[] = [
   { id: 'devin', colors: ['#f7f6f5', '#191919', '#2200ff'] },
   { id: 'cognition', colors: ['#f7f6f5', '#000000', '#2200ff'] },
@@ -51,6 +83,8 @@ const THEME_SWATCHES: { id: Theme; colors: [string, string, string] }[] = [
 export default function Builder() {
   const { t } = useTranslation();
   const moduleIds = useDeckStore((s) => s.moduleIds);
+  const packId = useDeckStore((s) => s.packId);
+  const hiddenSlides = useDeckStore((s) => s.hiddenSlides);
   const lang = useDeckStore((s) => s.lang);
   const tone = useDeckStore((s) => s.tone);
   const theme = useDeckStore((s) => s.theme);
@@ -66,6 +100,8 @@ export default function Builder() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [status, setStatus] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const activePack = eventPacks.find((p) => p.id === packId);
 
   const query = search.trim().toLowerCase();
   const filtered = useMemo(
@@ -223,7 +259,7 @@ export default function Builder() {
           <div className="catalog-actions">
             <button
               className="cat-all"
-              onClick={() => store.getState().setModules(modules.map((m) => m.id))}
+              onClick={() => store.getState().setModules(baseModules.map((m) => m.id))}
             >
               {t('builder.selectAll')}
             </button>
@@ -249,27 +285,67 @@ export default function Builder() {
                     </button>
                   </div>
                   {!isCollapsed &&
-                    mods.map((m) => {
-                      const checked = moduleIds.includes(m.id);
+                    (category.id === 'events'
+                      ? groupByPack(mods)
+                      : [{ mods }]
+                    ).map((g) => {
+                      const renderModRow = (m: Module) => {
+                        const checked = moduleIds.includes(m.id);
+                        return (
+                          <label key={m.id} className={`mod-row${checked ? ' checked' : ''}`}>
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={() => store.getState().toggleModule(m.id)}
+                            />
+                            <span className="mod-check">
+                              <Check size={11} strokeWidth={3} />
+                            </span>
+                            <Icon name={m.icon} size={15} className="mod-icon" strokeWidth={1.5} />
+                            <span className="mod-text">
+                              <strong>{getL10n(m.title, lang)}</strong>
+                              <small>{getL10n(m.summary, lang)}</small>
+                            </span>
+                            <span className="mod-chip">
+                              {t('builder.minShort', { count: m.durationMin })}
+                            </span>
+                          </label>
+                        );
+                      };
+                      if (!g.pack)
+                        return <div key={category.id}>{g.mods.map(renderModRow)}</div>;
+                      const packKey = `pack:${g.pack.id}`;
+                      const packCollapsed = collapsed.has(packKey);
                       return (
-                        <label key={m.id} className={`mod-row${checked ? ' checked' : ''}`}>
-                          <input
-                            type="checkbox"
-                            checked={checked}
-                            onChange={() => store.getState().toggleModule(m.id)}
-                          />
-                          <span className="mod-check">
-                            <Check size={11} strokeWidth={3} />
-                          </span>
-                          <Icon name={m.icon} size={15} className="mod-icon" strokeWidth={1.5} />
-                          <span className="mod-text">
-                            <strong>{getL10n(m.title, lang)}</strong>
-                            <small>{getL10n(m.summary, lang)}</small>
-                          </span>
-                          <span className="mod-chip">
-                            {t('builder.minShort', { count: m.durationMin })}
-                          </span>
-                        </label>
+                        <div key={g.pack.id} className="pack-group">
+                          <div className="cat-head pack-head">
+                            <button className="cat-toggle" onClick={() => toggleCollapsed(packKey)}>
+                              {packCollapsed ? <ChevronRight size={13} /> : <ChevronDown size={13} />}
+                              <span>{getL10n(g.pack.title, lang)}</span>
+                              <em>({g.mods.length})</em>
+                            </button>
+                            {packId !== g.pack.id && (
+                              <button
+                                className="cat-all"
+                                onClick={() => store.getState().loadEventPack(g.pack!.id)}
+                              >
+                                {t('builder.loadPack')}
+                              </button>
+                            )}
+                          </div>
+                          {!packCollapsed && (
+                            <div className="pack-body">
+                              {packSections(g.pack, g.mods).map((sec, si) => (
+                                <div key={si} className="pack-section">
+                                  {sec.title && (
+                                    <p className="pack-sub">{getL10n(sec.title, lang)}</p>
+                                  )}
+                                  {sec.mods.map(renderModRow)}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                 </section>
@@ -287,6 +363,16 @@ export default function Builder() {
               ~{t('builder.minShort', { count: totalMin })} ·{' '}
               {t('builder.slidesCount', { count: slides.length })}
             </span>
+            {activePack?.suggestedAfter &&
+              moduleIds.some((id) => activePack.suggestedAfter![id]) && (
+                <button
+                  className="cat-all arrange-btn"
+                  title={t('builder.arrangeSuggestedTitle')}
+                  onClick={() => store.getState().arrangeSuggested()}
+                >
+                  {t('builder.arrangeSuggested')}
+                </button>
+              )}
           </div>
           <div className="outline-list">
             {moduleIds.length === 0 && (
@@ -308,7 +394,15 @@ export default function Builder() {
                       expanded={expanded.has(id)}
                       onToggleExpand={() => toggleExpanded(id)}
                       onRemove={() => store.getState().toggleModule(id)}
-                      slideCountLabel={t('builder.moduleSlides', { count: mod.slides.length })}
+                      hiddenSlides={hiddenSlides}
+                      onToggleSlide={(key) => store.getState().toggleSlideHidden(key)}
+                      hideLabel={t('builder.slideHide')}
+                      showLabel={t('builder.slideShow')}
+                      slideCountLabel={t('builder.moduleSlides', {
+                        count: mod.slides.filter(
+                          (s) => !hiddenSlides.includes(`${mod.id}/${s.id}`),
+                        ).length,
+                      })}
                       minLabel={t('builder.minShort', { count: mod.durationMin })}
                     />
                   );
@@ -338,6 +432,33 @@ export default function Builder() {
                   </button>
                 ))}
               </div>
+              {eventPacks.length > 0 && (
+                <>
+                  <label className="event-sub">{t('builder.eventPacks')}</label>
+                  <div className="preset-grid">
+                    {eventPacks.map((p) => (
+                      <button
+                        key={p.id}
+                        className={`preset-btn${packId === p.id ? ' active' : ''}`}
+                        onClick={() => store.getState().loadEventPack(p.id)}
+                      >
+                        {getL10n(p.title, lang)}
+                      </button>
+                    ))}
+                  </div>
+                  {activePack && (
+                    <p className="hint pack-active">
+                      {t('builder.packActive', { title: getL10n(activePack.title, lang) })}
+                      <button
+                        className="cat-all"
+                        onClick={() => store.getState().clearEventPack()}
+                      >
+                        {t('builder.packDetach')}
+                      </button>
+                    </p>
+                  )}
+                </>
+              )}
             </div>
 
             <div className="field">
@@ -454,6 +575,10 @@ function SortableModuleCard({
   expanded,
   onToggleExpand,
   onRemove,
+  hiddenSlides,
+  onToggleSlide,
+  hideLabel,
+  showLabel,
   slideCountLabel,
   minLabel,
 }: {
@@ -462,6 +587,10 @@ function SortableModuleCard({
   expanded: boolean;
   onToggleExpand: () => void;
   onRemove: () => void;
+  hiddenSlides: string[];
+  onToggleSlide: (key: string) => void;
+  hideLabel: string;
+  showLabel: string;
   slideCountLabel: string;
   minLabel: string;
 }) {
@@ -492,13 +621,25 @@ function SortableModuleCard({
       </div>
       {expanded && (
         <ul className="slide-mini-list">
-          {mod.slides.map((s) => (
-            <li key={s.id}>
-              <span className="type-badge">{s.block.type}</span>
-              <span className="slide-mini-title">{slideHeading(s.block, lang)}</span>
-              {s.tone === 'fun' && <span className="fun-badge">fun</span>}
-            </li>
-          ))}
+          {mod.slides.map((s) => {
+            const key = `${mod.id}/${s.id}`;
+            const hidden = hiddenSlides.includes(key);
+            return (
+              <li key={s.id} className={hidden ? 'slide-hidden' : undefined}>
+                <button
+                  className="slide-eye"
+                  onClick={() => onToggleSlide(key)}
+                  aria-label={hidden ? showLabel : hideLabel}
+                  title={hidden ? showLabel : hideLabel}
+                >
+                  {hidden ? <EyeOff size={13} /> : <Eye size={13} />}
+                </button>
+                <span className="type-badge">{s.block.type}</span>
+                <span className="slide-mini-title">{slideHeading(s.block, lang)}</span>
+                {s.tone === 'fun' && <span className="fun-badge">fun</span>}
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

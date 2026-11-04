@@ -1,0 +1,104 @@
+/* ---------- talk timer (shared custom component) ---------- */
+.tt-wrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.tt-head {
+  text-align: center;
+}
+
+.tt-speaker {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--accent);
+}
+
+.tt-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.tt-digits {
+  font-family: var(--font-display);
+  font-size: clamp(140px, calc(var(--sw, 1920px) * 0.22), 400px);
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.tt-digits.tt-accent {
+  color: var(--accent);
+}
+
+.tt-digits.tt-red {
+  color: var(--danger, #e5484d);
+  animation: tt-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes tt-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+.tt-status {
+  font-size: 26px;
+  color: var(--muted);
+  margin-top: -8px;
+}
+
+.tt-bar {
+  width: min(680px, 60%);
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  overflow: hidden;
+}
+
+.tt-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.25s linear;
+}
+
+.tt-controls {
+  display: flex;
+  gap: 14px;
+}
+
+.tt-btn {
+  font-size: 18px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.tt-btn.tt-main {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.tt-hint {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}

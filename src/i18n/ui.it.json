@@ -7,6 +7,9 @@
     "search": "Cerca moduli…",
     "selectAll": "Seleziona tutto",
     "deselectAll": "Deseleziona",
+    "loadPack": "Carica",
+    "arrangeSuggested": "Ordina come consigliato",
+    "arrangeSuggestedTitle": "Mette ogni storia dopo il modulo con la sua slide di aggancio",
     "empty": "Nessun modulo corrisponde alla ricerca.",
     "outline": "Scaletta del deck",
     "outlineEmpty": "Scegli i moduli dal catalogo per comporre il tuo deck.",
@@ -39,7 +42,12 @@
     "export": "Esporta JSON",
     "import": "Importa JSON",
     "reset": "Reimposta deck",
-    "moduleSlides": "{{count}} slide"
+    "moduleSlides": "{{count}} slide",
+    "eventPacks": "Eventi",
+    "packActive": "Pacchetto evento attivo: {{title}}",
+    "packDetach": "Scollega",
+    "slideHide": "Nascondi slide",
+    "slideShow": "Mostra slide"
   },
   "presenter": {
     "notes": "Note",

@@ -59,6 +59,54 @@ The **04 Event** section in Customize sets up a meetup:
   module, built from the fields above. Toggle each off here.
 - **Planned duration**: target minutes for the presenter timer (`T`).
 
+## Event packs
+
+An *event pack* bundles everything for one specific meetup: event-only
+modules, the full running order, and optional overrides for the title slide,
+agenda and event fields. Packs are versioned in the repo: one folder per event
+at `src/content/events/<YYYY-MM-DD-name>/`, registered in
+`src/content/events/index.ts` (sorted newest first by `date`).
+
+```ts
+// src/content/events/2026-11-04-meetup/index.ts
+const pack: EventPack = {
+  id: '2026-11-04-meetup',
+  title: it('Meetup · 4 novembre 2026'),   // catalog sub-header + preset button
+  date: '2026-11-04',                     // ISO, used for sorting
+  lang: 'it',                             // applied when the pack loads
+  deckTitle: { kicker: it('…'), title: it('…') }, // overrides the deck title slide
+  agenda: { items: [{ title: it('…') }] },        // replaces the auto agenda; minutes optional
+  event: { date: '4 novembre 2026' },             // prefills the 04 Event fields
+  modules: [apertura],                    // event-only modules, category 'events'
+  moduleIds: ['ev-20261104-apertura', 'intro-what-is-devin', 'closing-qa'],
+  hiddenSlides: ['mod/slide-id'],         // hidden by default
+};
+```
+
+- Pack modules are normal `Module` objects with `category: 'events'` and ids
+  prefixed `ev-YYYYMMDD-`; they sit at the top of the catalog, grouped under
+  their pack's title.
+- `moduleIds` is the full running order and can mix base and pack modules.
+- A pack `agenda` replaces the generated agenda slide entirely.
+- `it('…')` (from `src/content/events/types.ts`) writes the same string for
+  `en` and `it` — handy for Italian-only packs.
+- Load a pack from the **Events** buttons under Presets; `packId` and hidden
+  slides travel in share links and exports (the Wi-Fi password still never
+  does).
+- Hide any slide with the eye icon in the expanded outline card, or list
+  `moduleId/slideId` keys in the pack's `hiddenSlides`.
+
+### Custom slides and pack flags
+
+Slides that don't fit the built-in blocks use `{ type: 'custom', component: 'name', title, props? }`.
+The renderer looks `component` up in the registry at
+`src/components/slides/custom/index.ts` (`customSlides`) — the Trento pack lives
+in `custom/trento/` with its own stylesheet; prefix all its classes (`tn-…`) to
+avoid collisions and map the palette to theme vars. Pack flags:
+`deckTitle/agenda/community: false` disable the generated slides entirely,
+`theme` sets the deck theme on load. Pack images go under
+`public/events/<pack-id>/` and are referenced as `/events/<pack-id>/<file>`.
+
 ## Presenter shortcuts
 
 | Key | Action |
@@ -114,7 +162,8 @@ Each slide has an `id`, a `block`, optional `notes` (speaker notes: write them,
 they're what makes a deck presentable), optional `tone`, `funAside`, `band`.
 
 Block types: `title`, `bullets`, `compare`, `timeline`, `stats`, `cards`,
-`quote`, `analogy`, `pricing`, `code`, `media`, `people`, `qa`.
+`quote`, `analogy`, `pricing`, `code`, `media`, `people`, `qa`, `story`
+(two-column anecdote layout, `StorySlide.tsx`), `custom` (registered components).
 See `src/content/schema.ts` for the exact shape of each.
 
 Every user-facing string is `{ en, it }`. English is the fallback: a slide with
@@ -204,6 +253,37 @@ Q&A dal vivo con badge QR opzionale su ogni slide, Wi-Fi con QR `WIFI:` (la
 password non finisce mai nei link di condivisione o negli export), logo dell'host
 e le slide generate automaticamente: *Scaletta* dopo il titolo e *Restiamo in
 contatto* prima della chiusura.
+
+### Pacchetti evento
+
+Un *pacchetto evento* raccoglie tutto ciò che serve per un meetup specifico:
+moduli dedicati, l'ordine completo del deck e override opzionali per slide
+titolo, scaletta e campi evento. Una cartella per evento in
+`src/content/events/<AAAA-MM-GG-nome>/`, registrata in
+`src/content/events/index.ts` (ordinati dalla data più recente).
+
+- I moduli del pack sono `Module` normali con `category: 'events'` e id con
+  prefisso `ev-AAAAMMGG-`: compaiono in cima al catalogo, sotto il titolo del
+  pack.
+- `moduleIds` è la scaletta completa e può mescolare moduli base e del pack.
+- `agenda` sostituisce la scaletta generata (`minutes` opzionale);
+  `deckTitle` sovrascrive la slide titolo.
+- `it('…')` (da `src/content/events/types.ts`) scrive la stessa stringa per
+  `en` e `it`: comodo per i pack solo in italiano.
+- Si carica dai pulsanti **Eventi** sotto i preset; `packId` e le slide
+  nascoste viaggiano nei link di condivisione e negli export.
+- Nascondi una slide con l'icona a occhio nella card espansa, oppure elenca
+  le chiavi `moduleId/slideId` in `hiddenSlides` del pack.
+
+Le slide che non rientrano nei blocchi standard usano `{ type: 'custom', component: 'nome', title, props? }`:
+il renderer cerca `component` nel registry `src/components/slides/custom/index.ts`
+(il pack di Trento sta in `custom/trento/` con il suo CSS; prefissa le classi,
+es. `tn-…`, e usa le variabili del tema). I flag `deckTitle/agenda/community: false`
+spengono le slide generate, `theme` imposta il tema del deck. Le immagini del pack
+vanno in `public/events/<pack-id>/` e si referenziano come `/events/<pack-id>/<file>`.
+C'è anche il blocco generico `story` (aneddoto a due colonne, `StorySlide.tsx`):
+kicker/titolo/testo/punchline a sinistra, immagine con credito a destra
+(o la lontra come fallback).
 
 ### Modificare i contenuti
 

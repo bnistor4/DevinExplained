@@ -30,7 +30,7 @@ export default function CompareSlide({
               <ul>
                 {panel.items.map((item, i) => (
                   <li key={i} className="reveal" style={ri(p + 3 + i)}>
-                    {side === 'right' ? (
+                    {side === 'right' || block.split ? (
                       <Check size={28} className="sl-check" strokeWidth={2} />
                     ) : (
                       <X size={28} className="sl-x" strokeWidth={2} />

@@ -14,6 +14,9 @@ import PeopleSlide from './PeopleSlide';
 import QaSlide from './QaSlide';
 import AgendaSlide from './AgendaSlide';
 import CommunitySlide from './CommunitySlide';
+import StorySlide from './StorySlide';
+import SlideFrame from './SlideFrame';
+import { customSlides } from './custom';
 import type { Frame } from './shared';
 import './slides.css';
 
@@ -58,6 +61,20 @@ export default function SlideRenderer({
       return <AgendaSlide block={b} lang={lang} f={f} />;
     case 'community':
       return <CommunitySlide block={b} lang={lang} f={f} />;
+    case 'story':
+      return <StorySlide block={b} lang={lang} f={f} />;
+    case 'custom': {
+      const Cmp = customSlides[b.component];
+      return (
+        <SlideFrame f={f} className="slide-custom">
+          {Cmp ? (
+            <Cmp lang={lang} props={b.props} />
+          ) : (
+            <p className="slide-custom-missing">missing custom slide: {b.component}</p>
+          )}
+        </SlideFrame>
+      );
+    }
     default:
       return null;
   }

@@ -27,7 +27,9 @@ export default function AgendaSlide({
             <span className="sl-agenda-title">
               <Rich text={getL10n(item.title, lang)} />
             </span>
-            <span className="sl-agenda-min">{item.minutes} min</span>
+            {item.minutes !== undefined && (
+              <span className="sl-agenda-min">{item.minutes} min</span>
+            )}
           </li>
         ))}
       </ul>

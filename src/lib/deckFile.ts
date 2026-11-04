@@ -18,6 +18,8 @@ export async function importDeckFile(file: File): Promise<Partial<DeckPayload> |
     const d = data as Partial<DeckPayload>;
     return {
       moduleIds: Array.isArray(d.moduleIds) ? d.moduleIds : undefined,
+      packId: d.packId,
+      hiddenSlides: Array.isArray(d.hiddenSlides) ? d.hiddenSlides : undefined,
       lang: d.lang,
       tone: d.tone,
       theme: d.theme,

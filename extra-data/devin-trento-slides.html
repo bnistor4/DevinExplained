@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Devin AI Trento #1: Devin è cambiato molto</title>
+<style>
+@font-face{font-family:"InterL";src:url("assets/fonts/inter-latin.woff2") format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:"JBM";src:url("assets/fonts/jetbrainsmono-latin.woff2") format("woff2");font-weight:100 800;font-display:block}
+:root{--bg:#0c0d0f;--fg:#f3f3f1;--mut:#8b9099;--line:#24272c;--card:#15171a;--acc:#5aa9ff;
+--sans:"InterL","Inter","Segoe UI",system-ui,Helvetica,Arial,sans-serif;--mono:"JBM","JetBrains Mono",Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:var(--sans);color:var(--fg)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:var(--bg);overflow:hidden}
+.slide{position:absolute;inset:0;padding:110px 130px 120px;display:none;flex-direction:column}
+.slide.active{display:flex}
+.foot{position:absolute;left:130px;right:130px;bottom:48px;display:flex;justify-content:space-between;font:500 22px var(--mono);color:#5d626b;letter-spacing:.02em}
+h1.xl{font-size:150px;font-weight:700;letter-spacing:-.045em;line-height:1}
+h2{font-size:84px;font-weight:700;letter-spacing:-.035em;line-height:1.05;margin-bottom:64px}
+.kicker{font:500 28px var(--mono);color:var(--mut);letter-spacing:.02em;margin-bottom:36px;text-transform:none}
+.accent{color:var(--acc)}.muted{color:var(--mut)}
+.mono{font-family:var(--mono)}
+.sep{color:#3d4148;padding:0 .35em}
+.src,.footnote{font-size:26px;color:var(--mut);margin-top:auto}
+.tagline{margin-top:auto;font-size:44px;font-weight:600;letter-spacing:-.02em}
+/* s1 */
+.s1grid{display:flex;gap:80px;align-items:center;flex:1}
+.s1grid>div{flex:1}
+.places{font-size:44px;color:var(--mut);margin:34px 0 80px;font-weight:500}
+.products{display:flex;gap:90px;margin-bottom:70px}
+.pname{font-size:52px;font-weight:650;letter-spacing:-.02em}
+.pdesc{font-size:28px;color:var(--mut);margin-top:10px}
+.daily{font-size:36px;color:var(--mut)}.daily b{color:var(--fg);font-weight:600}
+.photo{width:520px;height:520px;object-fit:cover;border-radius:50%;flex:none}
+/* s2 */
+.agenda{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:2px solid var(--line)}
+.ag{padding-top:34px;position:relative}
+.ag::before{content:"";position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:50%;background:#3d4148}
+.ag.hl::before{background:var(--acc)}
+.ag .t{font:600 40px var(--mono);margin-bottom:14px}
+.ag .w{font-size:34px;color:var(--mut);line-height:1.2;padding-right:20px}
+.ag.hl .t{color:var(--acc)}
+.s2bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:60px}
+.nosell{font-size:52px;font-weight:650;letter-spacing:-.025em;max-width:820px;line-height:1.1}
+.prizebox{background:var(--acc);color:#06101c;font-size:36px;padding:34px 44px;border-radius:14px;max-width:760px;line-height:1.25}
+.prizebox .mono{font-weight:700;margin-right:10px}
+/* s3 */
+.quoteline{font-size:110px;font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:100px}
+.s3nums{display:flex;gap:120px}
+.bignum .n{font-size:120px;font-weight:700;letter-spacing:-.045em;line-height:1}
+.bignum .l{font-size:32px;color:var(--mut);margin-top:18px;line-height:1.35}
+/* memes */
+.meme{margin:0}
+.memebox{position:relative;line-height:0}
+.memebox img{display:block;width:100%;height:auto;border-radius:10px}
+.cap{position:absolute;line-height:1.05;font-weight:800;text-align:center;letter-spacing:-.01em}
+.cap.outline{color:#fff;-webkit-text-stroke:0;text-shadow:0 0 6px #000,2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,0 3px 0 #000,0 -3px 0 #000,3px 0 0 #000,-3px 0 0 #000}
+.cap.dark{color:#111}
+.cap.tag{background:#fff;color:#111;padding:6px 12px;border-radius:6px}
+figcaption{font-size:32px;color:var(--mut);margin-top:22px;text-align:center;line-height:1.2}
+/* s4 */
+.s4grid{display:flex;gap:90px;align-items:center;flex:1}
+.s4left{display:flex;flex-direction:column;gap:70px;flex:none;width:640px}
+.s4left .bignum .n{font-size:104px}
+.meme.fine{flex:1}
+.c-fine1{left:2%;top:4%;width:46%;font-size:40px}
+.c-fine1{color:#fff;text-shadow:0 0 6px #000,2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000}
+.c-fine2{left:62%;top:74%;font-size:30px;transform:rotate(-4deg)}
+/* s5 */
+.s5grid{display:flex;gap:90px;flex:1;align-items:center;min-height:0}
+.s5left{flex:1}
+.hugequote{font-size:128px;font-weight:750;letter-spacing:-.045em;line-height:1;margin-bottom:50px}
+.src5{font:500 24px var(--mono);color:#5d626b;margin-top:40px}
+.s5left .sub{font-size:34px;color:var(--mut);line-height:1.35;max-width:820px}
+.s5right{flex:none;width:640px;height:850px;overflow:hidden;border-radius:18px;margin-top:-30px}
+.tweetshot{width:100%;display:block}
+/* s6 */
+.kitchen{display:flex;align-items:center;gap:40px;margin-bottom:80px}
+.kc{flex:1;background:var(--card);border-radius:18px;padding:44px 48px}
+.k1{font-size:76px;font-weight:700;letter-spacing:-.035em}
+.k2{font-size:36px;color:var(--mut);margin-top:10px;font-family:var(--mono)}
+.op{font-size:72px;color:#4a4f57;font-weight:300}
+.qcard{background:#f3f3f1;color:#111;border-radius:18px;padding:40px 50px;max-width:1300px}
+.qhead{display:flex;gap:20px;align-items:center;margin-bottom:22px}
+.qhead img{width:64px;height:64px;border-radius:50%}
+.qn{font-size:28px;font-weight:700}
+.qh{font-size:24px;color:#5f646c}
+.qt{font-size:44px;font-weight:600;line-height:1.25;letter-spacing:-.015em}
+.qcard.big .qt{font-size:50px;font-weight:500;line-height:1.3}
+.qcard.big{max-width:1560px}
+mark{background:#ffe86b;color:#111;padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+/* s7 */
+.s7grid{display:flex;gap:120px;flex:1;align-items:center;margin-top:-30px}
+.s7left{flex:1}
+.pricon{width:150px;height:150px;color:var(--acc);margin-bottom:30px}
+.pr1{font-size:80px;font-weight:700;letter-spacing:-.035em}
+.pr2{font-size:42px;color:var(--mut);margin:10px 0 46px}
+.pr3{font-size:40px;font-weight:500}
+.pr3 .mono{color:var(--acc)}
+.s7right{position:relative;width:820px;flex:none}
+.pyr{width:600px;display:block}
+.pt{fill:var(--acc)}.pm{fill:#2a2e34}.pb{fill:#3a3f47}
+.pyl{position:absolute;left:640px;display:flex;flex-direction:column;font-size:36px;width:260px}
+.pyl b{font-weight:700}.pyl span{color:var(--mut);font-size:30px;margin-top:4px}
+.pyl-top{top:40px}.pyl-bot{top:370px}
+/* s8 */
+.tl{position:relative;display:grid;grid-template-columns:repeat(6,1fr);margin-top:90px}
+.tlline{position:absolute;left:0;right:0;top:7px;height:2px;background:var(--line)}
+.tli{position:relative;padding-right:34px}
+.tli .dot{width:16px;height:16px;border-radius:50%;background:var(--acc);margin-bottom:40px;position:relative}
+.tli .d{font:600 36px var(--mono);margin-bottom:20px}
+.tli .e{font-size:34px;color:var(--mut);line-height:1.3}
+/* s9 */
+.s9grid{display:flex;gap:100px;flex:1;align-items:center;margin-top:-30px}
+.meme.spidey{width:700px;flex:none}
+.c-sp1{left:2%;top:56%;width:34%;font-size:38px}
+.c-sp2{left:35%;top:6%;width:30%;font-size:38px}
+.c-sp3{left:60%;top:60%;width:40%;font-size:38px}
+.umbrella{flex:1;text-align:center}
+.ubig{font-size:110px;font-weight:750;letter-spacing:-.045em}
+.ubar{height:2px;background:var(--acc);margin:28px 40px 40px}
+.uitems{display:grid;grid-template-columns:1fr 1fr;gap:40px 30px}
+.ui{background:var(--card);border-radius:16px;padding:30px 20px;display:flex;flex-direction:column}
+.ui b{font-size:46px;font-weight:700}.ui span{font-size:26px;color:var(--mut);margin-top:6px}
+/* s10 */
+.s10grid{display:flex;gap:70px;flex:1;align-items:center;margin-top:-30px}
+.price{border-collapse:collapse;flex:1;font-size:32px}
+.price th{text-align:left;font:600 26px var(--mono);color:var(--mut);padding:0 20px 18px 0;border-bottom:2px solid var(--line)}
+.price td{padding:24px 20px 24px 0;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.3}
+.price td.rl{color:var(--mut);font-size:28px;width:230px}
+.price td.now{color:var(--fg);font-weight:600}
+.price td:nth-child(2){width:370px;color:#b9bcc2}
+.meme.drake{width:520px;flex:none}
+.c-dr1{left:52%;top:10%;width:45%;font-size:38px}
+.c-dr2{left:52%;top:62%;width:45%;font-size:38px}
+/* s11 */
+.rows3{display:flex;flex-direction:column;gap:56px;margin-top:10px}
+.r3{display:flex;align-items:baseline;gap:60px}
+.r3k{font:700 64px var(--mono);width:520px;flex:none;letter-spacing:-.02em}
+.r3v{font-size:64px;font-weight:600;letter-spacing:-.03em}
+/* s12 */
+.famlist{display:flex;flex-direction:column}
+.fr{display:flex;gap:50px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.fr:first-child{border-top:1px solid var(--line)}
+.fn{width:420px;flex:none;font-size:42px;font-weight:700;letter-spacing:-.02em}
+.fa{font-size:36px;color:#c4c7cc;line-height:1.3}
+.slide.k-plan h2{margin-bottom:44px}
+/* s13 */
+.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.tc{background:var(--card);border-radius:16px;padding:30px 34px;min-height:178px}
+.tn{font-size:42px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+.ta{font-size:29px;color:#b9bcc2;line-height:1.3}
+.slide.k-old13 h2{margin-bottom:44px}
+/* s14 */
+.s14grid{display:flex;gap:90px;flex:1;align-items:center;margin-top:-50px;margin-bottom:-40px}.s14left{flex:1}
+.truths{list-style:none;counter-reset:t;flex:1;display:flex;flex-direction:column;gap:40px}
+.truths li{counter-increment:t;display:grid;grid-template-columns:80px 1fr;row-gap:6px}
+.truths li::before{content:counter(t);font:700 48px var(--mono);color:var(--acc);grid-row:1 / span 2}
+.truths b{font-size:50px;font-weight:700;letter-spacing:-.025em}
+.truths span{font-size:30px;color:var(--mut)}
+.meme.buttons{width:520px;flex:none}
+.c-b1{left:4%;top:8.6%;width:40%;font-size:25px;transform:rotate(-12deg);background:#fff;padding:5px 6px;border-radius:5px}
+.c-b2{left:45%;top:2.2%;width:47%;font-size:24px;transform:rotate(-12deg);background:#fff;padding:5px 6px;border-radius:5px}
+/* s16 */
+.demo{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.dr{display:flex;gap:60px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dk{width:380px;flex:none;font:600 40px var(--mono);color:var(--mut)}
+.dv{font-size:50px;font-weight:600}
+.dv.ph{color:#6b7079;font-style:italic;font-weight:500}
+.three{margin-top:auto;font-size:56px;font-weight:650;letter-spacing:-.025em}
+/* Q */
+.qgrid{display:flex;gap:110px;align-items:center;flex:1}
+.qrwrap{position:relative;width:640px;height:640px;flex:none}
+.qrph{position:absolute;inset:0;border:4px dashed #4a4f57;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:48px;font-weight:650;color:#9aa0a8;line-height:1.2}
+.qrph small{display:block;font:500 24px var(--mono);margin-top:24px;color:#6b7079}
+.qrimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;border-radius:22px;padding:28px}
+.qtext h2{font-size:96px;margin-bottom:40px}
+.qurl{font-size:44px;color:var(--acc);margin-bottom:60px}
+.qwhen{font-size:52px;font-weight:600;line-height:1.25;margin-bottom:50px}
+.qwhen b{color:var(--acc)}
+.qprize{font-size:36px;color:var(--mut)}
+/* 17 */
+.s17{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;margin-top:-30px}
+.honest{height:690px;width:auto;border-radius:14px;display:block}
+.s17cap{font-size:64px;font-weight:700;letter-spacing:-.03em}
+
+/* v2 additions */
+.s3grid{display:flex;gap:90px;flex:1;align-items:center}
+.s3left{flex:1}
+.s3left .quoteline{font-size:92px;margin-bottom:60px}
+.s3left .bignum .n{font-size:150px}
+.s3sub{font-size:32px;color:var(--mut);margin-top:40px;line-height:1.4}
+.s3right{flex:none;width:600px;height:640px;overflow:hidden;border-radius:18px}
+.s6grid{display:flex;gap:70px;flex:1;align-items:center}
+.s6left{flex:1;min-width:0}
+.s6left h2{margin-bottom:48px}
+.s6left .kitchen{gap:22px;margin-bottom:48px}
+.s6left .kc{padding:32px 30px}
+.s6left .k1{font-size:58px}.s6left .k2{font-size:28px}
+.s6left .op{font-size:56px}
+.s6left .qcard{padding:32px 40px}
+.s6left .qt{font-size:38px}
+.meme.pigeon{width:560px;flex:none}
+.c-pg1{left:4%;top:68%;width:50%;font-size:36px}
+.c-pg2{left:52%;top:3%;width:46%;font-size:30px}
+.c-pg3{left:0;right:0;bottom:3%;font-size:46px}
+.s12img{background:#fff;border-radius:18px;overflow:hidden;width:1100px;margin-bottom:56px}
+.s12img img{display:block;width:100%}
+.s12row{display:flex;gap:120px}
+.big2{font-size:54px;font-weight:700;letter-spacing:-.025em}
+.l2{font-size:30px;color:var(--mut);margin-top:10px}
+.slide.k-plan h2{margin-bottom:44px}
+.s13grid{display:flex;gap:70px;flex:1;align-items:center}
+.s13left{flex:1}
+.s13left h2{font-size:72px;margin-bottom:50px}
+.fu{display:flex;flex-direction:column;margin-bottom:34px}
+.fu b{font-size:44px;font-weight:700}.fu span{font-size:30px;color:var(--mut);margin-top:4px}
+.bignum.sm{margin-top:30px}.bignum.sm .n{font-size:96px}.bignum.sm .l{font-size:28px}
+.s13right{flex:none;width:860px}
+.shot{display:block;width:100%;border-radius:16px}
+.slide.k-fam .fr{padding:16px 0}
+.slide.k-fam .fn{font-size:38px;width:380px}
+.slide.k-fam .fa{font-size:33px}
+.slide.k-fam h2{margin-bottom:36px}
+.toolgrid.five,.slide.k-tools .toolgrid{grid-template-columns:repeat(5,1fr);gap:24px}
+.slide.k-tools .tc{min-height:250px;padding:30px 28px}
+.slide.k-tools .tn{font-size:36px}
+.slide.k-tools .ta{font-size:28px}
+.slide.k-tools h2{margin-bottom:56px}
+.s16img{border-radius:18px;overflow:hidden;width:1400px;align-self:center}
+.s16img img{display:block;width:100%}
+.slide.k-cycle h2{margin-bottom:36px}
+.tagline.sm{font-size:40px;align-self:center}
+.s17grid{display:flex;gap:70px;flex:1;align-items:center}
+.s17left{flex:1}
+.s17left h2{font-size:68px;margin-bottom:50px}
+.exrow{display:flex;align-items:baseline;gap:30px;margin-bottom:30px}
+.exn{font-size:96px;font-weight:750;letter-spacing:-.04em;width:150px;flex:none}
+.exl{font-size:34px;color:#c4c7cc;line-height:1.3}
+.s17right{flex:none;width:840px}
+.s18grid{display:flex;gap:70px;flex:1;align-items:center}
+.s18left{flex:1}
+.s18left h2{font-size:72px;margin-bottom:50px}
+.s18left .truths{gap:30px}
+.s18foot{font-size:28px;color:var(--mut);margin-top:50px;line-height:1.4}
+.s18right{flex:none;width:560px;height:560px;overflow:hidden;border-radius:18px}
+.c-b3{left:0;right:0;bottom:2.5%;font-size:34px;color:#fff;text-shadow:0 0 6px #000,2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000}
+.s22{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;margin-top:-30px}
+.s22cap{font-size:64px;font-weight:700;letter-spacing:-.03em}
+#pt small{font-size:22px;color:#8b9099;font-weight:400}
+.tl{grid-template-columns:repeat(7,1fr);margin-top:220px}
+.tli{padding-right:26px}.tli .d{font-size:32px}.tli .e{font-size:30px}
+.slide.k-tools .tc{min-height:300px}
+.slide.k-tools .tn{font-size:40px}
+.slide.k-tools .ta{font-size:31px}
+.exrow{align-items:center}
+.s13right{width:780px}
+.s13left h2{font-size:66px}
+.s12img{width:1250px}
+.c-pg1{left:3%;top:4%;width:40%}
+.c-b3{font-size:31px}
+/* UI */
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:46vh;overflow:auto;background:#111316;color:#e8e8e6;padding:22px 34px 30px;font:18px/1.5 var(--sans);display:none;z-index:20;border-top:1px solid #2a2d33}
+#notes.on{display:block}
+#notes .timing{color:#5aa9ff;font-weight:600}
+#notes h4{font:600 13px var(--mono);color:#8b9099;margin-bottom:10px;letter-spacing:.06em}
+#notes p{margin-bottom:10px;max-width:1300px}
+.meta{color:#8b9099;font-size:.9em}
+#timer{position:fixed;top:14px;right:18px;font:600 20px var(--mono);color:#9aa0a8;background:#000a;padding:6px 12px;border-radius:8px;display:none;z-index:30}
+#timer.on{display:block}#timer.over{color:#ff7b72}#timer.paused{opacity:.55}
+#help{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:#000c;z-index:40}
+#help.on{display:flex}
+#help div{background:#15171a;color:#eee;padding:34px 44px;border-radius:14px;font:18px/1.9 var(--sans)}
+#help kbd{font:600 15px var(--mono);background:#2a2d33;padding:2px 8px;border-radius:5px;margin-right:8px}
+body.render #notes,body.render #timer,body.render #help{display:none!important}
+/* v3 */
+.prin{flex:1;display:flex;flex-direction:column;justify-content:center;margin-top:-30px}
+.prin .pq{font-size:74px;font-weight:700;letter-spacing:-.03em;line-height:1.13;max-width:1640px}
+.prin .pen{font-size:31px;color:var(--mut);margin-top:60px;max-width:1500px;line-height:1.4;font-style:italic}
+.prin .psrc{font:500 24px var(--mono);color:#5d626b;margin-top:22px}
+.slide.k-dw .fr{padding:30px 0}
+.slide.k-dw .fn{width:330px}
+.slide.k-dw .fa{font-size:36px}
+.slide.k-dw h2{margin-bottom:56px}
+.slide.k-tools .tc{min-height:300px}
+.slide.k-tools .tn{font-size:38px}
+.slide.k-tools .ta{font-size:29px}
+.price td{padding:18px 20px 18px 0}
+.price{font-size:31px}
+.slide .meme.drake{width:480px}.slide .c-dr1,.slide .c-dr2{font-size:34px}
+.price td.now{white-space:nowrap}
+#notes ul{margin:0 0 10px 24px;max-width:1300px}#notes li{margin-bottom:6px}
+
+</style></head>
+<body>
+<div id="viewport"><div id="stage">
+<section class="slide " data-label="1">
+<div class="kicker">Devin AI Trento #1 &middot; Devin è cambiato molto</div>
+<div class="s1grid">
+  <div>
+    <h1 class="xl">Ciao, sono Bogdan</h1>
+    <div class="places">Roma <span class="sep">/</span> Romania <span class="sep">/</span> Trentino</div>
+    <div class="products">
+      <div class="prod"><div class="pname">minipim.io</div><div class="pdesc">gestire le informazioni di prodotto</div></div>
+      <div class="prod"><div class="pname">TuttoCalcolato.it</div><div class="pdesc">calcolatori di ogni genere</div></div>
+    </div>
+    <div class="daily">Ogni giorno: <b>Devin</b> e <b>Cursor</b> <span class="sep">/</span> ambassador Devin a Trento</div>
+  </div>
+  <img class="photo" src="assets/bogdan.jpg" alt="" onerror="this.remove()">
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>01 / 20</span></div></section><section class="slide " data-label="2">
+<div class="prin">
+  <div class="kicker">Perché sono qui</div>
+  <div class="pq">&ldquo;Cercare occasioni per aiutare le persone, indipendentemente dal fatto che utilizzino Devin o meno, e <span class="accent">aiutarle senza aspettarsi nulla in cambio.</span>&rdquo;</div>
+  <div class="pen">&ldquo;Finding opportunities to help people regardless if they are using Devin or not, and help them without expecting anything in return.&rdquo;</div>
+  <div class="psrc">Linee guida ambassador Devin</div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>02 / 20</span></div></section><section class="slide " data-label="3">
+<h2>Perché questa serata</h2>
+<div class="agenda">
+  <div class="ag"><div class="t">19:10</div><div class="w">Talk</div></div>
+  <div class="ag"><div class="t">19:35</div><div class="w">Demo live</div></div>
+  <div class="ag"><div class="t">20:00</div><div class="w">Q&amp;A senza filtri</div></div>
+  <div class="ag"><div class="t">20:15</div><div class="w">Lightning talk</div></div>
+  <div class="ag hl"><div class="t">20:35</div><div class="w">Estrazione</div></div>
+  <div class="ag"><div class="t">20:40</div><div class="w">Pizza e networking</div></div>
+</div>
+<div class="s2bottom">
+  <div class="nosell">Nessuno vi vende niente stasera.</div>
+  <div class="prizebox"><span class="mono">20:35</span> estrazione live di <b>3 licenze Devin da 200 $</b></div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>03 / 20</span></div></section><section class="slide " data-label="4">
+<div class="s3grid">
+  <div class="s3left">
+    <div class="kicker">12 marzo 2024</div>
+    <div class="quoteline">&ldquo;Il primo AI software engineer&rdquo;</div>
+    <div class="bignum"><div class="n accent">13,86%</div><div class="l">su SWE-bench</div></div>
+    <div class="s3sub">il migliore prima: meno del 2% <span class="sep">/</span> su 100 bug, ne sistemava 14</div>
+  </div>
+  <div class="s3right"><img class="tweetshot" src="assets/tweet-introducing-devin-2024.png" alt="Post Introducing Devin di Cognition"></div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>04 / 20</span></div></section><section class="slide " data-label="5">
+<h2>500 dollari al mese e un test spietato</h2>
+<div class="s4grid">
+  <div class="s4left">
+    <div class="bignum"><div class="n accent">500 $/mese</div><div class="l">dicembre 2024, per team</div></div>
+    <div class="bignum"><div class="n">3 su 20</div><div class="l">Answer.AI, gennaio 2025<br>3 successi &middot; 14 fallimenti &middot; 3 &ldquo;boh&rdquo;</div></div>
+  </div>
+  <figure class="meme fine">
+    <div class="memebox"><img src="assets/meme-thisisfine.jpg" alt="This is fine">
+      <span class="cap c-fine1">14 task falliti su 20</span>
+      <span class="cap tag c-fine2">500 $/mese</span>
+    </div>
+  </figure>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>05 / 20</span></div></section><section class="slide " data-label="6">
+<div class="s5grid">
+  <div class="s5left">
+    <div class="kicker">Hamel Husain, uno degli autori del test di Answer.AI</div>
+    <div class="hugequote">&ldquo;It actually works now&rdquo;</div>
+    <div class="sub">&ldquo;Some of it is models are better but the UX/harness is also better.&rdquo;</div>
+    <div class="src5">Quote-tweet del suo post di gennaio 2025</div>
+  </div>
+  <div class="s5right"><img class="tweetshot" src="assets/tweet-hamel-quote.png" alt="Quote-tweet di Hamel Husain"></div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>06 / 20</span></div></section><section class="slide " data-label="7">
+<div class="s6grid">
+  <div class="s6left">
+    <h2>Chatbot, agente, harness</h2>
+    <div class="kitchen">
+      <div class="kc"><div class="k1">Chef</div><div class="k2">= LLM</div></div>
+      <div class="op">+</div>
+      <div class="kc"><div class="k1">Cucina</div><div class="k2">= harness</div></div>
+      <div class="op">=</div>
+      <div class="kc"><div class="k1 accent">Agente</div><div class="k2">chef + cucina</div></div>
+    </div>
+    <div class="qcard">
+      <div class="qhead"><img src="assets/avatar-theo.jpg" alt=""><div><div class="qn">Theo &middot; t3.gg</div><div class="qh">@theo &middot; 23 ott 2026 &middot; &ldquo;What is a &lsquo;harness&rsquo;?&rdquo;</div></div></div>
+      <div class="qt">&ldquo;An agent is what happens when you combine a harness and an LLM.&rdquo;</div>
+    </div>
+  </div>
+  <figure class="meme pigeon">
+    <div class="memebox"><img src="assets/meme-pigeon.jpg" alt="Is this a pigeon">
+      <span class="cap outline c-pg1">io nel 2023</span>
+      <span class="cap outline c-pg2">ChatGPT che mi scrive una funzione</span>
+      <span class="cap outline c-pg3">Is this an agent?</span>
+    </div>
+  </figure>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>07 / 20</span></div></section><section class="slide " data-label="8">
+<h2>PR e test end-to-end</h2>
+<div class="s7grid">
+  <div class="s7left">
+    <svg class="pricon" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2.2"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="19" r="2.2"/><path d="M6 7.2v9.6"/><path d="M18 16.8V9a3 3 0 0 0-3-3h-4"/><path d="M13 3.5 10.5 6 13 8.5"/></g></svg>
+    <div class="pr1">Pull request</div>
+    <div class="pr2">una proposta di modifica</div>
+    <div class="pr3">Il bottone <span class="mono">merge</span> lo premete voi.</div>
+  </div>
+  <div class="s7right">
+    <svg class="pyr" viewBox="0 0 600 460" aria-hidden="true">
+      <polygon points="300,10 400,150 200,150" class="pt"/>
+      <polygon points="195,160 405,160 505,300 95,300" class="pm"/>
+      <polygon points="90,310 510,310 600,450 0,450" class="pb"/>
+    </svg>
+    <div class="pyl pyl-top"><b>End-to-end</b><span>pochi, grandi</span></div>
+    <div class="pyl pyl-bot"><b>Unit test</b><span>tanti, piccoli</span></div>
+  </div>
+</div>
+<div class="tagline">Non &ldquo;fidati&rdquo;, ma &ldquo;guarda&rdquo;.</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>08 / 20</span></div></section><section class="slide " data-label="9">
+<h2>E no, non è Windsurf. Però...</h2>
+<div class="s9grid">
+  <figure class="meme spidey">
+    <div class="memebox"><img src="assets/meme-spiderman3.jpg" alt="Spider-Man pointing">
+      <span class="cap outline c-sp1">Codeium</span>
+      <span class="cap outline c-sp2">Windsurf</span>
+      <span class="cap outline c-sp3">Devin Desktop</span>
+    </div>
+    <figcaption>Lo stesso IDE, tre nomi in tre anni.</figcaption>
+  </figure>
+  <div class="umbrella">
+    <div class="ubig">Devin</div>
+    <div class="ubar"></div>
+    <div class="uitems">
+      <div class="ui"><b>Cloud</b><span>agente nella sua macchina</span></div>
+      <div class="ui"><b>Desktop</b><span>IDE ex Windsurf</span></div>
+      <div class="ui"><b>CLI</b><span>agente nel terminale</span></div>
+      <div class="ui"><b>Review</b><span>code review delle PR</span></div>
+    </div>
+  </div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>09 / 20</span></div></section><section class="slide " data-label="10">
+<h2>Prezzi, allora vs oggi</h2>
+<div class="s10grid">
+  <table class="price">
+    <thead><tr><th></th><th>2024</th><th>Oggi (novembre 2026)</th></tr></thead>
+    <tbody>
+      <tr><td class="rl">Ingresso</td><td>500 $/mese, solo team</td><td class="now">Free, 0 $ (senza Devin Cloud)</td></tr>
+      <tr><td class="rl">Individuale</td><td class="muted">non esisteva</td><td class="now">Pro 20 $ &middot; Max 200 $ al mese</td></tr>
+      <tr><td class="rl">Team</td><td>500 $/mese</td><td class="now">Teams: da 80 $/mese, 40 $ a full seat</td></tr>
+      <tr><td class="rl">Come si misura</td><td>ACU</td><td class="now">quota giornaliera e settimanale + crediti<br><span class="muted">ACU e budget gerarchici solo Enterprise</span></td></tr>
+      <tr><td class="rl">Cosa consuma</td><td class="muted">ACU</td><td class="now">azioni e macchina, non l'attesa<br><span class="muted">dorme dopo 30 min di inattività</span></td></tr>
+    </tbody>
+  </table>
+  <figure class="meme drake">
+    <div class="memebox"><img src="assets/meme-drake.jpg" alt="Drake">
+      <span class="cap dark c-dr1">500 $/mese solo per team</span>
+      <span class="cap dark c-dr2">Free, poi 20 $/mese</span>
+    </div>
+  </figure>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>10 / 20</span></div></section><section class="slide k-plan" data-label="11">
+<div class="kicker">da fine settembre 2026 &middot; Settings &gt; Connections</div>
+<h2>Lo chef lo portate da casa</h2>
+<div class="s12img"><img src="assets/chatgpt-plan-toggle.jpg" alt="Use your ChatGPT plan"></div>
+<div class="s12row">
+  <div><div class="big2">ChatGPT Go, Plus o Pro</div><div class="l2">collegabile a Devin Pro, Max e Teams</div></div>
+  <div><div class="big2">Solo i modelli GPT</div><div class="l2">macchina, altri modelli e scansioni: quota Devin</div></div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>11 / 20</span></div></section><section class="slide " data-label="12">
+<div class="s13grid">
+  <div class="s13left">
+    <div class="kicker">Devin Fusion &middot; dal 29 giu 2026</div>
+    <h2>Fusion: chef capo e aiuto cuoco</h2>
+    <div class="fu"><b>Chef capo</b><span>modello di frontiera: piano, decisioni, review finale</span></div>
+    <div class="fu"><b>Aiuto cuoco</b><span>modello economico (es. SWE-2): codice, build, test</span></div>
+    <div class="bignum sm"><div class="n accent">fino a -60%</div><div class="l">di costo su FrontierCode, a parità di risultati<br>(benchmark e dati di Cognition)</div></div>
+  </div>
+  <div class="s13right"><img class="shot" src="assets/lifecycle-fusion.jpg" alt="Fusion: a frontier lead with an efficient sidekick"></div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>12 / 20</span></div></section><section class="slide k-fam" data-label="13">
+<h2>Dove lavora Devin</h2>
+<div class="famlist"><div class="fr"><div class="fn">Sessione</div><div class="fa">una VM Linux sua (o macOS, Windows): shell, editor, browser</div></div><div class="fr"><div class="fn">Blueprint</div><div class="fa">un file YAML: cosa installare, come fare lint e test</div></div><div class="fr"><div class="fn">Snapshot</div><div class="fa">l'immagine pronta da cui parte ogni sessione, rifatta ogni giorno</div></div><div class="fr"><div class="fn">Devin Cloud</div><div class="fa">lavora da solo; dorme dopo 30 min, riprendibile per 14 giorni</div></div><div class="fr"><div class="fn">Devin Desktop</div><div class="fa">ex Windsurf: tabellone degli agenti + Devin Local</div></div><div class="fr"><div class="fn">Devin CLI</div><div class="fa">agente nel terminale; <span class='mono'>/handoff</span> spedisce il lavoro al cloud</div></div><div class="fr"><div class="fn">Test con video</div><div class="fa">apre l'app, la usa come un utente, ti manda il video</div></div></div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>13 / 20</span></div></section><section class="slide k-fam k-dw" data-label="14">
+<h2>DeepWiki e Ask Devin: prima capire</h2>
+<div class="famlist"><div class="fr"><div class="fn">Come nasce</div><div class="fa">indicizza il repo e scrive una wiki: pagine per modulo e diagrammi</div></div><div class="fr"><div class="fn">Cosa ti dà</div><div class="fa">ogni pagina cita file e righe da cui viene, e il commit indicizzato</div></div><div class="fr"><div class="fn">Come la uso</div><div class="fa">Ask Devin: domande con citazioni &rarr; piano &rarr; sessione pronta</div></div><div class="fr"><div class="fn">Quanto costa</div><div class="fa">repo pubblici: deepwiki.com e il suo MCP, gratis<br>repo privati: con un account Devin, livello base incluso</div></div></div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>14 / 20</span></div></section><section class="slide k-tools" data-label="15">
+<h2>La cassetta degli attrezzi</h2>
+<div class="toolgrid"><div class="tc"><div class="tn">Devin Review</div><div class="ta">legge ogni PR: bug per confidenza, sicurezza sempre attiva</div></div><div class="tc"><div class="tn">Auto-Fix</div><div class="ta">i problemi trovati tornano nella PR come correzioni</div></div><div class="tc"><div class="tn">Skills</div><div class="ta">SKILL.md nel repo: procedure ripetibili. Assorbono Playbooks e Knowledge</div></div><div class="tc"><div class="tn">AGENTS.md</div><div class="ta">le regole del repo, lette a ogni setup</div></div><div class="tc"><div class="tn">Memoria</div><div class="ta">note personali tra sessioni, riordinate ogni giorno</div></div><div class="tc"><div class="tn">MCP</div><div class="ta">collega Datadog, Sentry, database, ticket</div></div><div class="tc"><div class="tn">Automations</div><div class="ta">trigger (Slack, GitHub, orario, webhook) &rarr; sessione</div></div><div class="tc"><div class="tn">Oncall</div><div class="ta">da ottobre per tutti: alert &rarr; indagine &rarr; fix</div></div><div class="tc"><div class="tn">Data Analyst</div><div class="ta">SQL e grafici sui dati collegati, anche da Slack</div></div><div class="tc"><div class="tn">API e Devin MCP</div><div class="ta">Devin da script e da altri agenti</div></div></div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>15 / 20</span></div></section><section class="slide " data-label="16">
+<div class="s18grid">
+  <div class="s18left">
+    <div class="kicker">26 ott 2026 &middot; Devin Security 2.0</div>
+    <h2>&ldquo;A new dark age of cybersecurity&rdquo;</h2>
+    <ol class="truths">
+      <li><b>Scansiona</b><span>con modelli cyber di frontiera, anche Claude Mythos</span></li>
+      <li><b>Dà priorità</b><span>con un threat model del vostro ambiente</span></li>
+      <li><b>Corregge</b><span>una sessione per finding, una PR da rivedere</span></li>
+    </ol>
+    <div class="s18foot">Importa i finding di altri scanner <span class="sep">/</span> crediti gratuiti per le enterprise</div>
+  </div>
+  <div class="s18right"><img class="tweetshot" src="assets/tweet-devin-security.png" alt="Post Devin Security di Cognition"></div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>16 / 20</span></div></section><section class="slide " data-label="17">
+<div class="s14grid">
+  <div class="s14left"><h2>Quello che resta vero</h2>
+  <ol class="truths">
+    <li><b>Sbaglia.</b><span>review e branch protetti</span></li>
+    <li><b>Compiti vaghi, risultati vaghi.</b><span>meno di 3 ore per te: ok. Oltre, spezzalo.</span></li>
+    <li><b>Costa.</b><span>modello, dimensione del task, ragionamento</span></li>
+    <li><b>Privacy.</b><span>Data Controls, prima del codice del cliente</span></li>
+  </ol></div>
+  <figure class="meme buttons">
+    <div class="memebox"><img src="assets/meme-twobuttons.jpg" alt="Two buttons">
+      <span class="cap dark c-b1">Faccio review della PR</span>
+      <span class="cap dark c-b2">Faccio merge, tanto ha fatto i test</span>
+      <span class="cap c-b3">Ogni dev alle 18:59 di venerdì</span>
+    </div>
+  </figure>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>17 / 20</span></div></section><section class="slide " data-label="18">
+<h2>Come la racconta Cognition</h2>
+<div class="qcard big">
+  <div class="qhead"><img src="assets/avatar-cognition.jpg" alt=""><div><div class="qn">Cognition</div><div class="qh">@cognition &middot; 28 ott 2026 &middot; su Mercor</div></div></div>
+  <div class="qt">&ldquo;Mercor's engineers move at extraordinary speed. <mark>They give Devin long-running tasks before bed, during meetings, or on their way to the gym. They come back to tested features and PRs ready to merge.</mark>&rdquo;</div>
+</div>
+<div class="footnote">Marketing loro, su un cliente loro. Però si può verificare.</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>18 / 20</span></div></section><section class="slide " data-label="19">
+<div class="kicker">Demo live</div>
+<h2>Cosa stiamo per vedere</h2>
+<div class="demo">
+  <div class="dr"><div class="dk">Cosa</div><div class="dv">un caso reale, non un'app di esempio</div></div>
+  <div class="dr"><div class="dk">Dove</div><div class="dv">Devin Cloud: una sessione vera e la sua PR</div></div>
+  <div class="dr"><div class="dk">Come</div><div class="dv">dal vivo, anche se qualcosa si rompe</div></div>
+</div>
+<div class="three">Come pianifica <span class="sep">/</span> come lavora <span class="sep">/</span> come verifica</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>19 / 20</span></div></section><section class="slide " data-label="Q">
+<div class="qgrid">
+  <div class="qrwrap">
+    <div class="qrph">QR estrazione<br>(da inserire)<small>assets/qr-estrazione.png</small></div>
+    <img class="qrimg" src="assets/qr-estrazione.png" alt="QR estrazione" onerror="this.remove()">
+  </div>
+  <div class="qtext">
+    <h2>Scansiona e partecipa</h2>
+    <div class="qurl mono">[URL breve da inserire]</div>
+    <div class="qwhen">Estrazione alle <b>20:35</b>.<br>Devi essere in sala.</div>
+    <div class="qprize">3 licenze Devin da 200 $</div>
+  </div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>Q</span></div></section><section class="slide " data-label="20">
+<div class="s22">
+  <img class="honest" src="assets/meme-lavoro-onesto.png" alt="Non è molto, ma è un lavoro onesto">
+  <div class="s22cap">3 licenze Devin da 200 $</div>
+</div>
+<div class="foot"><span>Devin AI Trento #1 &middot; Impact Hub Trento &middot; 4 novembre 2026</span><span>20 / 20</span></div></section>
+</div></div>
+<div id="notes"></div>
+<div id="timer"></div>
+<div id="help"><div>
+<b>Comandi</b><br>
+<kbd>&rarr;</kbd><kbd>Spazio</kbd><kbd>Click</kbd> avanti &nbsp; <kbd>&larr;</kbd> <kbd>click a sinistra</kbd> indietro<br>
+<kbd>Home</kbd><kbd>End</kbd> prima / ultima &nbsp; <kbd>Q</kbd> vai alla slide QR<br>
+<kbd>F</kbd> fullscreen<br>
+<kbd>N</kbd> note sotto la slide (visibili anche al pubblico se lo schermo è duplicato)<br>
+<kbd>S</kbd> presenter view in una nuova finestra (note, prossima slide, timer)<br>
+<kbd>T</kbd> mostra timer e avvia / pausa &nbsp; <kbd>R</kbd> azzera timer<br>
+<kbd>H</kbd> questo aiuto
+</div></div>
+<script>
+(function(){
+var SL=[{"label": "1", "title": "Ciao, sono Bogdan", "notes": "<p class='timing'>Tempo: 1:15 &middot; a fine slide: minuto 1:15 su 24:45 &middot; orario previsto 19:11:15</p><p>Ciao a tutti, sono Bogdan. Un romano di origini rumene, trasferito in Trentino. E già qui potrebbe essere l'inizio di una barzelletta.</p><p>Sono uno sviluppatore, costruisco prodotti. Il più recente è minipim.io, serve a gestire le informazioni di prodotto. L'altro è un side project, TuttoCalcolato.it: una piattaforma di calcolatori di ogni genere.</p><p>Uso agenti AI per programmare tutti i giorni, principalmente Devin e Cursor. E sono ambassador Devin qui a Trento, quindi tenetene conto: stasera vi dico anche cosa non funziona.</p><p>E Claude e ChatGPT? Storia lunga. Se volete saperla, offritemi una birra dopo.</p><p><p class='meta'>Foto opzionale: salva assets/bogdan.jpg e compare a destra. Tolta la frase &quot;sto ancora cercando clienti&quot;: con la slide 2 subito dopo, stonava.</p></p>", "cum": 75}, {"label": "2", "title": "Il principio", "notes": "<p class='timing'>Tempo: 0:45 &middot; a fine slide: minuto 2:00 su 24:45 &middot; orario previsto 19:12:00</p><p>Una cosa prima di partire. Mi piace molto far parte del programma Devin, e il motivo sta tutto in questa riga.</p><p><i>[pausa, lasciala leggere]</i></p><p>È quello che ci chiedono di fare come ambassador: aiutare le persone, che usino Devin o no, senza aspettarsi niente in cambio. E per me non è una regola nuova, è più o meno come cerco già di lavorare.</p><p>Per questo mi sento grato, e anche un po' fortunato, di starci dentro. Quindi stasera, se usate Cursor, Claude Code o niente, va benissimo uguale.</p><p><p class='meta'>Tono: detto semplice, senza enfasi. Non leggere la frase ad alta voce: si legge da sola. Fonte: linee guida del programma ambassador Devin, punto 4 (screenshot fornito da Bogdan, testo originale in inglese sotto la traduzione).</p></p>", "cum": 120}, {"label": "3", "title": "Perché questa serata", "notes": "<p class='timing'>Tempo: 2:00 &middot; a fine slide: minuto 4:00 su 24:45 &middot; orario previsto 19:14:00</p><p>Perché questa serata? Il motivo che mi appassiona di più è il networking. Sono un topo da laboratorio, passo molto più tempo a sviluppare che a questi eventi. Però penso che più ce ne sono, meglio è.</p><p>Stasera è un'introduzione a come è cambiato Devin. Molti lo conoscono per i 500 dollari al mese del 2024, oppure per il passaggio da Windsurf a Devin.</p><p>Il formato: venticinque minuti di contesto, poi la demo live, poi Q&amp;A senza filtri, poi i lightning talk della community.</p><p>E per farvi restare fino alla fine: dopo i lightning talk estraiamo 3 licenze Devin da 200 dollari. Il QR ve lo mostro dopo la demo. Il tool dell'estrazione l'ha costruito Devin, quindi se non funziona sapete con chi prendervela.</p><p>Alzata di mano veloce. Chi ha provato Devin? ... Chi usa Cursor, Claude Code, Copilot o simili? ... E chi pensa che Devin costi ancora 500 dollari? ... Perfetto, voi siete il mio target stasera.</p><p><p class='meta'>Guarda le mani: se quasi nessuno ha provato Devin, allunga le spiegazioni terra terra (slide 7-8). Se tanti lo usano, accorciale. Orari calcolati sul talk da circa 25 minuti (vedi tabella nel master).</p></p>", "cum": 240}, {"label": "4", "title": "Marzo 2024, il video che ha fatto il giro del mondo", "notes": "<p class='timing'>Tempo: 1:00 &middot; a fine slide: minuto 5:00 su 24:45 &middot; orario previsto 19:15:00</p><p>Marzo 2024. Cognition presenta Devin come 'il primo AI software engineer'. Video ovunque, LinkedIn in fiamme, tutti i CTO in ansia. [S1]</p><p>Il numero dichiarato era 13,86% su SWE-bench. SWE-bench, terra terra: una raccolta di bug veri presi da progetti open source su GitHub. Dai il bug all'AI e vedi se lo sistema davvero.</p><p>Il sistema migliore prima faceva meno del 2%. Ma traduciamolo: su 100 bug, ne sistemava 14. Gli altri 86... insomma, ci aveva provato.</p><p><p class='meta'>[S1] https://cognition.com/blog/introducing-devin . Post originale su X: https://x.com/cognition/status/1767548763134964000 (13,86% senza aiuto contro 1,96% del precedente stato dell'arte senza aiuto e 4,80% assistito). Il post diceva anche che Devin aveva passato colloqui tecnici di aziende AI e fatto lavori su Upwork: battuta del CV tolta per stare nei tempi, usala se sei in anticipo.</p></p>", "cum": 300}, {"label": "5", "title": "500 dollari al mese e un test spietato", "notes": "<p class='timing'>Tempo: 1:00 &middot; a fine slide: minuto 6:00 su 24:45 &middot; orario previsto 19:16:00</p><p>Dicembre 2024: Devin diventa disponibile a tutti. Prezzo di partenza: 500 dollari al mese, per team. [S2]</p><p>A gennaio 2025 il team di Answer.AI lo prova per un mese su 20 task veri. Risultato: 3 successi, 14 fallimenti, 3 'boh'. E la cosa peggiore, dicevano, era non riuscire a prevedere quali task sarebbero andati bene. [S3]</p><p>Questo è il Devin che molti di voi hanno in testa. Ed era una critica giusta.</p><p><p class='meta'>[S2] https://cognition.com/blog/devin-generally-available [S3] https://www.answer.ai/posts/2025-01-08-devin.html</p></p>", "cum": 360}, {"label": "6", "title": "It actually works now", "notes": "<p class='timing'>Tempo: 0:45 &middot; a fine slide: minuto 6:45 su 24:45 &middot; orario previsto 19:16:45</p><p>Poi succede questa cosa. Hamel Husain, uno degli autori di quel test, riprende il suo vecchio post e scrive che è superato: Devin adesso è uno dei suoi strumenti preferiti. Motivo numero 3: 'It actually works now'. [S29]</p><p>Tipo il ristorante che mette in vetrina: 'Ora il cibo è commestibile.'</p><p>La parte interessante è il perché: un po' sono migliorati i modelli, ma è migliorato anche l'harness. Tenetevi questa parola, la spieghiamo adesso.</p><p><p class='meta'>Quote-tweet: https://x.com/HamelHusain/status/2050363550020055290 (2 maggio 2026, 01:55 ora di Roma). Tweet originale del 17 gennaio 2025: https://x.com/HamelHusain/status/1880129024737104118.</p></p>", "cum": 405}, {"label": "7", "title": "Chatbot, agente, harness", "notes": "<p class='timing'>Tempo: 1:45 &middot; a fine slide: minuto 8:30 su 24:45 &middot; orario previsto 19:18:30</p><p>Un passo indietro, perché stasera userò parole che spesso diamo per scontate.</p><p><i>[indica il meme]</i> Questo ero io nel 2023: ChatGPT mi scriveva una funzione e io pensavo di avere un agente. No.</p><p>Un chatbot è uno chef che vi detta la ricetta al telefono. Bravissimo, ma la cucina la fate voi: copiate, incollate, provate, tornate a lamentarvi.</p><p>Un agente è uno chef che entra in cucina e cucina davvero: apre i file, li modifica, lancia comandi, guarda il risultato, corregge.</p><p>E la cucina si chiama harness. Theo, quello di T3, ci ha scritto un post a fine ottobre. [S27] Il succo: un modello da solo produce solo testo. Per fare cose gli servono attrezzi, 'leggi file', 'modifica file', 'lancia un comando', e un sistema che esegue davvero l'attrezzo e gli riporta il risultato. Quel sistema è l'harness. Chef più cucina uguale agente.</p><p>Theo non parla di Devin, sia chiaro. Ma il concetto spiega bene Devin: non è 'un modello', è una cucina attrezzata, con una macchina sua, un browser e la possibilità di usare chef diversi. Quindi quando confrontate Devin con Cursor o Claude Code, non state confrontando chef. State confrontando cucine.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Confronto aggiornato: anche GitHub Copilot dal 28 ott 2026 ha &quot;Copilot in the cloud&quot; sui piani a pagamento, con ambiente a scelta tra sandbox cloud, GitHub Actions o remoto. Cursor ha cloud agent su VM Ubuntu. Le cucine si somigliano sempre di più: cambia cosa c'è dentro. [S61]</li></ul></p><p><p class='meta'>[S27] https://x.com/theo/status/2113424203345265053 (&quot;tl;dr - An agent is what happens when you combine a harness and an LLM.&quot;). Cognition dice di voler combinare i modelli migliori, compresi i propri [S10][S15].</p></p>", "cum": 510}, {"label": "8", "title": "PR e test end-to-end", "notes": "<p class='timing'>Tempo: 1:45 &middot; a fine slide: minuto 10:15 su 24:45 &middot; orario previsto 19:20:15</p><p>Altre due parole che sentirete nella demo.</p><p>PR, pull request: una proposta di modifica. Come un documento Word con le revisioni attive che mandate al capo: 'ho cambiato queste righe, approvi?' Finché nessuno fa merge, il codice vero non cambia. Devin lavora così: non tocca il vostro main, vi apre una PR. Il bottone 'merge' lo premete voi.</p><p>Test end-to-end. Un unit test controlla un pezzo singolo: il forno arriva a 200 gradi? Utile, ma non vi dice se la cena è buona. Un test end-to-end prova tutto il percorso come un utente vero: apro il browser, faccio login, aggiungo un prodotto, salvo, controllo che sia salvato davvero.</p><p>Puoi avere tutti gli unit test verdi e il sito che non ti fa fare login. Ci siamo passati tutti.</p><p>Ed è la cosa che mi interessa di Devin oggi: dopo la PR può avviare l'app, cliccare come un utente e mandarti il video di quello che ha fatto. [S19] Non 'fidati', ma 'guarda'.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Come si attiva il test con video: dopo la PR clicchi &quot;Test the app&quot;, oppure lo pre-approvi in Settings &gt; Preferences. Devin prepara l'app, scrive un piano con il flusso end-to-end più importante e te lo manda prima, poi aspetta la CI verde, registra lo schermo con annotazioni e zoom e ti manda il video. Se servono credenziali le salva come secret. [S19]</li><li>Esempio dal video ufficiale del 23 ottobre: task &quot;aggiungi le scadenze alle card&quot; di una app Kanban, 1 sessione, 1 PR, 40 test verdi più lint, build e un giro nel browser con Playwright; Devin Review trova 5 bug, Auto-Fix li risolve tutti. È il loro esempio, su un'app scelta da loro. [S41]</li></ul></p><p><p class='meta'>Se sei in anticipo: chiedi alla sala &quot;Chi ha test end-to-end nel proprio progetto?&quot; [S19] https://docs.devin.ai/work-with-devin/testing-and-recordings</p></p>", "cum": 615}, {"label": "9", "title": "E no, non è Windsurf. Però...", "notes": "<p class='timing'>Tempo: 1:00 &middot; a fine slide: minuto 11:15 su 24:45 &middot; orario previsto 19:21:15</p><p>Il titolo della serata dice 'non è Windsurf'. Facciamo chiarezza, perché è confuso anche per me.</p><p>Windsurf prima si chiamava Codeium. A luglio 2025 Cognition l'ha comprato, e dal 2 giugno 2026 si chiama Devin Desktop. L'ex CEO di Windsurf ha scritto che ha dovuto cambiare indirizzo email praticamente ogni anno. [S6][S9][S30]</p><p>Oggi 'Devin' è un ombrello: Devin Cloud, l'agente che lavora da solo nella sua macchina; Devin Desktop, l'IDE ex Windsurf; Devin CLI, l'agente nel terminale; Devin Review per la code review. [S8]</p><p>Quindi: Windsurf è un pezzo di Devin. Devin non è Windsurf. Nella demo vedete soprattutto Devin Cloud.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Timeline (ex slide 8, tagliata): apr 2025 Devin 2.0 con piano da 20 $ a consumo [S4]; lug 2025 Cognition compra Windsurf [S6]; 14 apr 2026 nuovi piani, addio ai 500 $ [S7]; 2 giu 2026 Windsurf diventa Devin Desktop [S9]; 8 set 2026 Series E, oltre 2 miliardi raccolti a 48 miliardi di valutazione [S10]; 10 set 2026 SWE-2, il loro modello (post-addestrato da Kimi K3) [S11]; 25 set 2026 oltre 1 miliardo di fatturato annualizzato [S45]; fine set e ott 2026 piano ChatGPT, Oncall, Security 2.0.</li></ul></p><p><p class='meta'>[S8] https://docs.devin.ai/desktop/devin-desktop-faq [S9] https://cognition.com/blog/introducing-devin-desktop [S30] post LinkedIn di Jeff Wang. Corretto: SWE-2 non &quot;gira solo dentro Devin&quot; come diceva la vecchia timeline; la fonte dice solo che è il loro modello, disponibile in Devin.</p></p>", "cum": 675}, {"label": "10", "title": "Prezzi, allora vs oggi", "notes": "<p class='timing'>Tempo: 2:30 &middot; a fine slide: minuto 13:45 su 24:45 &middot; orario previsto 19:23:45</p><p>Ed eccoci al titolo della serata. Scordatevi i 500 dollari.</p><p>Oggi c'è un piano gratuito, poi Pro a 20 dollari al mese, Max a 200 per chi lo usa tanto, Teams per i gruppi ed Enterprise per le aziende. Attenzione però: il Free oggi non include Devin Cloud, l'agente autonomo. Per quello serve almeno Pro. [S15]</p><p>Come funziona: il piano ha una quota che si ricarica ogni giorno e ogni settimana, tipo i giga del telefono. Quando la finite, comprate crediti extra a prezzo API, cioè quello che costano i modelli sotto, e non scadono. [S15][S16]</p><p>Cosa fa consumare? Le azioni di Devin, leggere codice, usare il browser, eseguire comandi, e un po' di tempo macchina. Mentre aspetta voi o aspetta i test, no. Dopo 30 minuti di inattività va a dormire. Un taxi che fa pagare i chilometri, non l'attesa al semaforo. [S31]</p><p>E gli ACU, il vecchio gettone? Oggi li vedono solo i clienti Enterprise, che da ieri hanno anche i budget gerarchici: un budget per l'azienda, sotto-budget per reparti e progetti, limiti per persona. [S47]</p><p>Nota cinica ma onesta: quando sono cambiati i piani, Cognition stessa ha scritto che per alcuni utenti leggeri era un passo indietro, e che Ask Devin, DeepWiki e Devin Review sarebbero diventati a pagamento. [S7] L'ingresso costa meno, l'uso pesante si paga.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Free (pagina prezzi al 3 nov 2026): quota leggera, modelli limitati, SWE-2 gratis in versione &quot;Slow&quot;; Devin Cloud, Ask Devin e API: no. Nella doc self-serve il Free include ancora DeepWiki e Devin Review: da confermare quale delle due è aggiornata. [S15][S16]</li><li>Pro 20 $: modelli di frontiera (OpenAI, Claude, Gemini, SpaceXAI) e open source, SWE-2 gratis, Devin Cloud, extra a prezzo API. Max 200 $: quote molto più alte, solo limite settimanale. Sessioni in parallelo: la tabella prezzi riporta &quot;Up to 10, Up to 10, Unlimited, Unlimited&quot;, cioè con ogni probabilità 10 su Pro e Max e illimitate su Teams ed Enterprise; abbinamento da confermare. [S15][S31]</li><li>Teams: minimo 80 $/mese, 40 $/mese per ogni full seat (persona con quota sua), flex seat gratis che pesca dai crediti condivisi e non ha Desktop; fino a 200 utenti. L'admin può impostare un limite di spesa di default per sessione in Settings &gt; Usage &amp; limits. [S15][S16]</li><li>Consumo: non conta mentre aspetta te, i test o il clone del repo. Dorme dopo 30 min (5 min per le sessioni Lite o da API); una sessione si può riprendere entro 14 giorni. Sessioni Windows circa il 9% in più. [S31][S52]</li><li>Budget gerarchici (blog 2 nov 2026): un Account budget alla radice, fino a 3 livelli, limiti mensili, aumenti temporanei, limiti per persona e admin delegati. Solo Enterprise. Quando un limite di organizzazione è raggiunto, il nuovo lavoro viene bloccato (non vuol dire che ogni sessione in corso si fermi); il limite per sessione che ferma la sessione è quello delle Automations. [S47][S37]</li></ul></p><p><p class='meta'>[S15] https://devin.ai/pricing (letta il 3 nov 2026) [S16] https://docs.devin.ai/admin/billing/self-serve [S31] https://docs.devin.ai/admin/billing/usage [S7] https://cognition.com/blog/new-self-serve-plans-for-devin [S47] https://devin.ai/blog/hierarchical-budgets</p></p>", "cum": 825}, {"label": "11", "title": "Lo chef lo portate da casa (piano ChatGPT)", "notes": "<p class='timing'>Tempo: 0:45 &middot; a fine slide: minuto 14:30 su 24:45 &middot; orario previsto 19:24:30</p><p>Questa è piccola ma piace. Se avete un abbonamento ChatGPT personale, Go, Plus o Pro, lo collegate a Devin con un interruttore, e l'uso dei modelli GPT dentro Devin scala dal vostro piano ChatGPT. Vale per Cloud, Desktop e CLI. [S43][S48]</p><p>Con la cucina di prima: lo chef lo portate da casa, e lo paga l'abbonamento che avete già. La cucina resta di Devin: il tempo macchina, gli altri modelli e le scansioni di codice restano sulla quota Devin.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Piani: funziona con Devin Pro, Max e Teams; non con Devin Free né Enterprise. Non con ChatGPT Free. [S48]</li><li>Come: Settings &gt; Connections &gt; Continue with ChatGPT, poi l'interruttore &quot;Use your ChatGPT plan&quot;; nella CLI <span class='mono'>/billing on</span>. [S48]</li><li>Restano a carico di Devin: modelli non GPT, varianti fast o priority, tempo macchina della VM, scansioni di codice, sessioni non tue (per esempio Automations che non girano come te). Una sessione Cloud serve comunque un po' di quota Devin per partire; se finisce il limite ChatGPT, la sessione Cloud si mette in pausa. [S48]</li><li>Fusion con piano ChatGPT nel Cloud: chef capo e aiuto cuoco girano entrambi su modelli GPT. [S48]</li></ul></p><p><p class='meta'>[S43] https://x.com/cognition/status/2108692010056188048 (9 ott 2026). [S48] https://docs.devin.ai/admin/billing/chatgpt ; blog &quot;Sign in with ChatGPT&quot; del 29 set 2026: https://devin.ai/blog/sign-in-with-chatgpt . Immagine: fotogramma del video del post.</p></p>", "cum": 870}, {"label": "12", "title": "Fusion: chef capo e aiuto cuoco", "notes": "<p class='timing'>Tempo: 1:00 &middot; a fine slide: minuto 15:30 su 24:45 &middot; orario previsto 19:25:30</p><p>Restiamo in cucina. Fusion è una cucina con due chef.</p><p>Lo chef capo è un modello di frontiera, bravo e caro: fa il piano, prende le decisioni importanti e la review finale. L'aiuto cuoco è un modello economico, per esempio SWE-2 di Cognition: scrive il codice, lancia build e test. Ognuno ha il suo contesto, e Devin può cambiare modello a metà sessione.</p><p>Il numero che danno: sul loro benchmark FrontierCode, risultati da modello di frontiera fino al 60% di costo in meno. Numero loro, benchmark loro: pinze. [S49]</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Cos'è FrontierCode: benchmark di Cognition che misura se il maintainer farebbe davvero merge della PR (correttezza, test, scope, stile). Task scritti da oltre 20 maintainer open source; versione 2.0 dal 27 ott 2026, 132 task. Gira anche su Artificial Analysis. [S50]</li><li>Dove: annunciato il 29 giu 2026; nel Cloud si attiva dal selettore modello; in Desktop e CLI dall'11 set 2026. Default nella CLI: chef capo Claude Opus 5.5, aiuto cuoco SWE-2. Solo piani a pagamento, non sui vecchi piani a crediti. [S49][S51]</li><li>Lavori grandi (migrazioni su più moduli o repo): un Devin coordinatore delega a più Devin, ognuno nella sua VM, controlla i progressi e unisce i risultati. [S41]</li></ul></p><p><p class='meta'>[S49] https://cognition.com/blog/devin-fusion (29 giu 2026) e https://cognition.com/blog/local-fusion (11 set 2026) [S50] https://cognition.com/frontiercode [S51] https://docs.devin.ai/cli/fusion [S41] https://x.com/devindevelopers/status/2113444391146889440. Corretto il kicker: &quot;Devin Cloud &middot; 23 ott 2026&quot; era la data del video, non del lancio.</p></p>", "cum": 930}, {"label": "13", "title": "Dove lavora Devin", "notes": "<p class='timing'>Tempo: 1:30 &middot; a fine slide: minuto 17:00 su 24:45 &middot; orario previsto 19:27:00</p><p>Dove lavora, in concreto. Una sessione è una macchina virtuale tutta sua, di solito Linux, con terminale, editor e browser. Parte pulita ogni volta. [S17][S53]</p><p>Da dove parte? Da uno snapshot. Voi scrivete un blueprint, un file YAML tipo Dockerfile: quali repo clonare, cosa installare, come si fanno lint e test. Devin lo costruisce in uno snapshot e lo rifà a ogni modifica e circa ogni giorno. Terra terra: la cucina apparecchiata ogni mattina. [S53]</p><p>Devin Cloud è il collega in smart working: gli dai il task, sparisce, torna con una PR. Devin Desktop è l'ex Windsurf, con un tabellone degli agenti e Devin Local al posto di Cascade. La CLI è Devin nel terminale: quando il lavoro si fa lungo, /handoff lo spedisce al cloud. E il test con video l'abbiamo già visto.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Blueprint: sezioni initialize (installazioni), maintenance (aggiornare dipendenze), knowledge (comandi di lint e test). La prima volta: &quot;Set up your environment for this repo&quot;, Devin propone, tu approvi. Un solo snapshot attivo per piattaforma per organizzazione. Le modifiche fatte in una sessione non tornano nello snapshot. [S53]</li><li>Secret: iniettati come variabili d'ambiente, mai da scrivere nei file. [S53]</li><li>macOS e Windows: supportati per le sessioni, Windows consuma circa il 9% in più; disponibilità per piano da confermare. [S31][S18]</li><li>CLI: macOS, Linux, WSL e Windows; installazione <span class='mono'>curl -fsSL https://cli.devin.ai/install.sh | bash</span> o brew. /handoff manda al cloud conversazione, repo, branch e modifiche non committate; poi riporti in locale il branch della PR. Plugin Devin Handoff anche per Claude Code, Codex e Cursor. [S54]</li><li>Desktop: lo stesso IDE di Windsurf, Agent Command Center come vista principale, legge .windsurfrules, .devin/rules e AGENTS.md; nei Teams serve un full seat. Local Hands: una sessione cloud può lanciare comandi sul tuo computer, con la tua approvazione. [S8][S16]</li></ul></p><p><p class='meta'>Non leggere tutta la tabella: per ogni riga solo la frase terra terra. Se sei in ritardo: tieni solo Cloud, Desktop, CLI. [S17] https://docs.devin.ai/get-started/devin-intro [S53] https://docs.devin.ai/onboard-devin/environment/blueprints [S54] https://docs.devin.ai/work-with-devin/devin-cli</p></p>", "cum": 1020}, {"label": "14", "title": "DeepWiki e Ask Devin: prima capire", "notes": "<p class='timing'>Tempo: 1:15 &middot; a fine slide: minuto 18:15 su 24:45 &middot; orario previsto 19:28:15</p><p>Prima di toccare il codice bisogna capirlo. DeepWiki fa questo: Devin indicizza il repository e scrive una wiki, una pagina per ogni parte del sistema, con diagrammi dell'architettura. [S33]</p><p>La cosa che la rende utile: ogni pagina dice da quali file e da quali righe viene, e su quale commit è stata generata. Quindi potete controllare. [S33]</p><p>Sopra c'è Ask Devin. Fate domande tipo 'da dove passa il login?', vi risponde citando il codice, poi in modalità Plan ci costruite il piano, e da lì parte la sessione con un prompt già pieno di contesto. È anche il modo più veloce che conosco per l'onboarding su un repo nuovo. [S32]</p><p>Per i repo pubblici è gratis: andate su deepwiki.com, incollate l'indirizzo GitHub. C'è anche un server MCP gratuito, senza account, da collegare a Cursor o Claude Code. Per i repo privati serve un account Devin. [S46]</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Generazione: automatica quando colleghi i repo o li metti nel blueprint; altrimenti Settings &gt; DeepWiki &gt; Repositories &gt; Add. Indicizza il branch di default, puoi aggiungerne altri. Si guida con <span class='mono'>.devin/wiki.json</span> (repo_notes e pages, massimo 30 pagine, 80 su Enterprise). [S33]</li><li>Costo della generazione: effort Low gratis (default); Medium circa 5-10 ACU; High circa 20-40 ACU; Enterprise sempre Low. [S33]</li><li>MCP pubblico: https://mcp.deepwiki.com/mcp, nessuna autenticazione, tool read_wiki_structure, read_wiki_contents, ask_question. Per repo privati: Devin MCP https://mcp.devin.ai/ con chiave API. [S46]</li><li>Piani: la pagina prezzi mette Ask Devin nel Devin Cloud da Pro in su; la doc self-serve dice che il Free include DeepWiki. Da confermare. [S15][S16]</li><li>Nell'app si chiama anche &quot;Devin Wiki&quot;. Ask Devin vede le sessioni avviate dalla conversazione, con lo stato. [S32][S52]</li></ul></p><p><p class='meta'>[S32] https://docs.devin.ai/work-with-devin/ask-devin [S33] https://docs.devin.ai/work-with-devin/deepwiki [S46] https://docs.devin.ai/work-with-devin/deepwiki-mcp . Se hai 20 secondi: apri deepwiki.com su un repo che conosce la sala (es. facebook/react) e mostra &quot;Relevant source files&quot;.</p></p>", "cum": 1095}, {"label": "15", "title": "La cassetta degli attrezzi", "notes": "<p class='timing'>Tempo: 2:00 &middot; a fine slide: minuto 20:15 su 24:45 &middot; orario previsto 19:30:15</p><p>La cassetta degli attrezzi, una riga ciascuno.</p><p>Devin Review legge ogni PR prima di voi: raggruppa il diff, segnala i bug con un livello di confidenza e fa sempre anche un controllo di sicurezza. Con Auto-Fix i problemi trovati tornano nella stessa PR come correzioni. [S24]</p><p>Skills: un file SKILL.md nel repo, tipo 'così si avvia l'app, così si testa', e Devin lo segue. Playbooks e Knowledge, i nomi vecchi, stanno diventando tutti Skills. Sì, hanno cambiato nome anche qui. AGENTS.md: le regole del repo, Devin lo legge da solo. [S34][S23]</p><p>Memoria: si ricorda le vostre preferenze tra una sessione e l'altra, e una volta al giorno le riordina, lo chiamano dreaming. [S55]</p><p>MCP collega gli strumenti esterni. Automations: 'quando succede questo, fai partire Devin', da Slack, GitHub, un orario o un webhook. Nella demo ne vedete una. Oncall, da ottobre per tutti: arriva un alert, Devin indaga e propone il fix. [S36][S37][S56]</p><p>Data Analyst risponde a domande sui dati con SQL e grafici. E con API e MCP Devin si comanda da script o da altri agenti.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Devin Review: GitHub (anche Enterprise Server), GitLab, Azure DevOps, Bitbucket; commento <span class='mono'>/devin review</span> o sostituisci github.com con devinreview.com nell'URL; PR pubbliche gratis senza account. Commenti in varie lingue, ma <b>non in italiano</b> secondo la doc. Dal 30 set i problemi su PR di una sessione Devin attiva vanno prima a quella sessione, in PR finisce solo ciò che non ha sistemato. [S24][S52]</li><li>Skills: <span class='mono'>.agents/skills/&lt;nome&gt;/SKILL.md</span>, standard aperto Agent Skills; anche in plugin personali, di org o enterprise; si richiama con <span class='mono'>@skills:nome</span>. Knowledge convertita in Skills dal 18 set 2026; Playbooks migrati dal 23 ott, i nuovi account dal 24 ott non hanno più Playbooks, <span class='mono'>!macro</span> funziona ancora. [S34][S35][S52]</li><li>AGENTS.md: i primi 16 KiB entrano in automatico; legge anche .cursorrules, CLAUDE.md, .windsurf, .rules. [S23][S52]</li><li>Memoria (9 ott 2026): repo git di markdown personale, ogni voce con il link alla fonte; il dreaming si può spegnere; le sessioni delle Automations non leggono né scrivono memoria, quindi le procedure condivise vanno nelle Skills. [S55]</li><li>Automations: trigger + condizioni + Preflight facoltativo (filtro LLM o script) + azione. Trigger: Slack, GitHub, GitLab, Linear, Jira, Pylon, PagerDuty, Schedule (orario, giornaliero, settimanale, RRULE, con fuso orario), Webhook. Limite di consumo per sessione della singola Automation (raggiunto il limite, quella sessione si ferma), limite di 50 esecuzioni l'ora di default. Si crea anche &quot;Generate with Devin&quot;. Sui Teams pescano dai crediti on-demand: finiti i crediti, le Automations non partono più. [S37][S16]</li><li>Oncall: annunciato il 15 ott 2026, nelle release notes &quot;disponibile per tutte le organizzazioni&quot; dal 19 ott. Responder su canali Slack o Teams e PagerDuty, raggruppa alert ripetuti, entra nel canale dell'incidente con un report live. Setup: colleghi lo strumento di telemetria, Devin studia i sistemi per 1-2 ore e scrive le sue skill. [S13][S56]</li><li>Data Analyst: Mode &gt; Data nel selettore; non su piani free o trial. API v3 con service user e permessi; Terraform per automations e blueprint. Devin MCP: sessioni, skill e wiki privata da altri agenti. [S57][S58]</li></ul></p><p><p class='meta'>Se sei in ritardo: leggi solo Review, Skills, Automations; per il resto &quot;è tutto nel master, ve lo mando sul gruppo&quot;. A novembre arrivano novità: se qualcuno chiede &quot;cosa c'è dopo&quot;, rispondi solo così.</p></p><p><p class='meta'>[S24] https://docs.devin.ai/work-with-devin/devin-review [S34] https://docs.devin.ai/product-guides/skills [S35] https://docs.devin.ai/product-guides/using-playbooks [S23] https://docs.devin.ai/onboard-devin/agents-md [S55] https://docs.devin.ai/product-guides/memory [S36] https://docs.devin.ai/work-with-devin/mcp [S37] https://docs.devin.ai/product-guides/automations [S56] https://docs.devin.ai/product-guides/devin-oncall [S57] https://docs.devin.ai/work-with-devin/data-analyst [S58] https://docs.devin.ai/api-reference/overview e https://docs.devin.ai/work-with-devin/devin-mcp [S13] https://devin.ai/blog/introducing-devin-oncall</p></p>", "cum": 1215}, {"label": "16", "title": "Devin Security 2.0", "notes": "<p class='timing'>Tempo: 1:15 &middot; a fine slide: minuto 21:30 su 24:45 &middot; orario previsto 19:31:30</p><p>Novità del 26 ottobre. Cognition dice: 'stiamo entrando in una nuova età oscura della cybersecurity'. Allegria. [S42]</p><p>Nel video parla Alex Stamos, il responsabile della sicurezza di Cognition: l'AI trova vulnerabilità enormi, gli attaccanti usano agenti, ma l'AI può anche sistemare falle che stavano lì da decenni.</p><p>Devin Security 2.0 fa tre cose. Scansiona il codice con i modelli cyber più potenti, compreso Claude Mythos di Anthropic. Dà priorità costruendo con il vostro team un threat model: cosa è raggiungibile, quanto danno farebbe. E corregge: per ogni falla una sessione Devin e una PR. La falla resta aperta finché la PR non entra. [S14][S59]</p><p>E mettono centinaia di milioni di dollari di crediti per scansioni e correzioni gratuite, ma per le aziende enterprise. Un antifurto che oltre a suonare chiama anche il fabbro. Il punto per noi resta lo stesso: la correzione arriva come PR, il merge lo decidete voi.</p><p><p class='meta'><b>Se ti chiedono (non leggere):</b></p><ul class='meta'><li>Come scansiona: &quot;Agentic MapReduce&quot;: mappa il repo rispetto al threat model, analizza a blocchi in parallelo, unisce ed elimina i doppioni, e verifica i finding più gravi in una sandbox contro l'app che gira. [S59]</li><li>Importa finding da Snyk, Wiz, CSV e, dal 30 ott, SonarQube, Linear e Vanta. Interfaccia in /security, serve l'accesso alle security scan per l'organizzazione. [S59][S52]</li><li>Crediti: il blog Devin dice &quot;$100M+ in credits to enterprises&quot; (con Claude Mythos, criteri di idoneità, si fa richiesta); il blog Cognition parla di &quot;hundreds of millions of dollars in Devin credits&quot; per scansioni gratuite e crediti di correzione. Quindi: oltre 100 milioni, per le enterprise. Per team piccoli o self-serve: da confermare. [S14]</li><li>Date: entrambi i blog (devin.ai e cognition.com), letti il 3 nov, riportano 26 ott 2026; nel documento di studio compare il 21 ott per il blog: da confermare, in slide resta 26 ott. Scansioni multi-repo fino a 1.000 repo dal 2 nov 2026. [S14][S52]</li><li>Contesto: il 28 ott Cognition ha annunciato che Corridor (sicurezza per team AI-native) entra in Cognition per lavorare su Devin Security. [S60]</li></ul></p><p><p class='meta'>[S42] https://x.com/cognition/status/2114741368627335379 (video con Alex Stamos, CSO di Cognition). [S14] https://cognition.com/blog/devin-security e https://devin.ai/blog/devin-security-2 [S59] https://docs.devin.ai/work-with-devin/security-2-0 [S60] https://cognition.com/blog/corridor-joining-cognition</p></p>", "cum": 1290}, {"label": "17", "title": "Quello che resta vero", "notes": "<p class='timing'>Tempo: 1:30 &middot; a fine slide: minuto 23:00 su 24:45 &middot; orario previsto 19:33:00</p><p>Ora la parte onesta.</p><p>Uno: sbaglia. Lo dice la loro documentazione: può avere allucinazioni, introdurre bug, suggerire codice insicuro. Quindi review e branch protetti. [S22]</p><p>Due: compiti vaghi, risultati vaghi. La loro regola pratica: se un task ci mettete meno di tre ore a farlo voi, Devin probabilmente ce la fa. Oltre, spezzatelo. [S20]</p><p>Tre: costa. Dipende dal modello, da quanto è grande il task, da quanto deve ragionare. [S15]</p><p>Quattro: privacy. Di default i vostri dati possono essere usati per addestrare i modelli. Sui piani a pagamento si disattiva da Data Controls, nei Teams lo fa l'admin. Su Enterprise mai, senza consenso scritto. [S22] Leggetelo prima di collegare il codice del cliente.</p><p>E se qualcuno vi dice che con gli agenti non serve più saper programmare: serve sapere cosa chiedere e come verificare.</p><p><p class='meta'>Mai tagliare. [S22] https://docs.devin.ai/admin/security [S20] https://docs.devin.ai/essential-guidelines/when-to-use-devin . Corretto rispetto al 29 ott: l'addestramento di default vale per tutti i piani non Enterprise, Free compreso; il Free però non ha l'opt-out.</p></p>", "cum": 1380}, {"label": "18", "title": "Come la racconta Cognition", "notes": "<p class='timing'>Tempo: 1:00 &middot; a fine slide: minuto 24:00 su 24:45 &middot; orario previsto 19:34:00</p><p>Post di Cognition del 28 ottobre, su Mercor, un loro cliente. Gli ingegneri danno a Devin task lunghi prima di dormire, durante le riunioni, mentre vanno in palestra, e quando tornano trovano feature testate e PR pronte per il merge. [S28]</p><p>Bella promessa. Marketing loro, su un cliente loro, quindi con le pinze. Io in palestra non ci vado comunque.</p><p>Però la promessa si può verificare.</p><p><p class='meta'>[S28] https://x.com/cognition/status/2115488769306673267. Cognition scrive che Mercor ha superato i 2 miliardi di fatturato annuo ricorrente: numero loro, non verificato in modo indipendente. Se ti chiedono: tolto dalla frase per stare nei tempi.</p></p>", "cum": 1440}, {"label": "19", "title": "Demo, cosa stiamo per vedere", "notes": "<p class='timing'>Tempo: 0:45 &middot; a fine slide: minuto 24:45 su 24:45 &middot; orario previsto 19:34:45</p><p>Basta slide. Adesso passiamo alla demo dal vivo, su un caso reale e non su un'app di esempio.</p><p>Guardate tre cose: come pianifica, come lavora, come verifica. E se si rompe qualcosa, lo vedete con me. Anzi, se si rompe è la parte più utile della serata.</p><p><p class='meta'>Mai tagliare. Ponte neutro: qui cambi schermo e apri la presentazione separata della demo. Il materiale della demo NON sta in questo deck.</p></p>", "cum": 1485}, {"label": "Q", "title": "Scansiona e partecipa (QR estrazione)", "notes": "<p class='timing'>Tempo: 0:30 (fuori dal talk)</p><p>Prima di passare alle domande: ecco il QR. Scansionatelo, mettete il nome, e siete dentro all'estrazione delle 3 licenze. Una sola iscrizione a testa, il tool se ne accorge. Almeno spero, l'ha scritto Devin.</p><p>E visto che stasera parliamo di verifica: il tool è stato costruito da Devin, con i suoi test. Se volete, alla pizza vi faccio vedere la PR.</p><p><p class='meta'>Quando: alla fine della demo (circa 20:00), poi lascialo sullo schermo durante la Q&amp;A e rimettilo prima dell'estrazione. Per inserire il QR: salva il PNG come assets/qr-estrazione.png e scrivi l'URL nel file HTML al posto di [URL breve da inserire]. [PLACEHOLDER: link alla sessione o alla PR del tool di estrazione]</p></p>", "cum": null}, {"label": "20", "title": "Non è molto, ma è un lavoro onesto", "notes": "<p class='timing'>Tempo: 5:00 (fuori dal talk)</p><p>Ok, il momento che stavate aspettando, o almeno il motivo per cui alcuni di voi sono ancora qui.</p><p>Abbiamo 3 licenze Devin da 200 dollari. Tre. Non trenta, non 'una per tutti'. Tre.</p><p><i>[mostri il meme]</i></p><p>Lo so. Non è molto, ma è un lavoro onesto.</p><p>Le regole sono semplici: estraggo un nome alla volta, se il nome che esce è in sala alza la mano e vince. Se non è in sala, si estrae di nuovo. Non vale gridare 'è andato in bagno'.</p><p>E ricordatevi chi ha scritto il software dell'estrazione. Se esce tre volte lo stesso nome, abbiamo un bug report per la prossima demo.</p><p><i>[estrazione 1, 2, 3]</i> Poi passi allo schermo del tool di estrazione.</p><p>Complimenti ai vincitori. Per tutti gli altri: c'è il piano gratuito, e c'è la pizza. Che è comunque un ottimo premio.</p><p>Dopo l'estrazione: Grazie a tutti, ci vediamo al prossimo. Ora pizza e networking. E chi voleva sapere la storia di Claude e ChatGPT, sa dove trovarmi.</p><p><p class='meta'>20:35-20:40. Il vincitore deve essere in sala; se non risponde entro 10 secondi, si ri-estrae. Annota subito nome e contatto dei 3 vincitori.</p></p>", "cum": null}];
+var stage=document.getElementById('stage'), slides=[].slice.call(document.querySelectorAll('.slide'));
+var cur=0, notesEl=document.getElementById('notes'), timerEl=document.getElementById('timer');
+var tStart=null, tAcc=0, tRun=false, LIMIT=1485, pres=null;
+function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='translate('+((innerWidth-1920*s)/2)+'px,'+((innerHeight-1080*s)/2)+'px) scale('+s+')';}
+addEventListener('resize',fit);fit();
+function fmt(sec){sec=Math.max(0,Math.floor(sec));var m=Math.floor(sec/60),s=sec%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+function elapsed(){return tAcc+(tRun?(Date.now()-tStart)/1000:0);}
+function startTimer(){if(!tRun){tStart=Date.now();tRun=true;}}
+function toggleRun(){if(tRun){tAcc=elapsed();tRun=false;}else startTimer();}
+function tick(){var e=elapsed();var txt=fmt(e)+' / 24:45';timerEl.textContent=txt;timerEl.classList.toggle('over',e>LIMIT);timerEl.classList.toggle('paused',!tRun&&e>0);if(pres&&!pres.closed)updPres();}
+setInterval(tick,500);
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[cur].classList.remove('active');cur=i;slides[cur].classList.add('active');
+ notesEl.innerHTML='<h4>NOTE &middot; SLIDE '+SL[cur].label+' &middot; '+SL[cur].title+'</h4>'+SL[cur].notes;
+ if(location.hash!=='#'+(cur+1))history.replaceState(null,'','#'+(cur+1));updPres();}
+function updPres(){if(!pres||pres.closed)return;var d=pres.document;var n=SL[cur],nx=SL[cur+1];
+ d.getElementById('pc').textContent='Slide '+n.label+'  ('+(cur+1)+'/'+SL.length+')  '+n.title;
+ d.getElementById('pn').innerHTML=n.notes;
+ d.getElementById('px').textContent=nx?('Prossima: '+nx.label+'  '+nx.title):'Fine';
+ var e=elapsed();var t=d.getElementById('pt');t.innerHTML=fmt(e)+' / 24:45'+(tRun?'':(e>0?'  (pausa)':'  (premi T per avviare)'))+(n.cum!=null?'<br><small>obiettivo a fine slide: '+fmt(n.cum)+'</small>':'');t.style.color=e>LIMIT?'#ff7b72':'#e8e8e6';}
+function openPres(){pres=window.open('','devinPresenter','width=1100,height=800');if(!pres){alert('Popup bloccato: consenti i popup per questo file.');return;}
+ var d=pres.document;d.open();d.write('<!doctype html><meta charset="utf-8"><title>Presenter</title><style>body{background:#0c0d0f;color:#e8e8e6;font:22px/1.55 Segoe UI,Inter,system-ui,sans-serif;margin:0;padding:28px 40px}#pt{font:700 44px Consolas,monospace;margin-bottom:10px}#pc{font-weight:700;font-size:28px;margin-bottom:18px}#px{color:#8b9099;margin-top:24px;border-top:1px solid #2a2d33;padding-top:14px}p{margin:0 0 14px}.meta{color:#8b9099;font-size:.85em}small{color:#8b9099}</style><div id="pt"></div><div id="pc"></div><div id="pn"></div><div id="px"></div><small>Frecce/spazio per navigare anche da qui. T avvia/pausa timer, R azzera.</small>');d.close();
+ d.addEventListener('keydown',function(ev){key(ev);});updPres();}
+function key(e){var k=e.key;
+ if(k==='ArrowRight'||k===' '||k==='PageDown'||k==='ArrowDown'){e.preventDefault();go(cur+1);}
+ else if(k==='ArrowLeft'||k==='PageUp'||k==='ArrowUp'||k==='Backspace'){e.preventDefault();go(cur-1);}
+ else if(k==='Home')go(0);else if(k==='End')go(slides.length-1);
+ else if(k==='n'||k==='N')notesEl.classList.toggle('on');
+ else if(k==='t'||k==='T'){if(!timerEl.classList.contains('on')){timerEl.classList.add('on');startTimer();}else toggleRun();tick();}
+ else if(k==='r'||k==='R'){tAcc=0;tStart=Date.now();tick();}
+ else if(k==='f'||k==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
+ else if(k==='s'||k==='S'||k==='p'||k==='P')openPres();
+ else if(k==='h'||k==='H'||k==='?')document.getElementById('help').classList.toggle('on');
+ else if(k==='q'||k==='Q'){var qi=SL.findIndex(function(x){return x.label==='Q'});if(qi>=0)go(qi);}
+ else if(k==='Escape')document.getElementById('help').classList.remove('on');}
+document.addEventListener('keydown',key);
+document.getElementById('viewport').addEventListener('click',function(e){if(e.clientX<innerWidth*0.25)go(cur-1);else go(cur+1);});
+document.addEventListener('contextmenu',function(e){e.preventDefault();go(cur-1);});
+if(/render/.test(location.search))document.body.classList.add('render');if(/notes/.test(location.search))notesEl.classList.add('on');if(/timer/.test(location.search)){timerEl.classList.add('on');startTimer();}
+var h=parseInt((location.hash||'').slice(1),10);go(isNaN(h)?0:h-1);
+})();
+</script>
+</body></html>

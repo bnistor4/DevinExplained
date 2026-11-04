@@ -1,5 +1,5 @@
 import type { L10n } from './schema';
-import { modules } from './modules';
+import { baseModules } from './modules';
 
 export type Preset = {
   id: string;
@@ -79,6 +79,6 @@ export const presets: Preset[] = [
   {
     id: 'full-tour',
     title: { en: 'Full tour', it: 'Tour completo' },
-    moduleIds: modules.map((m) => m.id),
+    moduleIds: baseModules.map((m) => m.id),
   },
 ];

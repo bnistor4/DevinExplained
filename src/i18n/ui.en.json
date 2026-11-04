@@ -7,6 +7,9 @@
     "search": "Search modules…",
     "selectAll": "Select all",
     "deselectAll": "Clear",
+    "loadPack": "Load",
+    "arrangeSuggested": "Arrange as suggested",
+    "arrangeSuggestedTitle": "Puts each story after the module containing its hook slide",
     "empty": "No modules match your search.",
     "outline": "Deck outline",
     "outlineEmpty": "Pick modules from the catalog to build your deck.",
@@ -39,7 +42,12 @@
     "export": "Export JSON",
     "import": "Import JSON",
     "reset": "Reset deck",
-    "moduleSlides": "{{count}} slides"
+    "moduleSlides": "{{count}} slides",
+    "eventPacks": "Events",
+    "packActive": "Active event pack: {{title}}",
+    "packDetach": "Detach",
+    "slideHide": "Hide slide",
+    "slideShow": "Show slide"
   },
   "presenter": {
     "notes": "Notes",

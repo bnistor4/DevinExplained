@@ -1,7 +1,7 @@
 export type Lang = 'it' | 'en' | 'es' | 'fr' | 'de' | 'pt-BR' | 'ja' | 'zh';
 export type L10n = { en: string } & Partial<Record<Lang, string>>; // en is the fallback
 export type Tone = 'serious' | 'fun';
-export type CategoryId = 'intro' | 'history' | 'how-it-works' | 'surfaces' | 'onboarding' | 'products' | 'integrations' | 'prompting' | 'use-cases' | 'pricing-enterprise' | 'closing';
+export type CategoryId = 'events' | 'intro' | 'history' | 'how-it-works' | 'surfaces' | 'onboarding' | 'products' | 'integrations' | 'prompting' | 'use-cases' | 'pricing-enterprise' | 'closing';
 
 export type LinkKind =
   | 'telegram' | 'whatsapp' | 'discord' | 'slack' | 'linkedin' | 'meetup'
@@ -13,7 +13,7 @@ export type LiveQa = { url: string; label: string; badge: boolean };
 export type SlideBlock =
   | { type: 'title'; kicker?: L10n; title: L10n; subtitle?: L10n }
   | { type: 'bullets'; title: L10n; items: L10n[]; icon?: string }              // icon = lucide icon name
-  | { type: 'compare'; title: L10n; left: { title: L10n; items: L10n[] }; right: { title: L10n; items: L10n[] } }
+  | { type: 'compare'; title: L10n; left: { title: L10n; items: L10n[] }; right: { title: L10n; items: L10n[] }; split?: boolean } // split = two neutral columns (check marks on both sides), not before/after
   | { type: 'timeline'; title: L10n; events: { date: string; title: L10n; text?: L10n }[] }
   | { type: 'stats'; title: L10n; stats: { value: string; label: L10n }[] }
   | { type: 'cards'; title: L10n; cards: { icon: string; title: L10n; text: L10n }[] }
@@ -24,8 +24,10 @@ export type SlideBlock =
   | { type: 'media'; title?: L10n; kind: 'image' | 'video' | 'youtube'; src: string; caption?: L10n }
   | { type: 'people'; title: L10n; logo?: 'devin' | 'cognition'; people: { name: string; role: L10n; bio?: L10n; img?: string }[] }
   | { type: 'qa'; title: L10n; text?: L10n; qrUrl?: string }
-  | { type: 'agenda'; title: L10n; items: { index: string; title: L10n; minutes: number }[] }
-  | { type: 'community'; title: L10n; links: EventLink[]; liveQa?: { url: string; label: string }; wifi?: WifiInfo; hashtag?: string };
+  | { type: 'agenda'; title: L10n; items: { index: string; title: L10n; minutes?: number }[] }
+  | { type: 'community'; title: L10n; links: EventLink[]; liveQa?: { url: string; label: string }; wifi?: WifiInfo; hashtag?: string }
+  | { type: 'custom'; component: string; title: L10n; props?: Record<string, string> }
+  | { type: 'story'; kicker?: L10n; title: L10n; text?: L10n; beats?: { label: string; text: L10n }[]; punchline?: L10n; source?: string; image?: string; imageAlt?: string; credit?: string; wide?: boolean };
 
 export type Slide = {
   id: string;

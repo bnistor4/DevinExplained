@@ -48,14 +48,14 @@
   font-size: 13px;
 }
 
-/* fun aside: editorial margin note, bottom-right of the slide */
+/* fun aside: editorial margin note, top-right of the slide, closes itself after 15 s */
 .fun-aside {
   position: absolute;
   right: 48px;
-  bottom: 96px;
+  top: 28px;
   display: flex;
-  align-items: flex-end;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 16px;
   pointer-events: none;
   z-index: 5;
   --surface: #fff;
@@ -77,33 +77,34 @@
   border: 1px solid var(--line-strong);
   border-left: 2px solid var(--accent);
   border-radius: 2px;
-  padding: 18px 24px;
+  padding: 14px 19px;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 26px;
+  font-size: 21px;
   line-height: 1.3;
-  max-width: 520px;
+  max-width: 416px;
 }
 
 .fun-kicker {
   display: block;
   font-family: var(--font-mono);
   font-style: normal;
-  font-size: 14px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* speaker notes bottom sheet */
 .notes-drawer {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   bottom: 56px;
   width: min(1100px, 88vw);
-  max-height: 260px;
+  max-height: 45vh;
   overflow: auto;
   background: var(--surface);
   color: var(--ink);
@@ -128,6 +129,22 @@
   font-family: var(--font-serif);
   font-size: 18px;
   line-height: 1.5;
+}
+
+.notes-drawer p.timing {
+  color: var(--accent);
+}
+
+.notes-drawer ul {
+  margin: 8px 0 0;
+  padding-left: 22px;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.notes-drawer li {
+  margin-bottom: 6px;
 }
 
 /* bottom chrome */
@@ -242,10 +259,6 @@
   font-size: 12px;
 }
 
-.qa-badge.left {
-  right: auto;
-  left: 168px;
-}
 
 /* ---------- overlays ---------- */
 .overlay {

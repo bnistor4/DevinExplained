@@ -470,6 +470,27 @@
   white-space: nowrap;
 }
 
+.slide-eye {
+  flex: none;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  padding: 2px;
+  margin-left: -4px;
+}
+
+.slide-eye:hover {
+  color: var(--ink);
+}
+
+.slide-mini-list li.slide-hidden {
+  opacity: 0.45;
+}
+
+.slide-mini-list li.slide-hidden .slide-mini-title {
+  text-decoration: line-through;
+}
+
 .fun-badge {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -521,6 +542,42 @@
 
 .preset-btn:hover {
   border-color: var(--ink);
+}
+
+.preset-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.pack-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.36px;
+  color: var(--muted);
+  margin: 8px 14px 2px;
+}
+
+.pack-group {
+  margin-top: 6px;
+}
+
+.pack-head {
+  margin-left: 8px;
+}
+
+.pack-body {
+  margin-left: 14px;
+  padding-left: 6px;
+  border-left: 1px solid var(--line);
+}
+
+.pack-active {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .segmented {

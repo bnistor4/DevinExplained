@@ -30,7 +30,7 @@ export default function PeopleSlide({
       </h2>
       {block.logo && (
         <div className="sl-people-logo">
-          <BrandLogo brand={block.logo} height={28} dark={f.band === 'dark'} />
+          <BrandLogo brand={block.logo} height={28} dark={f.band === 'dark' || undefined} />
         </div>
       )}
       <div className="sl-people-row">
