@@ -1,9 +1,71 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { useDeckStore } from '../../../../store/deckStore';
+import BrandLogo from '../../../BrandLogo';
 import type { CustomSlideComponent, CustomSlideProps } from '..';
 
 const A = '/events/2026-11-04-trento';
+
+const FUN_LINES = [
+  'Sto scaldando la lontra…',
+  'Sto aspettando gli ultimi ritardatari…',
+  'Sto controllando che la demo funzioni. Incrociamo le dita…',
+  'Sto contando le fette di pizza…',
+  'Sto chiedendo a Devin di aprire una PR per il proiettore…',
+];
+
+const isStaticSlide = () =>
+  typeof document !== 'undefined' &&
+  (document.documentElement.hasAttribute('data-static') ||
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true);
+
+/* 00 — Benvenuti (welcome / loading) */
+export const Trento00: CustomSlideComponent = () => {
+  const fun = useDeckStore((s) => s.tone) === 'fun';
+  const [now, setNow] = useState(() => new Date());
+  const [line, setLine] = useState(0);
+  const [staticMode] = useState(isStaticSlide);
+
+  useEffect(() => {
+    if (staticMode) return;
+    const id = setInterval(() => setNow(new Date()), 10_000);
+    return () => clearInterval(id);
+  }, [staticMode]);
+
+  useEffect(() => {
+    if (!fun || staticMode) return;
+    const id = setInterval(() => setLine((l) => (l + 1) % FUN_LINES.length), 4_000);
+    return () => clearInterval(id);
+  }, [fun, staticMode]);
+
+  const clock = now.toLocaleTimeString('it-IT', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Rome',
+  });
+
+  return (
+    <div className="tn">
+      <div className="tn-welcome">
+        <BrandLogo brand="devin" height={30} className="tn-wlogo" />
+        <div className="tn-kicker">Benvenuti</div>
+        <h1 className="tn-wtitle">Devin AI Trento #1</h1>
+        <div className="tn-wmeta">Mercoledì 4 novembre 2026 · Impact Hub Trento</div>
+        <div className="tn-wbar">
+          <div className="tn-wseg" />
+        </div>
+        <div className="tn-wstatus">Prendete posto, arriviamo.</div>
+        {fun && (
+          <div key={staticMode ? 0 : line} className="tn-wfun">
+            {FUN_LINES[staticMode ? 0 : line]}
+          </div>
+        )}
+        <div className="tn-wclock">{clock}</div>
+      </div>
+      <img className="tn-wotter" src="/assets/devin.png" alt="" aria-hidden="true" />
+    </div>
+  );
+};
 
 /* 01 — Ciao, sono Bogdan */
 const flagClip = (

@@ -11,6 +11,11 @@ const mod: Module = {
   sources: [],
   slides: [
     {
+      id: 's00',
+      block: { type: 'custom', component: 'trento-00', title: it("Benvenuti · Devin AI Trento #1") },
+      notes: it("Slide di benvenuto: lasciala a schermo mentre la gente arriva e prende posto. In tono Fun le frasi in basso cambiano da sole.\n\nQuando sei pronto, freccia a destra e si parte con «Ciao, sono Bogdan Nistor»."),
+    },
+    {
       id: 's01',
       block: { type: 'custom', component: 'trento-01', title: it("Ciao, sono Bogdan Nistor"), props: { linkedin: 'https://www.linkedin.com/in/bnistordev/' } },
       notes: it("Tempo: 1:15 · a fine slide: minuto 1:15 su 24:45 · orario previsto 19:11:15\n\nCiao a tutti, sono Bogdan Nistor. Un romano di origini rumene, trasferito in Trentino. E già qui potrebbe essere l'inizio di una barzelletta.\n\nSono ambassador Devin AI qui a Trento. Di mestiere: full stack developer, freelance, a volte fractional... e lo spazio vuoto lo riempite voi: mi adatto. Se una cosa si può sviluppare o ha una soluzione, ci provo. Quando in azienda qualcosa si inceppa, mi piace capire dov'è il problema e sistemarlo.\n\nCostruisco anche prodotti miei. TuttoCalcolato.it è un side project: una piattaforma di calcolatori di ogni genere. Il più recente è minipim.io, serve a gestire le informazioni di prodotto.\n\nUso agenti AI per programmare tutti i giorni, principalmente Devin. E visto che sono ambassador, tenetene conto: stasera vi dico anche cosa non funziona.\n\nE Claude e ChatGPT? Storia lunga. Se volete saperla, offritemi una birra dopo.\n\nSe volete restare in contatto: il QR sotto la foto porta al mio LinkedIn."),

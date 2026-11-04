@@ -1,5 +1,6 @@
 import type { CustomSlideComponent } from '..';
 import {
+  Trento00,
   Trento01,
   Trento02,
   Trento03,
@@ -25,6 +26,7 @@ import {
 import './trento.css';
 
 export const trentoSlides: Record<string, CustomSlideComponent> = {
+  'trento-00': Trento00,
   'trento-01': Trento01,
   'trento-02': Trento02,
   'trento-03': Trento03,
